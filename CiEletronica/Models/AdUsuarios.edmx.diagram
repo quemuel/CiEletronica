@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bc8c80f5a2e24f339e7afbc4b3454c8b" Name="Diagram1">
+        <EntityTypeShape EntityType="AdUsuarios.adi_ad_informacao" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdUsuarios.ild_informacoes_ldap" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdUsuarios.pus_perfil_usuario" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdUsuarios.set_setor" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdUsuarios.use_usuario_setor" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdUsuarios.usu_usuario" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <AssociationConnector Association="AdUsuarios.R_usu_ild" ManuallyRouted="false" />
+        <AssociationConnector Association="AdUsuarios.R_pus_use" ManuallyRouted="false" />
+        <AssociationConnector Association="AdUsuarios.R_set_setor_gerenciador" ManuallyRouted="false" />
+        <AssociationConnector Association="AdUsuarios.R_set_setor_pai" ManuallyRouted="false" />
+        <AssociationConnector Association="AdUsuarios.R_set_use" ManuallyRouted="false" />
+        <AssociationConnector Association="AdUsuarios.R_usu_use" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

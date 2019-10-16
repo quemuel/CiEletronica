@@ -1,0 +1,538 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AdUsuarios.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="adi_ad_informacao">
+          <Key>
+            <PropertyRef Name="adi_id_adi" />
+          </Key>
+          <Property Name="adi_id_adi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adi_id_usu" Type="int" Nullable="false" />
+          <Property Name="adi_nom_script_path" Type="varchar" MaxLength="50" />
+          <Property Name="adi_nom_email" Type="varchar" MaxLength="100" />
+          <Property Name="adi_nom_description" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="ild_informacoes_ldap">
+          <Key>
+            <PropertyRef Name="ild_id_ild" />
+          </Key>
+          <Property Name="ild_id_ild" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ild_id_usu" Type="int" Nullable="false" />
+          <Property Name="ild_cod_guid" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="ild_nom_usuario" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="ild_nom_usuario_completo" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="ild_nom_usuario_primeiro" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="ild_nom_usuario_ultimo" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="ild_nom_iniciais" Type="varchar" MaxLength="500" />
+          <Property Name="ild_nom_login" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="ild_nom_titulo" Type="varchar" MaxLength="500" />
+          <Property Name="ild_des_descricao" Type="varchar" MaxLength="200" />
+          <Property Name="ild_des_informacao" Type="varchar" MaxLength="500" />
+          <Property Name="ild_num_telefone" Type="varchar" MaxLength="500" />
+          <Property Name="ild_nom_grupos" Type="varchar" MaxLength="500" />
+          <Property Name="ild_nom_email" Type="varchar" MaxLength="500" />
+          <Property Name="ild_nom_escritorio" Type="varchar" MaxLength="500" />
+          <Property Name="ild_nom_companhia" Type="varchar" MaxLength="500" />
+          <Property Name="ild_nom_departamento" Type="varchar" MaxLength="500" />
+          <Property Name="ild_nom_local" Type="varchar" MaxLength="500" />
+          <Property Name="ild_nom_script_path" Type="varchar" MaxLength="500" />
+          <Property Name="ild_dat_criacao" Type="datetime" />
+          <Property Name="ild_dat_atualizacao" Type="datetime" />
+          <Property Name="ild_dat_fim_bloqueio" Type="varchar" MaxLength="500" />
+          <Property Name="ild_dat_ultimo_logon" Type="varchar" MaxLength="500" />
+          <Property Name="ild_dat_ultimo_logon_stamp" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="pus_perfil_usuario">
+          <Key>
+            <PropertyRef Name="pus_id_pus" />
+          </Key>
+          <Property Name="pus_id_pus" Type="int" Nullable="false" />
+          <Property Name="pus_nom_perfil" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="pus_flg_ativo" Type="bit" Nullable="false" />
+          <Property Name="pus_flg_gestor" Type="bit" Nullable="false" />
+          <Property Name="pus_flg_autorizado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="set_setor">
+          <Key>
+            <PropertyRef Name="set_id_set" />
+          </Key>
+          <Property Name="set_id_set" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="set_nom_sigla" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="set_nom_setor" Type="varchar" MaxLength="500" />
+          <Property Name="set_id_set_pai" Type="int" Nullable="false" />
+          <Property Name="set_id_set_gerenciador" Type="int" Nullable="false" />
+          <Property Name="set_flg_ativo" Type="bit" Nullable="false" />
+          <Property Name="set_dat_desativacao" Type="datetime" />
+          <Property Name="set_flg_setor_oficial" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="use_usuario_setor">
+          <Key>
+            <PropertyRef Name="use_id_use" />
+          </Key>
+          <Property Name="use_id_use" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="use_id_pus" Type="int" Nullable="false" />
+          <Property Name="use_id_usu" Type="int" Nullable="false" />
+          <Property Name="use_id_set" Type="int" Nullable="false" />
+          <Property Name="use_flg_ativo" Type="bit" Nullable="false" />
+          <Property Name="use_flg_padrao" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usu_usuario">
+          <Key>
+            <PropertyRef Name="usu_id_usu" />
+          </Key>
+          <Property Name="usu_id_usu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usu_uui_identificador" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="usu_nom_usuario" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="usu_nom_login" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="usu_num_senha" Type="varchar" MaxLength="150" />
+          <Property Name="usu_flg_ativo" Type="bit" Nullable="false" />
+          <Property Name="usu_id_gru" Type="int" Nullable="false" />
+          <Property Name="usu_id_set" Type="int" Nullable="false" />
+          <Property Name="usu_dat_ultimo_acesso" Type="datetime" />
+          <Property Name="usu_dat_cadastro" Type="datetime" Nullable="false" />
+          <Property Name="usu_cod_agenda" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <Association Name="R_pus_use">
+          <End Role="pus_perfil_usuario" Type="Self.pus_perfil_usuario" Multiplicity="1" />
+          <End Role="use_usuario_setor" Type="Self.use_usuario_setor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pus_perfil_usuario">
+              <PropertyRef Name="pus_id_pus" />
+            </Principal>
+            <Dependent Role="use_usuario_setor">
+              <PropertyRef Name="use_id_pus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_set_setor_gerenciador">
+          <End Role="set_setor" Type="Self.set_setor" Multiplicity="1" />
+          <End Role="set_setor1" Type="Self.set_setor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="set_setor">
+              <PropertyRef Name="set_id_set" />
+            </Principal>
+            <Dependent Role="set_setor1">
+              <PropertyRef Name="set_id_set_gerenciador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_set_setor_pai">
+          <End Role="set_setor" Type="Self.set_setor" Multiplicity="1" />
+          <End Role="set_setor1" Type="Self.set_setor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="set_setor">
+              <PropertyRef Name="set_id_set" />
+            </Principal>
+            <Dependent Role="set_setor1">
+              <PropertyRef Name="set_id_set_pai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_set_use">
+          <End Role="set_setor" Type="Self.set_setor" Multiplicity="1" />
+          <End Role="use_usuario_setor" Type="Self.use_usuario_setor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="set_setor">
+              <PropertyRef Name="set_id_set" />
+            </Principal>
+            <Dependent Role="use_usuario_setor">
+              <PropertyRef Name="use_id_set" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_usu_ild">
+          <End Role="usu_usuario" Type="Self.usu_usuario" Multiplicity="1" />
+          <End Role="ild_informacoes_ldap" Type="Self.ild_informacoes_ldap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usu_usuario">
+              <PropertyRef Name="usu_id_usu" />
+            </Principal>
+            <Dependent Role="ild_informacoes_ldap">
+              <PropertyRef Name="ild_id_usu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_usu_use">
+          <End Role="usu_usuario" Type="Self.usu_usuario" Multiplicity="1" />
+          <End Role="use_usuario_setor" Type="Self.use_usuario_setor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usu_usuario">
+              <PropertyRef Name="usu_id_usu" />
+            </Principal>
+            <Dependent Role="use_usuario_setor">
+              <PropertyRef Name="use_id_usu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AdUsuariosStoreContainer">
+          <EntitySet Name="adi_ad_informacao" EntityType="Self.adi_ad_informacao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ild_informacoes_ldap" EntityType="Self.ild_informacoes_ldap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pus_perfil_usuario" EntityType="Self.pus_perfil_usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="set_setor" EntityType="Self.set_setor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="use_usuario_setor" EntityType="Self.use_usuario_setor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usu_usuario" EntityType="Self.usu_usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="R_pus_use" Association="Self.R_pus_use">
+            <End Role="pus_perfil_usuario" EntitySet="pus_perfil_usuario" />
+            <End Role="use_usuario_setor" EntitySet="use_usuario_setor" />
+          </AssociationSet>
+          <AssociationSet Name="R_set_setor_gerenciador" Association="Self.R_set_setor_gerenciador">
+            <End Role="set_setor" EntitySet="set_setor" />
+            <End Role="set_setor1" EntitySet="set_setor" />
+          </AssociationSet>
+          <AssociationSet Name="R_set_setor_pai" Association="Self.R_set_setor_pai">
+            <End Role="set_setor" EntitySet="set_setor" />
+            <End Role="set_setor1" EntitySet="set_setor" />
+          </AssociationSet>
+          <AssociationSet Name="R_set_use" Association="Self.R_set_use">
+            <End Role="set_setor" EntitySet="set_setor" />
+            <End Role="use_usuario_setor" EntitySet="use_usuario_setor" />
+          </AssociationSet>
+          <AssociationSet Name="R_usu_ild" Association="Self.R_usu_ild">
+            <End Role="usu_usuario" EntitySet="usu_usuario" />
+            <End Role="ild_informacoes_ldap" EntitySet="ild_informacoes_ldap" />
+          </AssociationSet>
+          <AssociationSet Name="R_usu_use" Association="Self.R_usu_use">
+            <End Role="usu_usuario" EntitySet="usu_usuario" />
+            <End Role="use_usuario_setor" EntitySet="use_usuario_setor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AdUsuarios" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="adi_ad_informacao">
+          <Key>
+            <PropertyRef Name="adi_id_adi" />
+          </Key>
+          <Property Name="adi_id_adi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="adi_id_usu" Type="Int32" Nullable="false" />
+          <Property Name="adi_nom_script_path" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="adi_nom_email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="adi_nom_description" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ild_informacoes_ldap">
+          <Key>
+            <PropertyRef Name="ild_id_ild" />
+          </Key>
+          <Property Name="ild_id_ild" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ild_id_usu" Type="Int32" Nullable="false" />
+          <Property Name="ild_cod_guid" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ild_nom_usuario" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ild_nom_usuario_completo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ild_nom_usuario_primeiro" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ild_nom_usuario_ultimo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ild_nom_iniciais" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ild_nom_login" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ild_nom_titulo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ild_des_descricao" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ild_des_informacao" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ild_num_telefone" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ild_nom_grupos" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ild_nom_email" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ild_nom_escritorio" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ild_nom_companhia" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ild_nom_departamento" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ild_nom_local" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ild_nom_script_path" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ild_dat_criacao" Type="DateTime" Precision="3" />
+          <Property Name="ild_dat_atualizacao" Type="DateTime" Precision="3" />
+          <Property Name="ild_dat_fim_bloqueio" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ild_dat_ultimo_logon" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ild_dat_ultimo_logon_stamp" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="usu_usuario" Relationship="Self.R_usu_ild" FromRole="ild_informacoes_ldap" ToRole="usu_usuario" />
+        </EntityType>
+        <EntityType Name="pus_perfil_usuario">
+          <Key>
+            <PropertyRef Name="pus_id_pus" />
+          </Key>
+          <Property Name="pus_id_pus" Type="Int32" Nullable="false" />
+          <Property Name="pus_nom_perfil" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pus_flg_ativo" Type="Boolean" Nullable="false" />
+          <Property Name="pus_flg_gestor" Type="Boolean" Nullable="false" />
+          <Property Name="pus_flg_autorizado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="use_usuario_setor" Relationship="Self.R_pus_use" FromRole="pus_perfil_usuario" ToRole="use_usuario_setor" />
+        </EntityType>
+        <EntityType Name="set_setor">
+          <Key>
+            <PropertyRef Name="set_id_set" />
+          </Key>
+          <Property Name="set_id_set" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="set_nom_sigla" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="set_nom_setor" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="set_id_set_pai" Type="Int32" Nullable="false" />
+          <Property Name="set_id_set_gerenciador" Type="Int32" Nullable="false" />
+          <Property Name="set_flg_ativo" Type="Boolean" Nullable="false" />
+          <Property Name="set_dat_desativacao" Type="DateTime" Precision="3" />
+          <Property Name="set_flg_setor_oficial" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="set_setor1" Relationship="Self.R_set_setor_gerenciador" FromRole="set_setor" ToRole="set_setor1" />
+          <NavigationProperty Name="set_setor2" Relationship="Self.R_set_setor_gerenciador" FromRole="set_setor1" ToRole="set_setor" />
+          <NavigationProperty Name="set_setor11" Relationship="Self.R_set_setor_pai" FromRole="set_setor" ToRole="set_setor1" />
+          <NavigationProperty Name="set_setor3" Relationship="Self.R_set_setor_pai" FromRole="set_setor1" ToRole="set_setor" />
+          <NavigationProperty Name="use_usuario_setor" Relationship="Self.R_set_use" FromRole="set_setor" ToRole="use_usuario_setor" />
+        </EntityType>
+        <EntityType Name="use_usuario_setor">
+          <Key>
+            <PropertyRef Name="use_id_use" />
+          </Key>
+          <Property Name="use_id_use" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="use_id_pus" Type="Int32" Nullable="false" />
+          <Property Name="use_id_usu" Type="Int32" Nullable="false" />
+          <Property Name="use_id_set" Type="Int32" Nullable="false" />
+          <Property Name="use_flg_ativo" Type="Boolean" Nullable="false" />
+          <Property Name="use_flg_padrao" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="pus_perfil_usuario" Relationship="Self.R_pus_use" FromRole="use_usuario_setor" ToRole="pus_perfil_usuario" />
+          <NavigationProperty Name="set_setor" Relationship="Self.R_set_use" FromRole="use_usuario_setor" ToRole="set_setor" />
+          <NavigationProperty Name="usu_usuario" Relationship="Self.R_usu_use" FromRole="use_usuario_setor" ToRole="usu_usuario" />
+        </EntityType>
+        <EntityType Name="usu_usuario">
+          <Key>
+            <PropertyRef Name="usu_id_usu" />
+          </Key>
+          <Property Name="usu_id_usu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usu_uui_identificador" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usu_nom_usuario" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usu_nom_login" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usu_num_senha" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="usu_flg_ativo" Type="Boolean" Nullable="false" />
+          <Property Name="usu_id_gru" Type="Int32" Nullable="false" />
+          <Property Name="usu_id_set" Type="Int32" Nullable="false" />
+          <Property Name="usu_dat_ultimo_acesso" Type="DateTime" Precision="3" />
+          <Property Name="usu_dat_cadastro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="usu_cod_agenda" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ild_informacoes_ldap" Relationship="Self.R_usu_ild" FromRole="usu_usuario" ToRole="ild_informacoes_ldap" />
+          <NavigationProperty Name="use_usuario_setor" Relationship="Self.R_usu_use" FromRole="usu_usuario" ToRole="use_usuario_setor" />
+        </EntityType>
+        <Association Name="R_usu_ild">
+          <End Role="usu_usuario" Type="Self.usu_usuario" Multiplicity="1" />
+          <End Role="ild_informacoes_ldap" Type="Self.ild_informacoes_ldap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usu_usuario">
+              <PropertyRef Name="usu_id_usu" />
+            </Principal>
+            <Dependent Role="ild_informacoes_ldap">
+              <PropertyRef Name="ild_id_usu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_pus_use">
+          <End Role="pus_perfil_usuario" Type="Self.pus_perfil_usuario" Multiplicity="1" />
+          <End Role="use_usuario_setor" Type="Self.use_usuario_setor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pus_perfil_usuario">
+              <PropertyRef Name="pus_id_pus" />
+            </Principal>
+            <Dependent Role="use_usuario_setor">
+              <PropertyRef Name="use_id_pus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_set_setor_gerenciador">
+          <End Role="set_setor" Type="Self.set_setor" Multiplicity="1" />
+          <End Role="set_setor1" Type="Self.set_setor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="set_setor">
+              <PropertyRef Name="set_id_set" />
+            </Principal>
+            <Dependent Role="set_setor1">
+              <PropertyRef Name="set_id_set_gerenciador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_set_setor_pai">
+          <End Role="set_setor" Type="Self.set_setor" Multiplicity="1" />
+          <End Role="set_setor1" Type="Self.set_setor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="set_setor">
+              <PropertyRef Name="set_id_set" />
+            </Principal>
+            <Dependent Role="set_setor1">
+              <PropertyRef Name="set_id_set_pai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_set_use">
+          <End Role="set_setor" Type="Self.set_setor" Multiplicity="1" />
+          <End Role="use_usuario_setor" Type="Self.use_usuario_setor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="set_setor">
+              <PropertyRef Name="set_id_set" />
+            </Principal>
+            <Dependent Role="use_usuario_setor">
+              <PropertyRef Name="use_id_set" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_usu_use">
+          <End Role="usu_usuario" Type="Self.usu_usuario" Multiplicity="1" />
+          <End Role="use_usuario_setor" Type="Self.use_usuario_setor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usu_usuario">
+              <PropertyRef Name="usu_id_usu" />
+            </Principal>
+            <Dependent Role="use_usuario_setor">
+              <PropertyRef Name="use_id_usu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbContextAdUsuarios" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="adi_ad_informacao" EntityType="Self.adi_ad_informacao" />
+          <EntitySet Name="ild_informacoes_ldap" EntityType="Self.ild_informacoes_ldap" />
+          <EntitySet Name="pus_perfil_usuario" EntityType="Self.pus_perfil_usuario" />
+          <EntitySet Name="set_setor" EntityType="Self.set_setor" />
+          <EntitySet Name="use_usuario_setor" EntityType="Self.use_usuario_setor" />
+          <EntitySet Name="usu_usuario" EntityType="Self.usu_usuario" />
+          <AssociationSet Name="R_usu_ild" Association="Self.R_usu_ild">
+            <End Role="usu_usuario" EntitySet="usu_usuario" />
+            <End Role="ild_informacoes_ldap" EntitySet="ild_informacoes_ldap" />
+          </AssociationSet>
+          <AssociationSet Name="R_pus_use" Association="Self.R_pus_use">
+            <End Role="pus_perfil_usuario" EntitySet="pus_perfil_usuario" />
+            <End Role="use_usuario_setor" EntitySet="use_usuario_setor" />
+          </AssociationSet>
+          <AssociationSet Name="R_set_setor_gerenciador" Association="Self.R_set_setor_gerenciador">
+            <End Role="set_setor" EntitySet="set_setor" />
+            <End Role="set_setor1" EntitySet="set_setor" />
+          </AssociationSet>
+          <AssociationSet Name="R_set_setor_pai" Association="Self.R_set_setor_pai">
+            <End Role="set_setor" EntitySet="set_setor" />
+            <End Role="set_setor1" EntitySet="set_setor" />
+          </AssociationSet>
+          <AssociationSet Name="R_set_use" Association="Self.R_set_use">
+            <End Role="set_setor" EntitySet="set_setor" />
+            <End Role="use_usuario_setor" EntitySet="use_usuario_setor" />
+          </AssociationSet>
+          <AssociationSet Name="R_usu_use" Association="Self.R_usu_use">
+            <End Role="usu_usuario" EntitySet="usu_usuario" />
+            <End Role="use_usuario_setor" EntitySet="use_usuario_setor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AdUsuariosStoreContainer" CdmEntityContainer="DbContextAdUsuarios">
+          <EntitySetMapping Name="adi_ad_informacao">
+            <EntityTypeMapping TypeName="AdUsuarios.adi_ad_informacao">
+              <MappingFragment StoreEntitySet="adi_ad_informacao">
+                <ScalarProperty Name="adi_id_adi" ColumnName="adi_id_adi" />
+                <ScalarProperty Name="adi_id_usu" ColumnName="adi_id_usu" />
+                <ScalarProperty Name="adi_nom_script_path" ColumnName="adi_nom_script_path" />
+                <ScalarProperty Name="adi_nom_email" ColumnName="adi_nom_email" />
+                <ScalarProperty Name="adi_nom_description" ColumnName="adi_nom_description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ild_informacoes_ldap">
+            <EntityTypeMapping TypeName="AdUsuarios.ild_informacoes_ldap">
+              <MappingFragment StoreEntitySet="ild_informacoes_ldap">
+                <ScalarProperty Name="ild_id_ild" ColumnName="ild_id_ild" />
+                <ScalarProperty Name="ild_id_usu" ColumnName="ild_id_usu" />
+                <ScalarProperty Name="ild_cod_guid" ColumnName="ild_cod_guid" />
+                <ScalarProperty Name="ild_nom_usuario" ColumnName="ild_nom_usuario" />
+                <ScalarProperty Name="ild_nom_usuario_completo" ColumnName="ild_nom_usuario_completo" />
+                <ScalarProperty Name="ild_nom_usuario_primeiro" ColumnName="ild_nom_usuario_primeiro" />
+                <ScalarProperty Name="ild_nom_usuario_ultimo" ColumnName="ild_nom_usuario_ultimo" />
+                <ScalarProperty Name="ild_nom_iniciais" ColumnName="ild_nom_iniciais" />
+                <ScalarProperty Name="ild_nom_login" ColumnName="ild_nom_login" />
+                <ScalarProperty Name="ild_nom_titulo" ColumnName="ild_nom_titulo" />
+                <ScalarProperty Name="ild_des_descricao" ColumnName="ild_des_descricao" />
+                <ScalarProperty Name="ild_des_informacao" ColumnName="ild_des_informacao" />
+                <ScalarProperty Name="ild_num_telefone" ColumnName="ild_num_telefone" />
+                <ScalarProperty Name="ild_nom_grupos" ColumnName="ild_nom_grupos" />
+                <ScalarProperty Name="ild_nom_email" ColumnName="ild_nom_email" />
+                <ScalarProperty Name="ild_nom_escritorio" ColumnName="ild_nom_escritorio" />
+                <ScalarProperty Name="ild_nom_companhia" ColumnName="ild_nom_companhia" />
+                <ScalarProperty Name="ild_nom_departamento" ColumnName="ild_nom_departamento" />
+                <ScalarProperty Name="ild_nom_local" ColumnName="ild_nom_local" />
+                <ScalarProperty Name="ild_nom_script_path" ColumnName="ild_nom_script_path" />
+                <ScalarProperty Name="ild_dat_criacao" ColumnName="ild_dat_criacao" />
+                <ScalarProperty Name="ild_dat_atualizacao" ColumnName="ild_dat_atualizacao" />
+                <ScalarProperty Name="ild_dat_fim_bloqueio" ColumnName="ild_dat_fim_bloqueio" />
+                <ScalarProperty Name="ild_dat_ultimo_logon" ColumnName="ild_dat_ultimo_logon" />
+                <ScalarProperty Name="ild_dat_ultimo_logon_stamp" ColumnName="ild_dat_ultimo_logon_stamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pus_perfil_usuario">
+            <EntityTypeMapping TypeName="AdUsuarios.pus_perfil_usuario">
+              <MappingFragment StoreEntitySet="pus_perfil_usuario">
+                <ScalarProperty Name="pus_id_pus" ColumnName="pus_id_pus" />
+                <ScalarProperty Name="pus_nom_perfil" ColumnName="pus_nom_perfil" />
+                <ScalarProperty Name="pus_flg_ativo" ColumnName="pus_flg_ativo" />
+                <ScalarProperty Name="pus_flg_gestor" ColumnName="pus_flg_gestor" />
+                <ScalarProperty Name="pus_flg_autorizado" ColumnName="pus_flg_autorizado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="set_setor">
+            <EntityTypeMapping TypeName="AdUsuarios.set_setor">
+              <MappingFragment StoreEntitySet="set_setor">
+                <ScalarProperty Name="set_id_set" ColumnName="set_id_set" />
+                <ScalarProperty Name="set_nom_sigla" ColumnName="set_nom_sigla" />
+                <ScalarProperty Name="set_nom_setor" ColumnName="set_nom_setor" />
+                <ScalarProperty Name="set_id_set_pai" ColumnName="set_id_set_pai" />
+                <ScalarProperty Name="set_id_set_gerenciador" ColumnName="set_id_set_gerenciador" />
+                <ScalarProperty Name="set_flg_ativo" ColumnName="set_flg_ativo" />
+                <ScalarProperty Name="set_dat_desativacao" ColumnName="set_dat_desativacao" />
+                <ScalarProperty Name="set_flg_setor_oficial" ColumnName="set_flg_setor_oficial" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="use_usuario_setor">
+            <EntityTypeMapping TypeName="AdUsuarios.use_usuario_setor">
+              <MappingFragment StoreEntitySet="use_usuario_setor">
+                <ScalarProperty Name="use_id_use" ColumnName="use_id_use" />
+                <ScalarProperty Name="use_id_pus" ColumnName="use_id_pus" />
+                <ScalarProperty Name="use_id_usu" ColumnName="use_id_usu" />
+                <ScalarProperty Name="use_id_set" ColumnName="use_id_set" />
+                <ScalarProperty Name="use_flg_ativo" ColumnName="use_flg_ativo" />
+                <ScalarProperty Name="use_flg_padrao" ColumnName="use_flg_padrao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usu_usuario">
+            <EntityTypeMapping TypeName="AdUsuarios.usu_usuario">
+              <MappingFragment StoreEntitySet="usu_usuario">
+                <ScalarProperty Name="usu_id_usu" ColumnName="usu_id_usu" />
+                <ScalarProperty Name="usu_uui_identificador" ColumnName="usu_uui_identificador" />
+                <ScalarProperty Name="usu_nom_usuario" ColumnName="usu_nom_usuario" />
+                <ScalarProperty Name="usu_nom_login" ColumnName="usu_nom_login" />
+                <ScalarProperty Name="usu_num_senha" ColumnName="usu_num_senha" />
+                <ScalarProperty Name="usu_flg_ativo" ColumnName="usu_flg_ativo" />
+                <ScalarProperty Name="usu_id_gru" ColumnName="usu_id_gru" />
+                <ScalarProperty Name="usu_id_set" ColumnName="usu_id_set" />
+                <ScalarProperty Name="usu_dat_ultimo_acesso" ColumnName="usu_dat_ultimo_acesso" />
+                <ScalarProperty Name="usu_dat_cadastro" ColumnName="usu_dat_cadastro" />
+                <ScalarProperty Name="usu_cod_agenda" ColumnName="usu_cod_agenda" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

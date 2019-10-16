@@ -1,0 +1,67 @@
+﻿@using System.Web.UI.HtmlControls
+@using CiEletronica.Models
+@*
+    <?php
+    use app\modules\ciEletronica\models\Mensagem;
+    use app\modules\ciEletronica\models\Parametro;
+    ?>
+    <?php $notificacaoNaoLidaPendente = \app\modules\ciEletronica\models\NotificacaoNaoLidaPendente::findOne(['nlp_id_use' => \Yii::$app->user->identity->usuarioSetorAtual->use_id_use]);
+    if(\Yii::$app->user->identity->usuarioSetorAtual->isGestorOrSecretaria) { ?>
+*@
+@if (true)
+{
+    <div class="form-group ci-nova-ci">
+        <a class="btn btn-danger btn-block rounded" href="@Url.Action("NovaMensagem", "Mensagem")"><i class="fa fa - plus - circle"></i> Nova CI Eletrônica</a>
+    </div>
+    <div class="form-group ci-circular">
+        <a class="btn btn-danger btn-block rounded" href="@Url.Action("NovaMensagem", "Mensagem", new {tipoCi = ViewData["nomeParametro"]})"><i class="fa fa-refresh"></i> Nova CI Circular</a>
+    </div>
+
+    @*<?php if(\Yii::$app->user->identity->usuarioSetorAtual->isGestor) { ?>*@
+    if (true)
+    {
+        <div class="form-group ci-confidencial">
+            <a class="btn btn-danger btn-block rounded" href="<?= Yii::$app->getUrlManager()->createUrl(['ci-eletronica/mensagem/nova-mensagem', 'tipo-ci' => Parametro::selectNomeParametro('ID_TIPO_MENSAGEM_CONFIDENCIAL')]) ?>"><i class="fa fa-lock"></i> Nova CI Confidencial</a>
+        </div>
+    }
+} else {
+    <div class="form-group ci-confidencial">
+        <a class="btn btn-danger btn-block rounded" href="<?= Yii::$app->getUrlManager()->createUrl('ci-eletronica/mensagem/nova-mensagem') ?>"><i class="fa fa-plus-circle"></i> Nova CI</a>
+    </div>
+}
+
+<ul class="nav nav-pills nav-stacked nav-email rounded shadow mb-20">
+    <li class="@(ViewBag.nomeMenu == men_mensagem.CAIXA_ENTRADA ? "active" : "")">
+        <a class="ci-caixa-de-entrada" href="@Url.Action("CaixaEntrada", "Mensagem")">
+            <i class="fa fa-inbox"></i> Caixa de Entrada
+            @*<?php if(!empty($notificacaoNaoLidaPendente) && $notificacaoNaoLidaPendente->nlp_flg_nao_lida_pendente) { ?>
+                <span class="label label-success pull-right"><?=$notificacaoNaoLidaPendente->nlp_qtd_nao_lida_pendente?></span>
+            <?php } ?>*@
+        </a>
+    </li>
+
+    <li class="@(ViewBag.nomeMenu == men_mensagem.ENVIADAS ? "active" : "")">
+        <a class="ci-cis-enviadas" href="@Url.Action("Enviadas", "Mensagem")"><i class="fa fa-send"></i> CIs Enviadas</a>
+    </li>
+    <li class="@(ViewBag.nomeMenu == men_mensagem.MODELO ? "active" : "")">
+        <a class="ci-cis-modelo" href="@Url.Action("Modelo", "Mensagem")"><i class="fa fa-file-text"></i> CIs Modelo</a>
+    </li>
+    @*<li class="<?=$nomeMenu == Mensagem::RASCUNHO ? 'active' : ''?>"><a class="ci-rascunho" href="<?= Yii::$app->getUrlManager()->createUrl('ci-eletronica/mensagem/rascunho') ?>"> <i class="fa fa-file"></i> Rascunho</a></li>*@
+</ul>
+@*
+<h5 class="nav-email-subtitle">Mais</h5>
+<ul class="nav nav-pills nav-stacked nav-email mb-20 rounded shadow">
+    <?php if(\Yii::$app->user->identity->usuarioSetorAtual->isGestorOrSecretaria) { ?>
+    <li class="<?=$nomeMenu == Mensagem::HISTORICO_APROVACAO ? 'active' : ''?>">
+        <a class="glyphicons folder_flag" href="<?= Yii::$app->getUrlManager()->createUrl('ci-eletronica/mensagem/aprovacao') ?>">
+            <i></i> Histórico de Aprovação
+        </a>
+    </li>
+    <?php } ?>
+    <li class="<?=$nomeMenu == Mensagem::ARQUIVADAS ? 'active' : ''?>">
+        <a class="ci-cis-arquivadas" href="<?= Yii::$app->getUrlManager()->createUrl('ci-eletronica/mensagem/arquivadas') ?>"><i class="fa fa-folder"></i> CIs Arquivadas</a>
+    </li>
+    <li class="<?=$nomeMenu == Mensagem::CONFIGURACAO ? 'active' : ''?>">
+        <a class="ci-configuracao" href="<?= Yii::$app->getUrlManager()->createUrl('ci-eletronica/configuracao/configuracao-basica') ?>"><i class="fa fa-cog"></i> Configuração</a>
+    </li>
+</ul>  *@
