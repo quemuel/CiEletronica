@@ -1,0 +1,2564 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CiEletronica.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CI_ELETRONICA.dbo.ard_arvore_destinatario' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ard_arvore_destinatario">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="lft" />
+            <PropertyRef Name="rgt" />
+            <PropertyRef Name="lvl" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="flg_gestor" />
+            <PropertyRef Name="icon_type" />
+            <PropertyRef Name="active" />
+            <PropertyRef Name="selected" />
+            <PropertyRef Name="disabled" />
+            <PropertyRef Name="readonly" />
+            <PropertyRef Name="visible" />
+            <PropertyRef Name="collapsed" />
+            <PropertyRef Name="movable_u" />
+            <PropertyRef Name="movable_d" />
+            <PropertyRef Name="movable_l" />
+            <PropertyRef Name="movable_r" />
+            <PropertyRef Name="removable" />
+            <PropertyRef Name="removable_all" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="root" Type="int" />
+          <Property Name="lft" Type="int" Nullable="false" />
+          <Property Name="rgt" Type="int" Nullable="false" />
+          <Property Name="lvl" Type="smallint" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="flg_gestor" Type="bit" Nullable="false" />
+          <Property Name="icon" Type="varchar" MaxLength="255" />
+          <Property Name="icon_type" Type="smallint" Nullable="false" />
+          <Property Name="active" Type="smallint" Nullable="false" />
+          <Property Name="selected" Type="smallint" Nullable="false" />
+          <Property Name="disabled" Type="smallint" Nullable="false" />
+          <Property Name="readonly" Type="smallint" Nullable="false" />
+          <Property Name="visible" Type="smallint" Nullable="false" />
+          <Property Name="collapsed" Type="smallint" Nullable="false" />
+          <Property Name="movable_u" Type="smallint" Nullable="false" />
+          <Property Name="movable_d" Type="smallint" Nullable="false" />
+          <Property Name="movable_l" Type="smallint" Nullable="false" />
+          <Property Name="movable_r" Type="smallint" Nullable="false" />
+          <Property Name="removable" Type="smallint" Nullable="false" />
+          <Property Name="removable_all" Type="smallint" Nullable="false" />
+          <Property Name="id_setor" Type="int" />
+        </EntityType>
+        <EntityType Name="ase_aprovacao_setor">
+          <Key>
+            <PropertyRef Name="ase_id_ase" />
+          </Key>
+          <Property Name="ase_id_ase" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ase_id_set" Type="int" Nullable="false" />
+          <Property Name="ase_dti_aprovacao" Type="datetime" Nullable="false" />
+          <Property Name="ase_dtf_aprovacao" Type="datetime" />
+          <Property Name="ase_dat_cadastro" Type="datetime" Nullable="false" />
+          <Property Name="ase_id_use_cadastro" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ass_assinatura">
+          <Key>
+            <PropertyRef Name="ass_id_ass" />
+          </Key>
+          <Property Name="ass_id_ass" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ass_des_assinatura" Type="text" Nullable="false" />
+          <Property Name="ass_id_use" Type="int" Nullable="false" />
+          <Property Name="ass_flg_atualizado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cas_controle_acesso">
+          <Key>
+            <PropertyRef Name="cas_id_cas" />
+          </Key>
+          <Property Name="cas_id_cas" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cas_id_ip" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cas_nom_maquina" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="cas_id_use" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cnu_controle_numeros">
+          <Key>
+            <PropertyRef Name="cnu_id_cnu" />
+          </Key>
+          <Property Name="cnu_id_cnu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cnu_num_ci" Type="int" />
+          <Property Name="cnu_num_controle" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="cnu_dat_cadastro" Type="datetime" Nullable="false" />
+          <Property Name="cnu_id_tnu" Type="int" Nullable="false" />
+          <Property Name="cnu_id_men" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="com_controle_menu">
+          <Key>
+            <PropertyRef Name="com_id_com" />
+          </Key>
+          <Property Name="com_id_com" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="com_id_cas" Type="int" Nullable="false" />
+          <Property Name="com_id_men" Type="int" Nullable="false" />
+          <Property Name="com_dat_acesso" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dme_destinatario_mensagem">
+          <Key>
+            <PropertyRef Name="dme_id_dme" />
+          </Key>
+          <Property Name="dme_id_dme" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dme_id_tde" Type="int" Nullable="false" />
+          <Property Name="dme_id_men" Type="int" Nullable="false" />
+          <Property Name="dme_id_use" Type="int" Nullable="false" />
+          <Property Name="dme_dat_leitura" Type="datetime" />
+          <Property Name="dme_flg_leitura" Type="bit" Nullable="false" />
+          <Property Name="dme_flg_msg_automatica" Type="bit" Nullable="false" />
+          <Property Name="dme_dat_cadastro" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="los_log_sistema">
+          <Key>
+            <PropertyRef Name="los_id_los" />
+          </Key>
+          <Property Name="los_id_los" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="los_num_nivel" Type="int" Nullable="false" />
+          <Property Name="los_nom_categoria" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="los_log_time" Type="float" Nullable="false" />
+          <Property Name="los_des_mensagem" Type="text" Nullable="false" />
+          <Property Name="los_id_usu" Type="int" Nullable="false" />
+          <Property Name="los_data_hora" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="max_mensagem_anexo">
+          <Key>
+            <PropertyRef Name="max_id_max" />
+          </Key>
+          <Property Name="max_id_max" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="max_nom_arquivo" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="max_num_tamanho" Type="int" />
+          <Property Name="max_bin_arquivo" Type="image" />
+          <Property Name="max_nom_tipo" Type="varchar" MaxLength="100" />
+          <Property Name="max_url_caminho" Type="varchar" MaxLength="100" />
+          <Property Name="max_dat_cadastro" Type="datetime" Nullable="false" />
+          <Property Name="max_id_men" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mde_mensagem_detalhes">
+          <Key>
+            <PropertyRef Name="mde_id_mde" />
+          </Key>
+          <Property Name="mde_id_mde" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mde_flg_importante" Type="bit" Nullable="false" />
+          <Property Name="mde_id_men" Type="int" Nullable="false" />
+          <Property Name="mde_id_use" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mea_mensagem_aprovada">
+          <Key>
+            <PropertyRef Name="mea_id_mea" />
+          </Key>
+          <Property Name="mea_id_mea" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mea_id_men" Type="int" Nullable="false" />
+          <Property Name="mea_flg_mensagem_aprovada" Type="bit" Nullable="false" />
+          <Property Name="mea_flg_reavaliacao" Type="bit" Nullable="false" />
+          <Property Name="mea_des_motivo" Type="text" />
+          <Property Name="mea_dat_registro" Type="datetime" Nullable="false" />
+          <Property Name="mea_id_use" Type="int" Nullable="false" />
+          <Property Name="mea_id_use_secretaria" Type="int" />
+        </EntityType>
+        <EntityType Name="men_mensagem">
+          <Key>
+            <PropertyRef Name="men_id_men" />
+          </Key>
+          <Property Name="men_id_men" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="men_num_autenticacao" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="men_nom_titulo" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="men_des_mensagem" Type="text" Nullable="false" />
+          <Property Name="men_id_tme" Type="int" Nullable="false" />
+          <Property Name="men_dat_cadastro" Type="datetime" Nullable="false" />
+          <Property Name="men_id_men_referencia" Type="int" />
+          <Property Name="men_id_men_pai" Type="int" />
+          <Property Name="men_flg_aprovacao" Type="bit" Nullable="false" />
+          <Property Name="men_id_sme" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="men_menu">
+          <Key>
+            <PropertyRef Name="men_id_men" />
+          </Key>
+          <Property Name="men_id_men" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="men_nom_menu" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="men_htm_icon" Type="varchar" MaxLength="100" />
+          <Property Name="men_nom_action" Type="varchar" MaxLength="300" />
+          <Property Name="men_nom_controller" Type="varchar" MaxLength="300" />
+          <Property Name="men_flg_menu_guest" Type="bit" Nullable="false" />
+          <Property Name="men_flg_menu_admin" Type="bit" Nullable="false" />
+          <Property Name="men_flg_modulo" Type="bit" Nullable="false" />
+          <Property Name="men_flg_ativo" Type="bit" Nullable="false" />
+          <Property Name="men_id_men_pai" Type="int" />
+          <Property Name="men_num_posicao" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="meq_mensagem_arquivada">
+          <Key>
+            <PropertyRef Name="meq_id_meq" />
+          </Key>
+          <Property Name="meq_id_meq" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="meq_id_men" Type="int" Nullable="false" />
+          <Property Name="meq_id_use" Type="int" Nullable="false" />
+          <Property Name="meq_flg_arquivada" Type="bit" Nullable="false" />
+          <Property Name="meq_des_motivo_geral" Type="text" />
+          <Property Name="meq_dat_cancelamento" Type="datetime" />
+          <Property Name="meq_dat_arquivamento" Type="datetime" />
+        </EntityType>
+        <EntityType Name="mra_mensagem_rascunho">
+          <Key>
+            <PropertyRef Name="mra_id_mra" />
+          </Key>
+          <Property Name="mra_id_mra" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mra_id_men" Type="int" Nullable="false" />
+          <Property Name="mra_ids_use_dest" Type="varchar(max)" />
+          <Property Name="mra_ids_use_dest_copia" Type="varchar(max)" />
+          <Property Name="mra_ids_apensamentos" Type="varchar" MaxLength="1000" />
+          <Property Name="mra_dat_rascunho" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="par_parametro">
+          <Key>
+            <PropertyRef Name="par_nom_parametro" />
+          </Key>
+          <Property Name="par_nom_parametro" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="par_des_retorno" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="pem_perfil_menu">
+          <Key>
+            <PropertyRef Name="pem_id_pem" />
+          </Key>
+          <Property Name="pem_id_pem" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pem_id_pus" Type="int" Nullable="false" />
+          <Property Name="pem_id_men" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="rem_remetente">
+          <Key>
+            <PropertyRef Name="rem_id_rem" />
+          </Key>
+          <Property Name="rem_id_rem" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rem_dat_cadastro" Type="datetime" Nullable="false" />
+          <Property Name="rem_id_men" Type="int" />
+          <Property Name="rem_id_use" Type="int" />
+        </EntityType>
+        <EntityType Name="sme_status_mensagem">
+          <Key>
+            <PropertyRef Name="sme_id_sme" />
+          </Key>
+          <Property Name="sme_id_sme" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sme_nom_status" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tde_tipo_destinatario">
+          <Key>
+            <PropertyRef Name="tde_id_tde" />
+          </Key>
+          <Property Name="tde_id_tde" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tde_nom_tipo_destinatario" Type="varchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tme_tipo_mensagem">
+          <Key>
+            <PropertyRef Name="tme_id_tme" />
+          </Key>
+          <Property Name="tme_id_tme" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tme_nom_tipo" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="tme_nom_tipo_curto" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="tnu_tipo_numeracao">
+          <Key>
+            <PropertyRef Name="tnu_id_tnu" />
+          </Key>
+          <Property Name="tnu_id_tnu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tnu_nom_tipo" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="tnu_flg_ci" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="uac_usuario_acesso">
+          <Key>
+            <PropertyRef Name="uac_id_uac" />
+          </Key>
+          <Property Name="uac_id_uac" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uac_id_usu" Type="int" />
+        </EntityType>
+        <EntityType Name="uau_usuario_autorizado">
+          <Key>
+            <PropertyRef Name="uau_id_uau" />
+          </Key>
+          <Property Name="uau_id_uau" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uau_id_pus" Type="int" Nullable="false" />
+          <Property Name="uau_id_use" Type="int" Nullable="false" />
+          <Property Name="uau_id_set" Type="int" Nullable="false" />
+          <Property Name="uau_dti_autorizacao" Type="datetime" Nullable="false" />
+          <Property Name="uau_dtf_autorizacao" Type="datetime" />
+          <Property Name="uau_dat_cadastro" Type="datetime" Nullable="false" />
+          <Property Name="uau_id_use_cadastro" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ume_usuario_menu">
+          <Key>
+            <PropertyRef Name="ume_id_ume" />
+          </Key>
+          <Property Name="ume_id_ume" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ume_id_usu" Type="int" Nullable="false" />
+          <Property Name="ume_id_men" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CI_ELETRONICA.dbo.v_mah_mensagem_arquivada_historico' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_mah_mensagem_arquivada_historico">
+          <Key>
+            <PropertyRef Name="mah_id_men" />
+            <PropertyRef Name="mah_id_use" />
+          </Key>
+          <Property Name="mah_id_men" Type="int" Nullable="false" />
+          <Property Name="mah_id_use" Type="int" Nullable="false" />
+          <Property Name="mah_id_meq" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CI_ELETRONICA.dbo.v_map_mensagem_pai_filha_aprovacao' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_map_mensagem_pai_filha_aprovacao">
+          <Key>
+            <PropertyRef Name="map_id_use" />
+            <PropertyRef Name="map_id_men" />
+          </Key>
+          <Property Name="map_id_use" Type="int" Nullable="false" />
+          <Property Name="map_id_men_pai" Type="int" />
+          <Property Name="map_id_men" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CI_ELETRONICA.dbo.v_mau_mensagem_arquivamento_usuario' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_mau_mensagem_arquivamento_usuario">
+          <Key>
+            <PropertyRef Name="qef_id_use" />
+          </Key>
+          <Property Name="qef_id_use" Type="int" Nullable="false" />
+          <Property Name="qef_id_men_pai" Type="int" />
+          <Property Name="qef_id_men" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CI_ELETRONICA.dbo.v_mce_mensagem_caixa_entrada' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_mce_mensagem_caixa_entrada">
+          <Key>
+            <PropertyRef Name="mce_id_use" />
+            <PropertyRef Name="mce_id_set_gerenciador" />
+            <PropertyRef Name="mce_id_men" />
+          </Key>
+          <Property Name="mce_id_use" Type="int" Nullable="false" />
+          <Property Name="mce_id_set_gerenciador" Type="int" Nullable="false" />
+          <Property Name="mce_id_men_pai" Type="int" />
+          <Property Name="mce_id_men" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CI_ELETRONICA.dbo.v_mfa_mensagem_pai_filha_arquivada' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_mfa_mensagem_pai_filha_arquivada">
+          <Key>
+            <PropertyRef Name="mfa_id_use" />
+            <PropertyRef Name="mfa_id_set_gerenciador" />
+            <PropertyRef Name="mfa_id_men" />
+            <PropertyRef Name="mfa_flg_pendente_aprovacao" />
+          </Key>
+          <Property Name="mfa_id_use" Type="int" Nullable="false" />
+          <Property Name="mfa_id_set_gerenciador" Type="int" Nullable="false" />
+          <Property Name="mfa_id_men_pai" Type="int" />
+          <Property Name="mfa_id_men" Type="int" Nullable="false" />
+          <Property Name="mfa_flg_pendente_aprovacao" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CI_ELETRONICA.dbo.v_mfp_mensagem_pai_filha_pendencia' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_mfp_mensagem_pai_filha_pendencia">
+          <Key>
+            <PropertyRef Name="mfp_id_use" />
+            <PropertyRef Name="mfp_id_set_gerenciador" />
+            <PropertyRef Name="mfp_id_men" />
+            <PropertyRef Name="mfp_flg_pendente_aprovacao" />
+          </Key>
+          <Property Name="mfp_id_use" Type="int" Nullable="false" />
+          <Property Name="mfp_id_set_gerenciador" Type="int" Nullable="false" />
+          <Property Name="mfp_id_men_pai" Type="int" />
+          <Property Name="mfp_id_men" Type="int" Nullable="false" />
+          <Property Name="mfp_flg_pendente_aprovacao" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CI_ELETRONICA.dbo.v_mfv_mensagem_pai_filha_valida' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_mfv_mensagem_pai_filha_valida">
+          <Key>
+            <PropertyRef Name="mfv_id_use" />
+            <PropertyRef Name="mfv_id_men" />
+          </Key>
+          <Property Name="mfv_id_use" Type="int" Nullable="false" />
+          <Property Name="mfv_id_men_pai" Type="int" />
+          <Property Name="mfv_id_men" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CI_ELETRONICA.dbo.v_mnl_mensagem_nao_lida' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_mnl_mensagem_nao_lida">
+          <Key>
+            <PropertyRef Name="mnl_id_use" />
+            <PropertyRef Name="mnl_id_set_gerenciador" />
+            <PropertyRef Name="mnl_id_men" />
+          </Key>
+          <Property Name="mnl_id_use" Type="int" Nullable="false" />
+          <Property Name="mnl_id_set_gerenciador" Type="int" Nullable="false" />
+          <Property Name="mnl_id_men_pai" Type="int" />
+          <Property Name="mnl_id_men" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CI_ELETRONICA.dbo.v_mns_mensagem_nao_lida_setor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_mns_mensagem_nao_lida_setor">
+          <Key>
+            <PropertyRef Name="mns_id_set_gerenciador" />
+            <PropertyRef Name="mns_id_men" />
+          </Key>
+          <Property Name="mns_id_set_gerenciador" Type="int" Nullable="false" />
+          <Property Name="mns_id_men_pai" Type="int" />
+          <Property Name="mns_id_men" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CI_ELETRONICA.dbo.v_mpa_mensagem_pendente_aprovacao' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_mpa_mensagem_pendente_aprovacao">
+          <Key>
+            <PropertyRef Name="mpa_id_set_gerenciador" />
+          </Key>
+          <Property Name="mpa_id_set_gerenciador" Type="int" Nullable="false" />
+          <Property Name="mpa_id_men_pai" Type="int" />
+          <Property Name="mpa_id_men" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CI_ELETRONICA.dbo.v_mpc_mensagem_pai_caixa_entrada' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_mpc_mensagem_pai_caixa_entrada">
+          <Key>
+            <PropertyRef Name="mpc_id_use" />
+            <PropertyRef Name="mpc_id_set_gerenciador" />
+          </Key>
+          <Property Name="mpc_id_use" Type="int" Nullable="false" />
+          <Property Name="mpc_id_set_gerenciador" Type="int" Nullable="false" />
+          <Property Name="mpc_id_men_pai" Type="int" />
+          <Property Name="mpc_id_men_ultima" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CI_ELETRONICA.dbo.v_mpl_mensagem_pai_nao_lida' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_mpl_mensagem_pai_nao_lida">
+          <Key>
+            <PropertyRef Name="mpl_id_use" />
+            <PropertyRef Name="mpl_id_set_gerenciador" />
+          </Key>
+          <Property Name="mpl_id_use" Type="int" Nullable="false" />
+          <Property Name="mpl_id_set_gerenciador" Type="int" Nullable="false" />
+          <Property Name="mpl_id_men_pai" Type="int" />
+          <Property Name="mpl_id_men_ultima" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CI_ELETRONICA.dbo.v_mpp_mensagem_pedente_aprovacao_pai' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_mpp_mensagem_pedente_aprovacao_pai">
+          <Key>
+            <PropertyRef Name="mpp_id_set_gerenciador" />
+          </Key>
+          <Property Name="mpp_id_set_gerenciador" Type="int" Nullable="false" />
+          <Property Name="mpp_id_men_pai" Type="int" />
+          <Property Name="mpp_id_men_ultima" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CI_ELETRONICA.dbo.v_nlp_notificacao_nao_lida_pendente' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_nlp_notificacao_nao_lida_pendente">
+          <Key>
+            <PropertyRef Name="nlp_id_use" />
+            <PropertyRef Name="nlp_flg_nao_lida_pendente" />
+          </Key>
+          <Property Name="nlp_id_use" Type="int" Nullable="false" />
+          <Property Name="nlp_qtd_nao_lida_pendente" Type="int" />
+          <Property Name="nlp_flg_nao_lida_pendente" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CI_ELETRONICA.dbo.v_nls_notificacao_nao_lida_setor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_nls_notificacao_nao_lida_setor">
+          <Key>
+            <PropertyRef Name="nps_id_set_gerenciador" />
+            <PropertyRef Name="nps_flg_pendente" />
+          </Key>
+          <Property Name="nps_id_set_gerenciador" Type="int" Nullable="false" />
+          <Property Name="nps_qtd_pendente" Type="int" />
+          <Property Name="nps_flg_pendente" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CI_ELETRONICA.dbo.v_nnl_notificacao_nao_lida' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_nnl_notificacao_nao_lida">
+          <Key>
+            <PropertyRef Name="nnl_id_use" />
+            <PropertyRef Name="nnl_flg_nao_lida" />
+          </Key>
+          <Property Name="nnl_id_use" Type="int" Nullable="false" />
+          <Property Name="nnl_qtd_nao_lida" Type="int" />
+          <Property Name="nnl_flg_nao_lida" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CI_ELETRONICA.dbo.v_npa_notificacao_pendente_aprovacao' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_npa_notificacao_pendente_aprovacao">
+          <Key>
+            <PropertyRef Name="npa_id_use" />
+            <PropertyRef Name="npa_id_set_gerenciador" />
+            <PropertyRef Name="npa_flg_pendente" />
+          </Key>
+          <Property Name="npa_id_use" Type="int" Nullable="false" />
+          <Property Name="npa_id_set_gerenciador" Type="int" Nullable="false" />
+          <Property Name="npa_qtd_pendente" Type="int" />
+          <Property Name="npa_flg_pendente" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CI_ELETRONICA.dbo.v_nps_notificacao_pendente_aprovacao_setor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_nps_notificacao_pendente_aprovacao_setor">
+          <Key>
+            <PropertyRef Name="nps_id_set_gerenciador" />
+            <PropertyRef Name="nps_flg_pendente" />
+          </Key>
+          <Property Name="nps_id_set_gerenciador" Type="int" Nullable="false" />
+          <Property Name="nps_qtd_pendente" Type="int" />
+          <Property Name="nps_flg_pendente" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CI_ELETRONICA.dbo.v_qef_quantitativo_efetivo_mensagem_filha' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_qef_quantitativo_efetivo_mensagem_filha">
+          <Key>
+            <PropertyRef Name="qef_id_use" />
+          </Key>
+          <Property Name="qef_id_use" Type="int" Nullable="false" />
+          <Property Name="qef_id_men_pai" Type="int" />
+          <Property Name="qef_num_quantitativo" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CI_ELETRONICA.dbo.v_qfv_quantitativo_mensagem_filha_valida' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_qfv_quantitativo_mensagem_filha_valida">
+          <Key>
+            <PropertyRef Name="qfv_id_use" />
+          </Key>
+          <Property Name="qfv_id_use" Type="int" Nullable="false" />
+          <Property Name="qfv_id_men_pai" Type="int" />
+          <Property Name="qfv_qtd_filha" Type="int" />
+          <Property Name="qfv_qtd_filha_externa" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CI_ELETRONICA.dbo.v_qmd_quantitativo_mensagem_destinatario' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_qmd_quantitativo_mensagem_destinatario">
+          <Key>
+            <PropertyRef Name="qmd_id_use" />
+          </Key>
+          <Property Name="qmd_id_men" Type="int" />
+          <Property Name="qmd_id_use" Type="int" Nullable="false" />
+          <Property Name="qmd_num_quantitativo" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'CI_ELETRONICA.dbo.v_qmf_quantitativo_mensagem_filha' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="v_qmf_quantitativo_mensagem_filha">
+          <Property Name="qmf_id_men_pai" Type="int" />
+          <Property Name="qmf_num_quantitativo" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CI_ELETRONICA.dbo.v_qmp_quantitativo_mensagem_nao_lida_pai' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_qmp_quantitativo_mensagem_nao_lida_pai">
+          <Key>
+            <PropertyRef Name="qmp_id_use" />
+            <PropertyRef Name="qmp_id_set_gerenciador" />
+          </Key>
+          <Property Name="qmp_id_use" Type="int" Nullable="false" />
+          <Property Name="qmp_id_set_gerenciador" Type="int" Nullable="false" />
+          <Property Name="qmp_id_men_pai" Type="int" />
+          <Property Name="qmp_qtd_mensagem" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CI_ELETRONICA.dbo.v_qpa_quantitativo_pendente_aprovacao_pai' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_qpa_quantitativo_pendente_aprovacao_pai">
+          <Key>
+            <PropertyRef Name="qpa_id_set_gerenciador" />
+          </Key>
+          <Property Name="qpa_id_set_gerenciador" Type="int" Nullable="false" />
+          <Property Name="qpa_id_men_pai" Type="int" />
+          <Property Name="qpa_qtd_pendente" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CI_ELETRONICA.dbo.v_ush_usuario_autorizado_historico' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_ush_usuario_autorizado_historico">
+          <Key>
+            <PropertyRef Name="ush_id_pus" />
+            <PropertyRef Name="ush_id_use" />
+            <PropertyRef Name="ush_id_set" />
+          </Key>
+          <Property Name="ush_id_uau" Type="int" />
+          <Property Name="ush_id_pus" Type="int" Nullable="false" />
+          <Property Name="ush_id_use" Type="int" Nullable="false" />
+          <Property Name="ush_id_set" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="R_com_cas">
+          <End Role="cas_controle_acesso" Type="Self.cas_controle_acesso" Multiplicity="1" />
+          <End Role="com_controle_menu" Type="Self.com_controle_menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cas_controle_acesso">
+              <PropertyRef Name="cas_id_cas" />
+            </Principal>
+            <Dependent Role="com_controle_menu">
+              <PropertyRef Name="com_id_cas" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_com_men">
+          <End Role="men_menu" Type="Self.men_menu" Multiplicity="1" />
+          <End Role="com_controle_menu" Type="Self.com_controle_menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="men_menu">
+              <PropertyRef Name="men_id_men" />
+            </Principal>
+            <Dependent Role="com_controle_menu">
+              <PropertyRef Name="com_id_men" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_men_cnu">
+          <End Role="men_mensagem" Type="Self.men_mensagem" Multiplicity="1" />
+          <End Role="cnu_controle_numeros" Type="Self.cnu_controle_numeros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="men_mensagem">
+              <PropertyRef Name="men_id_men" />
+            </Principal>
+            <Dependent Role="cnu_controle_numeros">
+              <PropertyRef Name="cnu_id_men" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_men_dme">
+          <End Role="men_mensagem" Type="Self.men_mensagem" Multiplicity="1" />
+          <End Role="dme_destinatario_mensagem" Type="Self.dme_destinatario_mensagem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="men_mensagem">
+              <PropertyRef Name="men_id_men" />
+            </Principal>
+            <Dependent Role="dme_destinatario_mensagem">
+              <PropertyRef Name="dme_id_men" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_men_max">
+          <End Role="men_mensagem" Type="Self.men_mensagem" Multiplicity="1" />
+          <End Role="max_mensagem_anexo" Type="Self.max_mensagem_anexo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="men_mensagem">
+              <PropertyRef Name="men_id_men" />
+            </Principal>
+            <Dependent Role="max_mensagem_anexo">
+              <PropertyRef Name="max_id_men" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_men_mde">
+          <End Role="men_mensagem" Type="Self.men_mensagem" Multiplicity="1" />
+          <End Role="mde_mensagem_detalhes" Type="Self.mde_mensagem_detalhes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="men_mensagem">
+              <PropertyRef Name="men_id_men" />
+            </Principal>
+            <Dependent Role="mde_mensagem_detalhes">
+              <PropertyRef Name="mde_id_men" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_men_mea">
+          <End Role="men_mensagem" Type="Self.men_mensagem" Multiplicity="1" />
+          <End Role="mea_mensagem_aprovada" Type="Self.mea_mensagem_aprovada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="men_mensagem">
+              <PropertyRef Name="men_id_men" />
+            </Principal>
+            <Dependent Role="mea_mensagem_aprovada">
+              <PropertyRef Name="mea_id_men" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_men_men_pai">
+          <End Role="men_mensagem" Type="Self.men_mensagem" Multiplicity="0..1" />
+          <End Role="men_mensagem1" Type="Self.men_mensagem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="men_mensagem">
+              <PropertyRef Name="men_id_men" />
+            </Principal>
+            <Dependent Role="men_mensagem1">
+              <PropertyRef Name="men_id_men_pai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_men_men_refer">
+          <End Role="men_mensagem" Type="Self.men_mensagem" Multiplicity="0..1" />
+          <End Role="men_mensagem1" Type="Self.men_mensagem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="men_mensagem">
+              <PropertyRef Name="men_id_men" />
+            </Principal>
+            <Dependent Role="men_mensagem1">
+              <PropertyRef Name="men_id_men_referencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_men_meq">
+          <End Role="men_mensagem" Type="Self.men_mensagem" Multiplicity="1" />
+          <End Role="meq_mensagem_arquivada" Type="Self.meq_mensagem_arquivada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="men_mensagem">
+              <PropertyRef Name="men_id_men" />
+            </Principal>
+            <Dependent Role="meq_mensagem_arquivada">
+              <PropertyRef Name="meq_id_men" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_men_rem">
+          <End Role="men_mensagem" Type="Self.men_mensagem" Multiplicity="0..1" />
+          <End Role="rem_remetente" Type="Self.rem_remetente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="men_mensagem">
+              <PropertyRef Name="men_id_men" />
+            </Principal>
+            <Dependent Role="rem_remetente">
+              <PropertyRef Name="rem_id_men" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_mra_men">
+          <End Role="men_mensagem" Type="Self.men_mensagem" Multiplicity="1" />
+          <End Role="mra_mensagem_rascunho" Type="Self.mra_mensagem_rascunho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="men_mensagem">
+              <PropertyRef Name="men_id_men" />
+            </Principal>
+            <Dependent Role="mra_mensagem_rascunho">
+              <PropertyRef Name="mra_id_men" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_pem_men">
+          <End Role="men_menu" Type="Self.men_menu" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="pem_perfil_menu" Type="Self.pem_perfil_menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="men_menu">
+              <PropertyRef Name="men_id_men" />
+            </Principal>
+            <Dependent Role="pem_perfil_menu">
+              <PropertyRef Name="pem_id_men" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_sme_men">
+          <End Role="sme_status_mensagem" Type="Self.sme_status_mensagem" Multiplicity="1" />
+          <End Role="men_mensagem" Type="Self.men_mensagem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sme_status_mensagem">
+              <PropertyRef Name="sme_id_sme" />
+            </Principal>
+            <Dependent Role="men_mensagem">
+              <PropertyRef Name="men_id_sme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_tde_dme">
+          <End Role="tde_tipo_destinatario" Type="Self.tde_tipo_destinatario" Multiplicity="1" />
+          <End Role="dme_destinatario_mensagem" Type="Self.dme_destinatario_mensagem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tde_tipo_destinatario">
+              <PropertyRef Name="tde_id_tde" />
+            </Principal>
+            <Dependent Role="dme_destinatario_mensagem">
+              <PropertyRef Name="dme_id_tde" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_tme_men">
+          <End Role="tme_tipo_mensagem" Type="Self.tme_tipo_mensagem" Multiplicity="1" />
+          <End Role="men_mensagem" Type="Self.men_mensagem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tme_tipo_mensagem">
+              <PropertyRef Name="tme_id_tme" />
+            </Principal>
+            <Dependent Role="men_mensagem">
+              <PropertyRef Name="men_id_tme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_tnu_cnu">
+          <End Role="tnu_tipo_numeracao" Type="Self.tnu_tipo_numeracao" Multiplicity="1" />
+          <End Role="cnu_controle_numeros" Type="Self.cnu_controle_numeros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tnu_tipo_numeracao">
+              <PropertyRef Name="tnu_id_tnu" />
+            </Principal>
+            <Dependent Role="cnu_controle_numeros">
+              <PropertyRef Name="cnu_id_tnu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_ume_men">
+          <End Role="men_menu" Type="Self.men_menu" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ume_usuario_menu" Type="Self.ume_usuario_menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="men_menu">
+              <PropertyRef Name="men_id_men" />
+            </Principal>
+            <Dependent Role="ume_usuario_menu">
+              <PropertyRef Name="ume_id_men" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CiEletronicaStoreContainer">
+          <EntitySet Name="ase_aprovacao_setor" EntityType="Self.ase_aprovacao_setor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ass_assinatura" EntityType="Self.ass_assinatura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cas_controle_acesso" EntityType="Self.cas_controle_acesso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cnu_controle_numeros" EntityType="Self.cnu_controle_numeros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="com_controle_menu" EntityType="Self.com_controle_menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dme_destinatario_mensagem" EntityType="Self.dme_destinatario_mensagem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="los_log_sistema" EntityType="Self.los_log_sistema" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="max_mensagem_anexo" EntityType="Self.max_mensagem_anexo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mde_mensagem_detalhes" EntityType="Self.mde_mensagem_detalhes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mea_mensagem_aprovada" EntityType="Self.mea_mensagem_aprovada" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="men_mensagem" EntityType="Self.men_mensagem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="men_menu" EntityType="Self.men_menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="meq_mensagem_arquivada" EntityType="Self.meq_mensagem_arquivada" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mra_mensagem_rascunho" EntityType="Self.mra_mensagem_rascunho" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="par_parametro" EntityType="Self.par_parametro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pem_perfil_menu" EntityType="Self.pem_perfil_menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rem_remetente" EntityType="Self.rem_remetente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sme_status_mensagem" EntityType="Self.sme_status_mensagem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tde_tipo_destinatario" EntityType="Self.tde_tipo_destinatario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tme_tipo_mensagem" EntityType="Self.tme_tipo_mensagem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tnu_tipo_numeracao" EntityType="Self.tnu_tipo_numeracao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="uac_usuario_acesso" EntityType="Self.uac_usuario_acesso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="uau_usuario_autorizado" EntityType="Self.uau_usuario_autorizado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ume_usuario_menu" EntityType="Self.ume_usuario_menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ard_arvore_destinatario" EntityType="Self.ard_arvore_destinatario" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ard_arvore_destinatario].[id] AS [id], 
+    [ard_arvore_destinatario].[root] AS [root], 
+    [ard_arvore_destinatario].[lft] AS [lft], 
+    [ard_arvore_destinatario].[rgt] AS [rgt], 
+    [ard_arvore_destinatario].[lvl] AS [lvl], 
+    [ard_arvore_destinatario].[name] AS [name], 
+    [ard_arvore_destinatario].[flg_gestor] AS [flg_gestor], 
+    [ard_arvore_destinatario].[icon] AS [icon], 
+    [ard_arvore_destinatario].[icon_type] AS [icon_type], 
+    [ard_arvore_destinatario].[active] AS [active], 
+    [ard_arvore_destinatario].[selected] AS [selected], 
+    [ard_arvore_destinatario].[disabled] AS [disabled], 
+    [ard_arvore_destinatario].[readonly] AS [readonly], 
+    [ard_arvore_destinatario].[visible] AS [visible], 
+    [ard_arvore_destinatario].[collapsed] AS [collapsed], 
+    [ard_arvore_destinatario].[movable_u] AS [movable_u], 
+    [ard_arvore_destinatario].[movable_d] AS [movable_d], 
+    [ard_arvore_destinatario].[movable_l] AS [movable_l], 
+    [ard_arvore_destinatario].[movable_r] AS [movable_r], 
+    [ard_arvore_destinatario].[removable] AS [removable], 
+    [ard_arvore_destinatario].[removable_all] AS [removable_all], 
+    [ard_arvore_destinatario].[id_setor] AS [id_setor]
+    FROM [dbo].[ard_arvore_destinatario] AS [ard_arvore_destinatario]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_mah_mensagem_arquivada_historico" EntityType="Self.v_mah_mensagem_arquivada_historico" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_mah_mensagem_arquivada_historico].[mah_id_men] AS [mah_id_men], 
+    [v_mah_mensagem_arquivada_historico].[mah_id_use] AS [mah_id_use], 
+    [v_mah_mensagem_arquivada_historico].[mah_id_meq] AS [mah_id_meq]
+    FROM [dbo].[v_mah_mensagem_arquivada_historico] AS [v_mah_mensagem_arquivada_historico]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_map_mensagem_pai_filha_aprovacao" EntityType="Self.v_map_mensagem_pai_filha_aprovacao" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_map_mensagem_pai_filha_aprovacao].[map_id_use] AS [map_id_use], 
+    [v_map_mensagem_pai_filha_aprovacao].[map_id_men_pai] AS [map_id_men_pai], 
+    [v_map_mensagem_pai_filha_aprovacao].[map_id_men] AS [map_id_men]
+    FROM [dbo].[v_map_mensagem_pai_filha_aprovacao] AS [v_map_mensagem_pai_filha_aprovacao]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_mau_mensagem_arquivamento_usuario" EntityType="Self.v_mau_mensagem_arquivamento_usuario" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_mau_mensagem_arquivamento_usuario].[qef_id_use] AS [qef_id_use], 
+    [v_mau_mensagem_arquivamento_usuario].[qef_id_men_pai] AS [qef_id_men_pai], 
+    [v_mau_mensagem_arquivamento_usuario].[qef_id_men] AS [qef_id_men]
+    FROM [dbo].[v_mau_mensagem_arquivamento_usuario] AS [v_mau_mensagem_arquivamento_usuario]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_mce_mensagem_caixa_entrada" EntityType="Self.v_mce_mensagem_caixa_entrada" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_mce_mensagem_caixa_entrada].[mce_id_use] AS [mce_id_use], 
+    [v_mce_mensagem_caixa_entrada].[mce_id_set_gerenciador] AS [mce_id_set_gerenciador], 
+    [v_mce_mensagem_caixa_entrada].[mce_id_men_pai] AS [mce_id_men_pai], 
+    [v_mce_mensagem_caixa_entrada].[mce_id_men] AS [mce_id_men]
+    FROM [dbo].[v_mce_mensagem_caixa_entrada] AS [v_mce_mensagem_caixa_entrada]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_mfa_mensagem_pai_filha_arquivada" EntityType="Self.v_mfa_mensagem_pai_filha_arquivada" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_mfa_mensagem_pai_filha_arquivada].[mfa_id_use] AS [mfa_id_use], 
+    [v_mfa_mensagem_pai_filha_arquivada].[mfa_id_set_gerenciador] AS [mfa_id_set_gerenciador], 
+    [v_mfa_mensagem_pai_filha_arquivada].[mfa_id_men_pai] AS [mfa_id_men_pai], 
+    [v_mfa_mensagem_pai_filha_arquivada].[mfa_id_men] AS [mfa_id_men], 
+    [v_mfa_mensagem_pai_filha_arquivada].[mfa_flg_pendente_aprovacao] AS [mfa_flg_pendente_aprovacao]
+    FROM [dbo].[v_mfa_mensagem_pai_filha_arquivada] AS [v_mfa_mensagem_pai_filha_arquivada]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_mfp_mensagem_pai_filha_pendencia" EntityType="Self.v_mfp_mensagem_pai_filha_pendencia" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_mfp_mensagem_pai_filha_pendencia].[mfp_id_use] AS [mfp_id_use], 
+    [v_mfp_mensagem_pai_filha_pendencia].[mfp_id_set_gerenciador] AS [mfp_id_set_gerenciador], 
+    [v_mfp_mensagem_pai_filha_pendencia].[mfp_id_men_pai] AS [mfp_id_men_pai], 
+    [v_mfp_mensagem_pai_filha_pendencia].[mfp_id_men] AS [mfp_id_men], 
+    [v_mfp_mensagem_pai_filha_pendencia].[mfp_flg_pendente_aprovacao] AS [mfp_flg_pendente_aprovacao]
+    FROM [dbo].[v_mfp_mensagem_pai_filha_pendencia] AS [v_mfp_mensagem_pai_filha_pendencia]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_mfv_mensagem_pai_filha_valida" EntityType="Self.v_mfv_mensagem_pai_filha_valida" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_mfv_mensagem_pai_filha_valida].[mfv_id_use] AS [mfv_id_use], 
+    [v_mfv_mensagem_pai_filha_valida].[mfv_id_men_pai] AS [mfv_id_men_pai], 
+    [v_mfv_mensagem_pai_filha_valida].[mfv_id_men] AS [mfv_id_men]
+    FROM [dbo].[v_mfv_mensagem_pai_filha_valida] AS [v_mfv_mensagem_pai_filha_valida]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_mnl_mensagem_nao_lida" EntityType="Self.v_mnl_mensagem_nao_lida" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_mnl_mensagem_nao_lida].[mnl_id_use] AS [mnl_id_use], 
+    [v_mnl_mensagem_nao_lida].[mnl_id_set_gerenciador] AS [mnl_id_set_gerenciador], 
+    [v_mnl_mensagem_nao_lida].[mnl_id_men_pai] AS [mnl_id_men_pai], 
+    [v_mnl_mensagem_nao_lida].[mnl_id_men] AS [mnl_id_men]
+    FROM [dbo].[v_mnl_mensagem_nao_lida] AS [v_mnl_mensagem_nao_lida]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_mns_mensagem_nao_lida_setor" EntityType="Self.v_mns_mensagem_nao_lida_setor" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_mns_mensagem_nao_lida_setor].[mns_id_set_gerenciador] AS [mns_id_set_gerenciador], 
+    [v_mns_mensagem_nao_lida_setor].[mns_id_men_pai] AS [mns_id_men_pai], 
+    [v_mns_mensagem_nao_lida_setor].[mns_id_men] AS [mns_id_men]
+    FROM [dbo].[v_mns_mensagem_nao_lida_setor] AS [v_mns_mensagem_nao_lida_setor]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_mpa_mensagem_pendente_aprovacao" EntityType="Self.v_mpa_mensagem_pendente_aprovacao" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_mpa_mensagem_pendente_aprovacao].[mpa_id_set_gerenciador] AS [mpa_id_set_gerenciador], 
+    [v_mpa_mensagem_pendente_aprovacao].[mpa_id_men_pai] AS [mpa_id_men_pai], 
+    [v_mpa_mensagem_pendente_aprovacao].[mpa_id_men] AS [mpa_id_men]
+    FROM [dbo].[v_mpa_mensagem_pendente_aprovacao] AS [v_mpa_mensagem_pendente_aprovacao]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_mpc_mensagem_pai_caixa_entrada" EntityType="Self.v_mpc_mensagem_pai_caixa_entrada" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_mpc_mensagem_pai_caixa_entrada].[mpc_id_use] AS [mpc_id_use], 
+    [v_mpc_mensagem_pai_caixa_entrada].[mpc_id_set_gerenciador] AS [mpc_id_set_gerenciador], 
+    [v_mpc_mensagem_pai_caixa_entrada].[mpc_id_men_pai] AS [mpc_id_men_pai], 
+    [v_mpc_mensagem_pai_caixa_entrada].[mpc_id_men_ultima] AS [mpc_id_men_ultima]
+    FROM [dbo].[v_mpc_mensagem_pai_caixa_entrada] AS [v_mpc_mensagem_pai_caixa_entrada]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_mpl_mensagem_pai_nao_lida" EntityType="Self.v_mpl_mensagem_pai_nao_lida" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_mpl_mensagem_pai_nao_lida].[mpl_id_use] AS [mpl_id_use], 
+    [v_mpl_mensagem_pai_nao_lida].[mpl_id_set_gerenciador] AS [mpl_id_set_gerenciador], 
+    [v_mpl_mensagem_pai_nao_lida].[mpl_id_men_pai] AS [mpl_id_men_pai], 
+    [v_mpl_mensagem_pai_nao_lida].[mpl_id_men_ultima] AS [mpl_id_men_ultima]
+    FROM [dbo].[v_mpl_mensagem_pai_nao_lida] AS [v_mpl_mensagem_pai_nao_lida]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_mpp_mensagem_pedente_aprovacao_pai" EntityType="Self.v_mpp_mensagem_pedente_aprovacao_pai" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_mpp_mensagem_pedente_aprovacao_pai].[mpp_id_set_gerenciador] AS [mpp_id_set_gerenciador], 
+    [v_mpp_mensagem_pedente_aprovacao_pai].[mpp_id_men_pai] AS [mpp_id_men_pai], 
+    [v_mpp_mensagem_pedente_aprovacao_pai].[mpp_id_men_ultima] AS [mpp_id_men_ultima]
+    FROM [dbo].[v_mpp_mensagem_pedente_aprovacao_pai] AS [v_mpp_mensagem_pedente_aprovacao_pai]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_nlp_notificacao_nao_lida_pendente" EntityType="Self.v_nlp_notificacao_nao_lida_pendente" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_nlp_notificacao_nao_lida_pendente].[nlp_id_use] AS [nlp_id_use], 
+    [v_nlp_notificacao_nao_lida_pendente].[nlp_qtd_nao_lida_pendente] AS [nlp_qtd_nao_lida_pendente], 
+    [v_nlp_notificacao_nao_lida_pendente].[nlp_flg_nao_lida_pendente] AS [nlp_flg_nao_lida_pendente]
+    FROM [dbo].[v_nlp_notificacao_nao_lida_pendente] AS [v_nlp_notificacao_nao_lida_pendente]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_nls_notificacao_nao_lida_setor" EntityType="Self.v_nls_notificacao_nao_lida_setor" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_nls_notificacao_nao_lida_setor].[nps_id_set_gerenciador] AS [nps_id_set_gerenciador], 
+    [v_nls_notificacao_nao_lida_setor].[nps_qtd_pendente] AS [nps_qtd_pendente], 
+    [v_nls_notificacao_nao_lida_setor].[nps_flg_pendente] AS [nps_flg_pendente]
+    FROM [dbo].[v_nls_notificacao_nao_lida_setor] AS [v_nls_notificacao_nao_lida_setor]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_nnl_notificacao_nao_lida" EntityType="Self.v_nnl_notificacao_nao_lida" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_nnl_notificacao_nao_lida].[nnl_id_use] AS [nnl_id_use], 
+    [v_nnl_notificacao_nao_lida].[nnl_qtd_nao_lida] AS [nnl_qtd_nao_lida], 
+    [v_nnl_notificacao_nao_lida].[nnl_flg_nao_lida] AS [nnl_flg_nao_lida]
+    FROM [dbo].[v_nnl_notificacao_nao_lida] AS [v_nnl_notificacao_nao_lida]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_npa_notificacao_pendente_aprovacao" EntityType="Self.v_npa_notificacao_pendente_aprovacao" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_npa_notificacao_pendente_aprovacao].[npa_id_use] AS [npa_id_use], 
+    [v_npa_notificacao_pendente_aprovacao].[npa_id_set_gerenciador] AS [npa_id_set_gerenciador], 
+    [v_npa_notificacao_pendente_aprovacao].[npa_qtd_pendente] AS [npa_qtd_pendente], 
+    [v_npa_notificacao_pendente_aprovacao].[npa_flg_pendente] AS [npa_flg_pendente]
+    FROM [dbo].[v_npa_notificacao_pendente_aprovacao] AS [v_npa_notificacao_pendente_aprovacao]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_nps_notificacao_pendente_aprovacao_setor" EntityType="Self.v_nps_notificacao_pendente_aprovacao_setor" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_nps_notificacao_pendente_aprovacao_setor].[nps_id_set_gerenciador] AS [nps_id_set_gerenciador], 
+    [v_nps_notificacao_pendente_aprovacao_setor].[nps_qtd_pendente] AS [nps_qtd_pendente], 
+    [v_nps_notificacao_pendente_aprovacao_setor].[nps_flg_pendente] AS [nps_flg_pendente]
+    FROM [dbo].[v_nps_notificacao_pendente_aprovacao_setor] AS [v_nps_notificacao_pendente_aprovacao_setor]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_qef_quantitativo_efetivo_mensagem_filha" EntityType="Self.v_qef_quantitativo_efetivo_mensagem_filha" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_qef_quantitativo_efetivo_mensagem_filha].[qef_id_use] AS [qef_id_use], 
+    [v_qef_quantitativo_efetivo_mensagem_filha].[qef_id_men_pai] AS [qef_id_men_pai], 
+    [v_qef_quantitativo_efetivo_mensagem_filha].[qef_num_quantitativo] AS [qef_num_quantitativo]
+    FROM [dbo].[v_qef_quantitativo_efetivo_mensagem_filha] AS [v_qef_quantitativo_efetivo_mensagem_filha]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_qfv_quantitativo_mensagem_filha_valida" EntityType="Self.v_qfv_quantitativo_mensagem_filha_valida" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_qfv_quantitativo_mensagem_filha_valida].[qfv_id_use] AS [qfv_id_use], 
+    [v_qfv_quantitativo_mensagem_filha_valida].[qfv_id_men_pai] AS [qfv_id_men_pai], 
+    [v_qfv_quantitativo_mensagem_filha_valida].[qfv_qtd_filha] AS [qfv_qtd_filha], 
+    [v_qfv_quantitativo_mensagem_filha_valida].[qfv_qtd_filha_externa] AS [qfv_qtd_filha_externa]
+    FROM [dbo].[v_qfv_quantitativo_mensagem_filha_valida] AS [v_qfv_quantitativo_mensagem_filha_valida]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_qmd_quantitativo_mensagem_destinatario" EntityType="Self.v_qmd_quantitativo_mensagem_destinatario" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_qmd_quantitativo_mensagem_destinatario].[qmd_id_men] AS [qmd_id_men], 
+    [v_qmd_quantitativo_mensagem_destinatario].[qmd_id_use] AS [qmd_id_use], 
+    [v_qmd_quantitativo_mensagem_destinatario].[qmd_num_quantitativo] AS [qmd_num_quantitativo]
+    FROM [dbo].[v_qmd_quantitativo_mensagem_destinatario] AS [v_qmd_quantitativo_mensagem_destinatario]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_qmp_quantitativo_mensagem_nao_lida_pai" EntityType="Self.v_qmp_quantitativo_mensagem_nao_lida_pai" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_qmp_quantitativo_mensagem_nao_lida_pai].[qmp_id_use] AS [qmp_id_use], 
+    [v_qmp_quantitativo_mensagem_nao_lida_pai].[qmp_id_set_gerenciador] AS [qmp_id_set_gerenciador], 
+    [v_qmp_quantitativo_mensagem_nao_lida_pai].[qmp_id_men_pai] AS [qmp_id_men_pai], 
+    [v_qmp_quantitativo_mensagem_nao_lida_pai].[qmp_qtd_mensagem] AS [qmp_qtd_mensagem]
+    FROM [dbo].[v_qmp_quantitativo_mensagem_nao_lida_pai] AS [v_qmp_quantitativo_mensagem_nao_lida_pai]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_qpa_quantitativo_pendente_aprovacao_pai" EntityType="Self.v_qpa_quantitativo_pendente_aprovacao_pai" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_qpa_quantitativo_pendente_aprovacao_pai].[qpa_id_set_gerenciador] AS [qpa_id_set_gerenciador], 
+    [v_qpa_quantitativo_pendente_aprovacao_pai].[qpa_id_men_pai] AS [qpa_id_men_pai], 
+    [v_qpa_quantitativo_pendente_aprovacao_pai].[qpa_qtd_pendente] AS [qpa_qtd_pendente]
+    FROM [dbo].[v_qpa_quantitativo_pendente_aprovacao_pai] AS [v_qpa_quantitativo_pendente_aprovacao_pai]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_ush_usuario_autorizado_historico" EntityType="Self.v_ush_usuario_autorizado_historico" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_ush_usuario_autorizado_historico].[ush_id_uau] AS [ush_id_uau], 
+    [v_ush_usuario_autorizado_historico].[ush_id_pus] AS [ush_id_pus], 
+    [v_ush_usuario_autorizado_historico].[ush_id_use] AS [ush_id_use], 
+    [v_ush_usuario_autorizado_historico].[ush_id_set] AS [ush_id_set]
+    FROM [dbo].[v_ush_usuario_autorizado_historico] AS [v_ush_usuario_autorizado_historico]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="R_com_cas" Association="Self.R_com_cas">
+            <End Role="cas_controle_acesso" EntitySet="cas_controle_acesso" />
+            <End Role="com_controle_menu" EntitySet="com_controle_menu" />
+          </AssociationSet>
+          <AssociationSet Name="R_com_men" Association="Self.R_com_men">
+            <End Role="men_menu" EntitySet="men_menu" />
+            <End Role="com_controle_menu" EntitySet="com_controle_menu" />
+          </AssociationSet>
+          <AssociationSet Name="R_men_cnu" Association="Self.R_men_cnu">
+            <End Role="men_mensagem" EntitySet="men_mensagem" />
+            <End Role="cnu_controle_numeros" EntitySet="cnu_controle_numeros" />
+          </AssociationSet>
+          <AssociationSet Name="R_men_dme" Association="Self.R_men_dme">
+            <End Role="men_mensagem" EntitySet="men_mensagem" />
+            <End Role="dme_destinatario_mensagem" EntitySet="dme_destinatario_mensagem" />
+          </AssociationSet>
+          <AssociationSet Name="R_men_max" Association="Self.R_men_max">
+            <End Role="men_mensagem" EntitySet="men_mensagem" />
+            <End Role="max_mensagem_anexo" EntitySet="max_mensagem_anexo" />
+          </AssociationSet>
+          <AssociationSet Name="R_men_mde" Association="Self.R_men_mde">
+            <End Role="men_mensagem" EntitySet="men_mensagem" />
+            <End Role="mde_mensagem_detalhes" EntitySet="mde_mensagem_detalhes" />
+          </AssociationSet>
+          <AssociationSet Name="R_men_mea" Association="Self.R_men_mea">
+            <End Role="men_mensagem" EntitySet="men_mensagem" />
+            <End Role="mea_mensagem_aprovada" EntitySet="mea_mensagem_aprovada" />
+          </AssociationSet>
+          <AssociationSet Name="R_men_men_pai" Association="Self.R_men_men_pai">
+            <End Role="men_mensagem" EntitySet="men_mensagem" />
+            <End Role="men_mensagem1" EntitySet="men_mensagem" />
+          </AssociationSet>
+          <AssociationSet Name="R_men_men_refer" Association="Self.R_men_men_refer">
+            <End Role="men_mensagem" EntitySet="men_mensagem" />
+            <End Role="men_mensagem1" EntitySet="men_mensagem" />
+          </AssociationSet>
+          <AssociationSet Name="R_men_meq" Association="Self.R_men_meq">
+            <End Role="men_mensagem" EntitySet="men_mensagem" />
+            <End Role="meq_mensagem_arquivada" EntitySet="meq_mensagem_arquivada" />
+          </AssociationSet>
+          <AssociationSet Name="R_men_rem" Association="Self.R_men_rem">
+            <End Role="men_mensagem" EntitySet="men_mensagem" />
+            <End Role="rem_remetente" EntitySet="rem_remetente" />
+          </AssociationSet>
+          <AssociationSet Name="R_mra_men" Association="Self.R_mra_men">
+            <End Role="men_mensagem" EntitySet="men_mensagem" />
+            <End Role="mra_mensagem_rascunho" EntitySet="mra_mensagem_rascunho" />
+          </AssociationSet>
+          <AssociationSet Name="R_pem_men" Association="Self.R_pem_men">
+            <End Role="men_menu" EntitySet="men_menu" />
+            <End Role="pem_perfil_menu" EntitySet="pem_perfil_menu" />
+          </AssociationSet>
+          <AssociationSet Name="R_sme_men" Association="Self.R_sme_men">
+            <End Role="sme_status_mensagem" EntitySet="sme_status_mensagem" />
+            <End Role="men_mensagem" EntitySet="men_mensagem" />
+          </AssociationSet>
+          <AssociationSet Name="R_tde_dme" Association="Self.R_tde_dme">
+            <End Role="tde_tipo_destinatario" EntitySet="tde_tipo_destinatario" />
+            <End Role="dme_destinatario_mensagem" EntitySet="dme_destinatario_mensagem" />
+          </AssociationSet>
+          <AssociationSet Name="R_tme_men" Association="Self.R_tme_men">
+            <End Role="tme_tipo_mensagem" EntitySet="tme_tipo_mensagem" />
+            <End Role="men_mensagem" EntitySet="men_mensagem" />
+          </AssociationSet>
+          <AssociationSet Name="R_tnu_cnu" Association="Self.R_tnu_cnu">
+            <End Role="tnu_tipo_numeracao" EntitySet="tnu_tipo_numeracao" />
+            <End Role="cnu_controle_numeros" EntitySet="cnu_controle_numeros" />
+          </AssociationSet>
+          <AssociationSet Name="R_ume_men" Association="Self.R_ume_men">
+            <End Role="men_menu" EntitySet="men_menu" />
+            <End Role="ume_usuario_menu" EntitySet="ume_usuario_menu" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CiEletronica" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ase_aprovacao_setor">
+          <Key>
+            <PropertyRef Name="ase_id_ase" />
+          </Key>
+          <Property Name="ase_id_ase" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ase_id_set" Type="Int32" Nullable="false" />
+          <Property Name="ase_dti_aprovacao" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ase_dtf_aprovacao" Type="DateTime" Precision="3" />
+          <Property Name="ase_dat_cadastro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ase_id_use_cadastro" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ass_assinatura">
+          <Key>
+            <PropertyRef Name="ass_id_ass" />
+          </Key>
+          <Property Name="ass_id_ass" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ass_des_assinatura" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ass_id_use" Type="Int32" Nullable="false" />
+          <Property Name="ass_flg_atualizado" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cas_controle_acesso">
+          <Key>
+            <PropertyRef Name="cas_id_cas" />
+          </Key>
+          <Property Name="cas_id_cas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cas_id_ip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cas_nom_maquina" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cas_id_use" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="com_controle_menu" Relationship="Self.R_com_cas" FromRole="cas_controle_acesso" ToRole="com_controle_menu" />
+        </EntityType>
+        <EntityType Name="cnu_controle_numeros">
+          <Key>
+            <PropertyRef Name="cnu_id_cnu" />
+          </Key>
+          <Property Name="cnu_id_cnu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cnu_num_ci" Type="Int32" />
+          <Property Name="cnu_num_controle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cnu_dat_cadastro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="cnu_id_tnu" Type="Int32" Nullable="false" />
+          <Property Name="cnu_id_men" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="men_mensagem" Relationship="Self.R_men_cnu" FromRole="cnu_controle_numeros" ToRole="men_mensagem" />
+          <NavigationProperty Name="tnu_tipo_numeracao" Relationship="Self.R_tnu_cnu" FromRole="cnu_controle_numeros" ToRole="tnu_tipo_numeracao" />
+        </EntityType>
+        <EntityType Name="com_controle_menu">
+          <Key>
+            <PropertyRef Name="com_id_com" />
+          </Key>
+          <Property Name="com_id_com" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="com_id_cas" Type="Int32" Nullable="false" />
+          <Property Name="com_id_men" Type="Int32" Nullable="false" />
+          <Property Name="com_dat_acesso" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="cas_controle_acesso" Relationship="Self.R_com_cas" FromRole="com_controle_menu" ToRole="cas_controle_acesso" />
+          <NavigationProperty Name="men_menu" Relationship="Self.R_com_men" FromRole="com_controle_menu" ToRole="men_menu" />
+        </EntityType>
+        <EntityType Name="dme_destinatario_mensagem">
+          <Key>
+            <PropertyRef Name="dme_id_dme" />
+          </Key>
+          <Property Name="dme_id_dme" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dme_id_tde" Type="Int32" Nullable="false" />
+          <Property Name="dme_id_men" Type="Int32" Nullable="false" />
+          <Property Name="dme_id_use" Type="Int32" Nullable="false" />
+          <Property Name="dme_dat_leitura" Type="DateTime" Precision="3" />
+          <Property Name="dme_flg_leitura" Type="Boolean" Nullable="false" />
+          <Property Name="dme_flg_msg_automatica" Type="Boolean" Nullable="false" />
+          <Property Name="dme_dat_cadastro" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="men_mensagem" Relationship="Self.R_men_dme" FromRole="dme_destinatario_mensagem" ToRole="men_mensagem" />
+          <NavigationProperty Name="tde_tipo_destinatario" Relationship="Self.R_tde_dme" FromRole="dme_destinatario_mensagem" ToRole="tde_tipo_destinatario" />
+        </EntityType>
+        <EntityType Name="los_log_sistema">
+          <Key>
+            <PropertyRef Name="los_id_los" />
+          </Key>
+          <Property Name="los_id_los" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="los_num_nivel" Type="Int32" Nullable="false" />
+          <Property Name="los_nom_categoria" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="los_log_time" Type="Double" Nullable="false" />
+          <Property Name="los_des_mensagem" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="los_id_usu" Type="Int32" Nullable="false" />
+          <Property Name="los_data_hora" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="max_mensagem_anexo">
+          <Key>
+            <PropertyRef Name="max_id_max" />
+          </Key>
+          <Property Name="max_id_max" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="max_nom_arquivo" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="max_num_tamanho" Type="Int32" />
+          <Property Name="max_bin_arquivo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="max_nom_tipo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="max_url_caminho" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="max_dat_cadastro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="max_id_men" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="men_mensagem" Relationship="Self.R_men_max" FromRole="max_mensagem_anexo" ToRole="men_mensagem" />
+        </EntityType>
+        <EntityType Name="mde_mensagem_detalhes">
+          <Key>
+            <PropertyRef Name="mde_id_mde" />
+          </Key>
+          <Property Name="mde_id_mde" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mde_flg_importante" Type="Boolean" Nullable="false" />
+          <Property Name="mde_id_men" Type="Int32" Nullable="false" />
+          <Property Name="mde_id_use" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="men_mensagem" Relationship="Self.R_men_mde" FromRole="mde_mensagem_detalhes" ToRole="men_mensagem" />
+        </EntityType>
+        <EntityType Name="mea_mensagem_aprovada">
+          <Key>
+            <PropertyRef Name="mea_id_mea" />
+          </Key>
+          <Property Name="mea_id_mea" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mea_id_men" Type="Int32" Nullable="false" />
+          <Property Name="mea_flg_mensagem_aprovada" Type="Boolean" Nullable="false" />
+          <Property Name="mea_flg_reavaliacao" Type="Boolean" Nullable="false" />
+          <Property Name="mea_des_motivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="mea_dat_registro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="mea_id_use" Type="Int32" Nullable="false" />
+          <Property Name="mea_id_use_secretaria" Type="Int32" />
+          <NavigationProperty Name="men_mensagem" Relationship="Self.R_men_mea" FromRole="mea_mensagem_aprovada" ToRole="men_mensagem" />
+        </EntityType>
+        <EntityType Name="men_mensagem">
+          <Key>
+            <PropertyRef Name="men_id_men" />
+          </Key>
+          <Property Name="men_id_men" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="men_num_autenticacao" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="men_nom_titulo" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="men_des_mensagem" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="men_id_tme" Type="Int32" Nullable="false" />
+          <Property Name="men_dat_cadastro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="men_id_men_referencia" Type="Int32" />
+          <Property Name="men_id_men_pai" Type="Int32" />
+          <Property Name="men_flg_aprovacao" Type="Boolean" Nullable="false" />
+          <Property Name="men_id_sme" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="cnu_controle_numeros" Relationship="Self.R_men_cnu" FromRole="men_mensagem" ToRole="cnu_controle_numeros" />
+          <NavigationProperty Name="dme_destinatario_mensagem" Relationship="Self.R_men_dme" FromRole="men_mensagem" ToRole="dme_destinatario_mensagem" />
+          <NavigationProperty Name="max_mensagem_anexo" Relationship="Self.R_men_max" FromRole="men_mensagem" ToRole="max_mensagem_anexo" />
+          <NavigationProperty Name="mde_mensagem_detalhes" Relationship="Self.R_men_mde" FromRole="men_mensagem" ToRole="mde_mensagem_detalhes" />
+          <NavigationProperty Name="mea_mensagem_aprovada" Relationship="Self.R_men_mea" FromRole="men_mensagem" ToRole="mea_mensagem_aprovada" />
+          <NavigationProperty Name="men_mensagem1" Relationship="Self.R_men_men_pai" FromRole="men_mensagem" ToRole="men_mensagem1" />
+          <NavigationProperty Name="men_mensagem2" Relationship="Self.R_men_men_pai" FromRole="men_mensagem1" ToRole="men_mensagem" />
+          <NavigationProperty Name="men_mensagem11" Relationship="Self.R_men_men_refer" FromRole="men_mensagem" ToRole="men_mensagem1" />
+          <NavigationProperty Name="men_mensagem3" Relationship="Self.R_men_men_refer" FromRole="men_mensagem1" ToRole="men_mensagem" />
+          <NavigationProperty Name="meq_mensagem_arquivada" Relationship="Self.R_men_meq" FromRole="men_mensagem" ToRole="meq_mensagem_arquivada" />
+          <NavigationProperty Name="rem_remetente" Relationship="Self.R_men_rem" FromRole="men_mensagem" ToRole="rem_remetente" />
+          <NavigationProperty Name="mra_mensagem_rascunho" Relationship="Self.R_mra_men" FromRole="men_mensagem" ToRole="mra_mensagem_rascunho" />
+          <NavigationProperty Name="sme_status_mensagem" Relationship="Self.R_sme_men" FromRole="men_mensagem" ToRole="sme_status_mensagem" />
+          <NavigationProperty Name="tme_tipo_mensagem" Relationship="Self.R_tme_men" FromRole="men_mensagem" ToRole="tme_tipo_mensagem" />
+        </EntityType>
+        <EntityType Name="men_menu">
+          <Key>
+            <PropertyRef Name="men_id_men" />
+          </Key>
+          <Property Name="men_id_men" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="men_nom_menu" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="men_htm_icon" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="men_nom_action" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="men_nom_controller" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="men_flg_menu_guest" Type="Boolean" Nullable="false" />
+          <Property Name="men_flg_menu_admin" Type="Boolean" Nullable="false" />
+          <Property Name="men_flg_modulo" Type="Boolean" Nullable="false" />
+          <Property Name="men_flg_ativo" Type="Boolean" Nullable="false" />
+          <Property Name="men_id_men_pai" Type="Int32" />
+          <Property Name="men_num_posicao" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="com_controle_menu" Relationship="Self.R_com_men" FromRole="men_menu" ToRole="com_controle_menu" />
+          <NavigationProperty Name="pem_perfil_menu" Relationship="Self.R_pem_men" FromRole="men_menu" ToRole="pem_perfil_menu" />
+          <NavigationProperty Name="ume_usuario_menu" Relationship="Self.R_ume_men" FromRole="men_menu" ToRole="ume_usuario_menu" />
+        </EntityType>
+        <EntityType Name="meq_mensagem_arquivada">
+          <Key>
+            <PropertyRef Name="meq_id_meq" />
+          </Key>
+          <Property Name="meq_id_meq" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="meq_id_men" Type="Int32" Nullable="false" />
+          <Property Name="meq_id_use" Type="Int32" Nullable="false" />
+          <Property Name="meq_flg_arquivada" Type="Boolean" Nullable="false" />
+          <Property Name="meq_des_motivo_geral" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="meq_dat_cancelamento" Type="DateTime" Precision="3" />
+          <Property Name="meq_dat_arquivamento" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="men_mensagem" Relationship="Self.R_men_meq" FromRole="meq_mensagem_arquivada" ToRole="men_mensagem" />
+        </EntityType>
+        <EntityType Name="mra_mensagem_rascunho">
+          <Key>
+            <PropertyRef Name="mra_id_mra" />
+          </Key>
+          <Property Name="mra_id_mra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mra_id_men" Type="Int32" Nullable="false" />
+          <Property Name="mra_ids_use_dest" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="mra_ids_use_dest_copia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="mra_ids_apensamentos" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="mra_dat_rascunho" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="men_mensagem" Relationship="Self.R_mra_men" FromRole="mra_mensagem_rascunho" ToRole="men_mensagem" />
+        </EntityType>
+        <EntityType Name="par_parametro">
+          <Key>
+            <PropertyRef Name="par_nom_parametro" />
+          </Key>
+          <Property Name="par_nom_parametro" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="par_des_retorno" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="pem_perfil_menu">
+          <Key>
+            <PropertyRef Name="pem_id_pem" />
+          </Key>
+          <Property Name="pem_id_pem" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pem_id_pus" Type="Int32" Nullable="false" />
+          <Property Name="pem_id_men" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="men_menu" Relationship="Self.R_pem_men" FromRole="pem_perfil_menu" ToRole="men_menu" />
+        </EntityType>
+        <EntityType Name="rem_remetente">
+          <Key>
+            <PropertyRef Name="rem_id_rem" />
+          </Key>
+          <Property Name="rem_id_rem" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rem_dat_cadastro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="rem_id_men" Type="Int32" />
+          <Property Name="rem_id_use" Type="Int32" />
+          <NavigationProperty Name="men_mensagem" Relationship="Self.R_men_rem" FromRole="rem_remetente" ToRole="men_mensagem" />
+        </EntityType>
+        <EntityType Name="sme_status_mensagem">
+          <Key>
+            <PropertyRef Name="sme_id_sme" />
+          </Key>
+          <Property Name="sme_id_sme" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sme_nom_status" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="men_mensagem" Relationship="Self.R_sme_men" FromRole="sme_status_mensagem" ToRole="men_mensagem" />
+        </EntityType>
+        <EntityType Name="tde_tipo_destinatario">
+          <Key>
+            <PropertyRef Name="tde_id_tde" />
+          </Key>
+          <Property Name="tde_id_tde" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tde_nom_tipo_destinatario" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="dme_destinatario_mensagem" Relationship="Self.R_tde_dme" FromRole="tde_tipo_destinatario" ToRole="dme_destinatario_mensagem" />
+        </EntityType>
+        <EntityType Name="tme_tipo_mensagem">
+          <Key>
+            <PropertyRef Name="tme_id_tme" />
+          </Key>
+          <Property Name="tme_id_tme" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tme_nom_tipo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tme_nom_tipo_curto" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="men_mensagem" Relationship="Self.R_tme_men" FromRole="tme_tipo_mensagem" ToRole="men_mensagem" />
+        </EntityType>
+        <EntityType Name="tnu_tipo_numeracao">
+          <Key>
+            <PropertyRef Name="tnu_id_tnu" />
+          </Key>
+          <Property Name="tnu_id_tnu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tnu_nom_tipo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tnu_flg_ci" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="cnu_controle_numeros" Relationship="Self.R_tnu_cnu" FromRole="tnu_tipo_numeracao" ToRole="cnu_controle_numeros" />
+        </EntityType>
+        <EntityType Name="uac_usuario_acesso">
+          <Key>
+            <PropertyRef Name="uac_id_uac" />
+          </Key>
+          <Property Name="uac_id_uac" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uac_id_usu" Type="Int32" />
+        </EntityType>
+        <EntityType Name="uau_usuario_autorizado">
+          <Key>
+            <PropertyRef Name="uau_id_uau" />
+          </Key>
+          <Property Name="uau_id_uau" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uau_id_pus" Type="Int32" Nullable="false" />
+          <Property Name="uau_id_use" Type="Int32" Nullable="false" />
+          <Property Name="uau_id_set" Type="Int32" Nullable="false" />
+          <Property Name="uau_dti_autorizacao" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="uau_dtf_autorizacao" Type="DateTime" Precision="3" />
+          <Property Name="uau_dat_cadastro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="uau_id_use_cadastro" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ume_usuario_menu">
+          <Key>
+            <PropertyRef Name="ume_id_ume" />
+          </Key>
+          <Property Name="ume_id_ume" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ume_id_usu" Type="Int32" Nullable="false" />
+          <Property Name="ume_id_men" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="men_menu" Relationship="Self.R_ume_men" FromRole="ume_usuario_menu" ToRole="men_menu" />
+        </EntityType>
+        <EntityType Name="ard_arvore_destinatario">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="lft" />
+            <PropertyRef Name="rgt" />
+            <PropertyRef Name="lvl" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="flg_gestor" />
+            <PropertyRef Name="icon_type" />
+            <PropertyRef Name="active" />
+            <PropertyRef Name="selected" />
+            <PropertyRef Name="disabled" />
+            <PropertyRef Name="readonly" />
+            <PropertyRef Name="visible" />
+            <PropertyRef Name="collapsed" />
+            <PropertyRef Name="movable_u" />
+            <PropertyRef Name="movable_d" />
+            <PropertyRef Name="movable_l" />
+            <PropertyRef Name="movable_r" />
+            <PropertyRef Name="removable" />
+            <PropertyRef Name="removable_all" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="root" Type="Int32" />
+          <Property Name="lft" Type="Int32" Nullable="false" />
+          <Property Name="rgt" Type="Int32" Nullable="false" />
+          <Property Name="lvl" Type="Int16" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="flg_gestor" Type="Boolean" Nullable="false" />
+          <Property Name="icon" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="icon_type" Type="Int16" Nullable="false" />
+          <Property Name="active" Type="Int16" Nullable="false" />
+          <Property Name="selected" Type="Int16" Nullable="false" />
+          <Property Name="disabled" Type="Int16" Nullable="false" />
+          <Property Name="readonly" Type="Int16" Nullable="false" />
+          <Property Name="visible" Type="Int16" Nullable="false" />
+          <Property Name="collapsed" Type="Int16" Nullable="false" />
+          <Property Name="movable_u" Type="Int16" Nullable="false" />
+          <Property Name="movable_d" Type="Int16" Nullable="false" />
+          <Property Name="movable_l" Type="Int16" Nullable="false" />
+          <Property Name="movable_r" Type="Int16" Nullable="false" />
+          <Property Name="removable" Type="Int16" Nullable="false" />
+          <Property Name="removable_all" Type="Int16" Nullable="false" />
+          <Property Name="id_setor" Type="Int32" />
+        </EntityType>
+        <EntityType Name="v_mah_mensagem_arquivada_historico">
+          <Key>
+            <PropertyRef Name="mah_id_men" />
+            <PropertyRef Name="mah_id_use" />
+          </Key>
+          <Property Name="mah_id_men" Type="Int32" Nullable="false" />
+          <Property Name="mah_id_use" Type="Int32" Nullable="false" />
+          <Property Name="mah_id_meq" Type="Int32" />
+        </EntityType>
+        <EntityType Name="v_map_mensagem_pai_filha_aprovacao">
+          <Key>
+            <PropertyRef Name="map_id_use" />
+            <PropertyRef Name="map_id_men" />
+          </Key>
+          <Property Name="map_id_use" Type="Int32" Nullable="false" />
+          <Property Name="map_id_men_pai" Type="Int32" />
+          <Property Name="map_id_men" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_mau_mensagem_arquivamento_usuario">
+          <Key>
+            <PropertyRef Name="qef_id_use" />
+          </Key>
+          <Property Name="qef_id_use" Type="Int32" Nullable="false" />
+          <Property Name="qef_id_men_pai" Type="Int32" />
+          <Property Name="qef_id_men" Type="Int32" />
+        </EntityType>
+        <EntityType Name="v_mce_mensagem_caixa_entrada">
+          <Key>
+            <PropertyRef Name="mce_id_use" />
+            <PropertyRef Name="mce_id_set_gerenciador" />
+            <PropertyRef Name="mce_id_men" />
+          </Key>
+          <Property Name="mce_id_use" Type="Int32" Nullable="false" />
+          <Property Name="mce_id_set_gerenciador" Type="Int32" Nullable="false" />
+          <Property Name="mce_id_men_pai" Type="Int32" />
+          <Property Name="mce_id_men" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_mfa_mensagem_pai_filha_arquivada">
+          <Key>
+            <PropertyRef Name="mfa_id_use" />
+            <PropertyRef Name="mfa_id_set_gerenciador" />
+            <PropertyRef Name="mfa_id_men" />
+            <PropertyRef Name="mfa_flg_pendente_aprovacao" />
+          </Key>
+          <Property Name="mfa_id_use" Type="Int32" Nullable="false" />
+          <Property Name="mfa_id_set_gerenciador" Type="Int32" Nullable="false" />
+          <Property Name="mfa_id_men_pai" Type="Int32" />
+          <Property Name="mfa_id_men" Type="Int32" Nullable="false" />
+          <Property Name="mfa_flg_pendente_aprovacao" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_mfp_mensagem_pai_filha_pendencia">
+          <Key>
+            <PropertyRef Name="mfp_id_use" />
+            <PropertyRef Name="mfp_id_set_gerenciador" />
+            <PropertyRef Name="mfp_id_men" />
+            <PropertyRef Name="mfp_flg_pendente_aprovacao" />
+          </Key>
+          <Property Name="mfp_id_use" Type="Int32" Nullable="false" />
+          <Property Name="mfp_id_set_gerenciador" Type="Int32" Nullable="false" />
+          <Property Name="mfp_id_men_pai" Type="Int32" />
+          <Property Name="mfp_id_men" Type="Int32" Nullable="false" />
+          <Property Name="mfp_flg_pendente_aprovacao" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_mfv_mensagem_pai_filha_valida">
+          <Key>
+            <PropertyRef Name="mfv_id_use" />
+            <PropertyRef Name="mfv_id_men" />
+          </Key>
+          <Property Name="mfv_id_use" Type="Int32" Nullable="false" />
+          <Property Name="mfv_id_men_pai" Type="Int32" />
+          <Property Name="mfv_id_men" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_mnl_mensagem_nao_lida">
+          <Key>
+            <PropertyRef Name="mnl_id_use" />
+            <PropertyRef Name="mnl_id_set_gerenciador" />
+            <PropertyRef Name="mnl_id_men" />
+          </Key>
+          <Property Name="mnl_id_use" Type="Int32" Nullable="false" />
+          <Property Name="mnl_id_set_gerenciador" Type="Int32" Nullable="false" />
+          <Property Name="mnl_id_men_pai" Type="Int32" />
+          <Property Name="mnl_id_men" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_mns_mensagem_nao_lida_setor">
+          <Key>
+            <PropertyRef Name="mns_id_set_gerenciador" />
+            <PropertyRef Name="mns_id_men" />
+          </Key>
+          <Property Name="mns_id_set_gerenciador" Type="Int32" Nullable="false" />
+          <Property Name="mns_id_men_pai" Type="Int32" />
+          <Property Name="mns_id_men" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_mpa_mensagem_pendente_aprovacao">
+          <Key>
+            <PropertyRef Name="mpa_id_set_gerenciador" />
+          </Key>
+          <Property Name="mpa_id_set_gerenciador" Type="Int32" Nullable="false" />
+          <Property Name="mpa_id_men_pai" Type="Int32" />
+          <Property Name="mpa_id_men" Type="Int32" />
+        </EntityType>
+        <EntityType Name="v_mpc_mensagem_pai_caixa_entrada">
+          <Key>
+            <PropertyRef Name="mpc_id_use" />
+            <PropertyRef Name="mpc_id_set_gerenciador" />
+          </Key>
+          <Property Name="mpc_id_use" Type="Int32" Nullable="false" />
+          <Property Name="mpc_id_set_gerenciador" Type="Int32" Nullable="false" />
+          <Property Name="mpc_id_men_pai" Type="Int32" />
+          <Property Name="mpc_id_men_ultima" Type="Int32" />
+        </EntityType>
+        <EntityType Name="v_mpl_mensagem_pai_nao_lida">
+          <Key>
+            <PropertyRef Name="mpl_id_use" />
+            <PropertyRef Name="mpl_id_set_gerenciador" />
+          </Key>
+          <Property Name="mpl_id_use" Type="Int32" Nullable="false" />
+          <Property Name="mpl_id_set_gerenciador" Type="Int32" Nullable="false" />
+          <Property Name="mpl_id_men_pai" Type="Int32" />
+          <Property Name="mpl_id_men_ultima" Type="Int32" />
+        </EntityType>
+        <EntityType Name="v_mpp_mensagem_pedente_aprovacao_pai">
+          <Key>
+            <PropertyRef Name="mpp_id_set_gerenciador" />
+          </Key>
+          <Property Name="mpp_id_set_gerenciador" Type="Int32" Nullable="false" />
+          <Property Name="mpp_id_men_pai" Type="Int32" />
+          <Property Name="mpp_id_men_ultima" Type="Int32" />
+        </EntityType>
+        <EntityType Name="v_nlp_notificacao_nao_lida_pendente">
+          <Key>
+            <PropertyRef Name="nlp_id_use" />
+            <PropertyRef Name="nlp_flg_nao_lida_pendente" />
+          </Key>
+          <Property Name="nlp_id_use" Type="Int32" Nullable="false" />
+          <Property Name="nlp_qtd_nao_lida_pendente" Type="Int32" />
+          <Property Name="nlp_flg_nao_lida_pendente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_nls_notificacao_nao_lida_setor">
+          <Key>
+            <PropertyRef Name="nps_id_set_gerenciador" />
+            <PropertyRef Name="nps_flg_pendente" />
+          </Key>
+          <Property Name="nps_id_set_gerenciador" Type="Int32" Nullable="false" />
+          <Property Name="nps_qtd_pendente" Type="Int32" />
+          <Property Name="nps_flg_pendente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_nnl_notificacao_nao_lida">
+          <Key>
+            <PropertyRef Name="nnl_id_use" />
+            <PropertyRef Name="nnl_flg_nao_lida" />
+          </Key>
+          <Property Name="nnl_id_use" Type="Int32" Nullable="false" />
+          <Property Name="nnl_qtd_nao_lida" Type="Int32" />
+          <Property Name="nnl_flg_nao_lida" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_npa_notificacao_pendente_aprovacao">
+          <Key>
+            <PropertyRef Name="npa_id_use" />
+            <PropertyRef Name="npa_id_set_gerenciador" />
+            <PropertyRef Name="npa_flg_pendente" />
+          </Key>
+          <Property Name="npa_id_use" Type="Int32" Nullable="false" />
+          <Property Name="npa_id_set_gerenciador" Type="Int32" Nullable="false" />
+          <Property Name="npa_qtd_pendente" Type="Int32" />
+          <Property Name="npa_flg_pendente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_nps_notificacao_pendente_aprovacao_setor">
+          <Key>
+            <PropertyRef Name="nps_id_set_gerenciador" />
+            <PropertyRef Name="nps_flg_pendente" />
+          </Key>
+          <Property Name="nps_id_set_gerenciador" Type="Int32" Nullable="false" />
+          <Property Name="nps_qtd_pendente" Type="Int32" />
+          <Property Name="nps_flg_pendente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_qef_quantitativo_efetivo_mensagem_filha">
+          <Key>
+            <PropertyRef Name="qef_id_use" />
+          </Key>
+          <Property Name="qef_id_use" Type="Int32" Nullable="false" />
+          <Property Name="qef_id_men_pai" Type="Int32" />
+          <Property Name="qef_num_quantitativo" Type="Int32" />
+        </EntityType>
+        <EntityType Name="v_qfv_quantitativo_mensagem_filha_valida">
+          <Key>
+            <PropertyRef Name="qfv_id_use" />
+          </Key>
+          <Property Name="qfv_id_use" Type="Int32" Nullable="false" />
+          <Property Name="qfv_id_men_pai" Type="Int32" />
+          <Property Name="qfv_qtd_filha" Type="Int32" />
+          <Property Name="qfv_qtd_filha_externa" Type="Int32" />
+        </EntityType>
+        <EntityType Name="v_qmd_quantitativo_mensagem_destinatario">
+          <Key>
+            <PropertyRef Name="qmd_id_use" />
+          </Key>
+          <Property Name="qmd_id_men" Type="Int32" />
+          <Property Name="qmd_id_use" Type="Int32" Nullable="false" />
+          <Property Name="qmd_num_quantitativo" Type="Int32" />
+        </EntityType>
+        <EntityType Name="v_qmp_quantitativo_mensagem_nao_lida_pai">
+          <Key>
+            <PropertyRef Name="qmp_id_use" />
+            <PropertyRef Name="qmp_id_set_gerenciador" />
+          </Key>
+          <Property Name="qmp_id_use" Type="Int32" Nullable="false" />
+          <Property Name="qmp_id_set_gerenciador" Type="Int32" Nullable="false" />
+          <Property Name="qmp_id_men_pai" Type="Int32" />
+          <Property Name="qmp_qtd_mensagem" Type="Int32" />
+        </EntityType>
+        <EntityType Name="v_qpa_quantitativo_pendente_aprovacao_pai">
+          <Key>
+            <PropertyRef Name="qpa_id_set_gerenciador" />
+          </Key>
+          <Property Name="qpa_id_set_gerenciador" Type="Int32" Nullable="false" />
+          <Property Name="qpa_id_men_pai" Type="Int32" />
+          <Property Name="qpa_qtd_pendente" Type="Int32" />
+        </EntityType>
+        <EntityType Name="v_ush_usuario_autorizado_historico">
+          <Key>
+            <PropertyRef Name="ush_id_pus" />
+            <PropertyRef Name="ush_id_use" />
+            <PropertyRef Name="ush_id_set" />
+          </Key>
+          <Property Name="ush_id_uau" Type="Int32" />
+          <Property Name="ush_id_pus" Type="Int32" Nullable="false" />
+          <Property Name="ush_id_use" Type="Int32" Nullable="false" />
+          <Property Name="ush_id_set" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="R_com_cas">
+          <End Role="cas_controle_acesso" Type="Self.cas_controle_acesso" Multiplicity="1" />
+          <End Role="com_controle_menu" Type="Self.com_controle_menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cas_controle_acesso">
+              <PropertyRef Name="cas_id_cas" />
+            </Principal>
+            <Dependent Role="com_controle_menu">
+              <PropertyRef Name="com_id_cas" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_men_cnu">
+          <End Role="men_mensagem" Type="Self.men_mensagem" Multiplicity="1" />
+          <End Role="cnu_controle_numeros" Type="Self.cnu_controle_numeros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="men_mensagem">
+              <PropertyRef Name="men_id_men" />
+            </Principal>
+            <Dependent Role="cnu_controle_numeros">
+              <PropertyRef Name="cnu_id_men" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_tnu_cnu">
+          <End Role="tnu_tipo_numeracao" Type="Self.tnu_tipo_numeracao" Multiplicity="1" />
+          <End Role="cnu_controle_numeros" Type="Self.cnu_controle_numeros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tnu_tipo_numeracao">
+              <PropertyRef Name="tnu_id_tnu" />
+            </Principal>
+            <Dependent Role="cnu_controle_numeros">
+              <PropertyRef Name="cnu_id_tnu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_com_men">
+          <End Role="men_menu" Type="Self.men_menu" Multiplicity="1" />
+          <End Role="com_controle_menu" Type="Self.com_controle_menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="men_menu">
+              <PropertyRef Name="men_id_men" />
+            </Principal>
+            <Dependent Role="com_controle_menu">
+              <PropertyRef Name="com_id_men" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_men_dme">
+          <End Role="men_mensagem" Type="Self.men_mensagem" Multiplicity="1" />
+          <End Role="dme_destinatario_mensagem" Type="Self.dme_destinatario_mensagem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="men_mensagem">
+              <PropertyRef Name="men_id_men" />
+            </Principal>
+            <Dependent Role="dme_destinatario_mensagem">
+              <PropertyRef Name="dme_id_men" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_tde_dme">
+          <End Role="tde_tipo_destinatario" Type="Self.tde_tipo_destinatario" Multiplicity="1" />
+          <End Role="dme_destinatario_mensagem" Type="Self.dme_destinatario_mensagem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tde_tipo_destinatario">
+              <PropertyRef Name="tde_id_tde" />
+            </Principal>
+            <Dependent Role="dme_destinatario_mensagem">
+              <PropertyRef Name="dme_id_tde" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_men_max">
+          <End Role="men_mensagem" Type="Self.men_mensagem" Multiplicity="1" />
+          <End Role="max_mensagem_anexo" Type="Self.max_mensagem_anexo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="men_mensagem">
+              <PropertyRef Name="men_id_men" />
+            </Principal>
+            <Dependent Role="max_mensagem_anexo">
+              <PropertyRef Name="max_id_men" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_men_mde">
+          <End Role="men_mensagem" Type="Self.men_mensagem" Multiplicity="1" />
+          <End Role="mde_mensagem_detalhes" Type="Self.mde_mensagem_detalhes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="men_mensagem">
+              <PropertyRef Name="men_id_men" />
+            </Principal>
+            <Dependent Role="mde_mensagem_detalhes">
+              <PropertyRef Name="mde_id_men" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_men_mea">
+          <End Role="men_mensagem" Type="Self.men_mensagem" Multiplicity="1" />
+          <End Role="mea_mensagem_aprovada" Type="Self.mea_mensagem_aprovada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="men_mensagem">
+              <PropertyRef Name="men_id_men" />
+            </Principal>
+            <Dependent Role="mea_mensagem_aprovada">
+              <PropertyRef Name="mea_id_men" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_men_men_pai">
+          <End Role="men_mensagem" Type="Self.men_mensagem" Multiplicity="0..1" />
+          <End Role="men_mensagem1" Type="Self.men_mensagem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="men_mensagem">
+              <PropertyRef Name="men_id_men" />
+            </Principal>
+            <Dependent Role="men_mensagem1">
+              <PropertyRef Name="men_id_men_pai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_men_men_refer">
+          <End Role="men_mensagem" Type="Self.men_mensagem" Multiplicity="0..1" />
+          <End Role="men_mensagem1" Type="Self.men_mensagem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="men_mensagem">
+              <PropertyRef Name="men_id_men" />
+            </Principal>
+            <Dependent Role="men_mensagem1">
+              <PropertyRef Name="men_id_men_referencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_men_meq">
+          <End Role="men_mensagem" Type="Self.men_mensagem" Multiplicity="1" />
+          <End Role="meq_mensagem_arquivada" Type="Self.meq_mensagem_arquivada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="men_mensagem">
+              <PropertyRef Name="men_id_men" />
+            </Principal>
+            <Dependent Role="meq_mensagem_arquivada">
+              <PropertyRef Name="meq_id_men" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_men_rem">
+          <End Role="men_mensagem" Type="Self.men_mensagem" Multiplicity="0..1" />
+          <End Role="rem_remetente" Type="Self.rem_remetente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="men_mensagem">
+              <PropertyRef Name="men_id_men" />
+            </Principal>
+            <Dependent Role="rem_remetente">
+              <PropertyRef Name="rem_id_men" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_mra_men">
+          <End Role="men_mensagem" Type="Self.men_mensagem" Multiplicity="1" />
+          <End Role="mra_mensagem_rascunho" Type="Self.mra_mensagem_rascunho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="men_mensagem">
+              <PropertyRef Name="men_id_men" />
+            </Principal>
+            <Dependent Role="mra_mensagem_rascunho">
+              <PropertyRef Name="mra_id_men" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_sme_men">
+          <End Role="sme_status_mensagem" Type="Self.sme_status_mensagem" Multiplicity="1" />
+          <End Role="men_mensagem" Type="Self.men_mensagem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sme_status_mensagem">
+              <PropertyRef Name="sme_id_sme" />
+            </Principal>
+            <Dependent Role="men_mensagem">
+              <PropertyRef Name="men_id_sme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_tme_men">
+          <End Role="tme_tipo_mensagem" Type="Self.tme_tipo_mensagem" Multiplicity="1" />
+          <End Role="men_mensagem" Type="Self.men_mensagem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tme_tipo_mensagem">
+              <PropertyRef Name="tme_id_tme" />
+            </Principal>
+            <Dependent Role="men_mensagem">
+              <PropertyRef Name="men_id_tme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_pem_men">
+          <End Role="men_menu" Type="Self.men_menu" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="pem_perfil_menu" Type="Self.pem_perfil_menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="men_menu">
+              <PropertyRef Name="men_id_men" />
+            </Principal>
+            <Dependent Role="pem_perfil_menu">
+              <PropertyRef Name="pem_id_men" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_ume_men">
+          <End Role="men_menu" Type="Self.men_menu" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ume_usuario_menu" Type="Self.ume_usuario_menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="men_menu">
+              <PropertyRef Name="men_id_men" />
+            </Principal>
+            <Dependent Role="ume_usuario_menu">
+              <PropertyRef Name="ume_id_men" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbContextCiEletronica" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ase_aprovacao_setor" EntityType="Self.ase_aprovacao_setor" />
+          <EntitySet Name="ass_assinatura" EntityType="Self.ass_assinatura" />
+          <EntitySet Name="cas_controle_acesso" EntityType="Self.cas_controle_acesso" />
+          <EntitySet Name="cnu_controle_numeros" EntityType="Self.cnu_controle_numeros" />
+          <EntitySet Name="com_controle_menu" EntityType="Self.com_controle_menu" />
+          <EntitySet Name="dme_destinatario_mensagem" EntityType="Self.dme_destinatario_mensagem" />
+          <EntitySet Name="los_log_sistema" EntityType="Self.los_log_sistema" />
+          <EntitySet Name="max_mensagem_anexo" EntityType="Self.max_mensagem_anexo" />
+          <EntitySet Name="mde_mensagem_detalhes" EntityType="Self.mde_mensagem_detalhes" />
+          <EntitySet Name="mea_mensagem_aprovada" EntityType="Self.mea_mensagem_aprovada" />
+          <EntitySet Name="men_mensagem" EntityType="Self.men_mensagem" />
+          <EntitySet Name="men_menu" EntityType="Self.men_menu" />
+          <EntitySet Name="meq_mensagem_arquivada" EntityType="Self.meq_mensagem_arquivada" />
+          <EntitySet Name="mra_mensagem_rascunho" EntityType="Self.mra_mensagem_rascunho" />
+          <EntitySet Name="par_parametro" EntityType="Self.par_parametro" />
+          <EntitySet Name="pem_perfil_menu" EntityType="Self.pem_perfil_menu" />
+          <EntitySet Name="rem_remetente" EntityType="Self.rem_remetente" />
+          <EntitySet Name="sme_status_mensagem" EntityType="Self.sme_status_mensagem" />
+          <EntitySet Name="tde_tipo_destinatario" EntityType="Self.tde_tipo_destinatario" />
+          <EntitySet Name="tme_tipo_mensagem" EntityType="Self.tme_tipo_mensagem" />
+          <EntitySet Name="tnu_tipo_numeracao" EntityType="Self.tnu_tipo_numeracao" />
+          <EntitySet Name="uac_usuario_acesso" EntityType="Self.uac_usuario_acesso" />
+          <EntitySet Name="uau_usuario_autorizado" EntityType="Self.uau_usuario_autorizado" />
+          <EntitySet Name="ume_usuario_menu" EntityType="Self.ume_usuario_menu" />
+          <EntitySet Name="ard_arvore_destinatario" EntityType="Self.ard_arvore_destinatario" />
+          <EntitySet Name="v_mah_mensagem_arquivada_historico" EntityType="Self.v_mah_mensagem_arquivada_historico" />
+          <EntitySet Name="v_map_mensagem_pai_filha_aprovacao" EntityType="Self.v_map_mensagem_pai_filha_aprovacao" />
+          <EntitySet Name="v_mau_mensagem_arquivamento_usuario" EntityType="Self.v_mau_mensagem_arquivamento_usuario" />
+          <EntitySet Name="v_mce_mensagem_caixa_entrada" EntityType="Self.v_mce_mensagem_caixa_entrada" />
+          <EntitySet Name="v_mfa_mensagem_pai_filha_arquivada" EntityType="Self.v_mfa_mensagem_pai_filha_arquivada" />
+          <EntitySet Name="v_mfp_mensagem_pai_filha_pendencia" EntityType="Self.v_mfp_mensagem_pai_filha_pendencia" />
+          <EntitySet Name="v_mfv_mensagem_pai_filha_valida" EntityType="Self.v_mfv_mensagem_pai_filha_valida" />
+          <EntitySet Name="v_mnl_mensagem_nao_lida" EntityType="Self.v_mnl_mensagem_nao_lida" />
+          <EntitySet Name="v_mns_mensagem_nao_lida_setor" EntityType="Self.v_mns_mensagem_nao_lida_setor" />
+          <EntitySet Name="v_mpa_mensagem_pendente_aprovacao" EntityType="Self.v_mpa_mensagem_pendente_aprovacao" />
+          <EntitySet Name="v_mpc_mensagem_pai_caixa_entrada" EntityType="Self.v_mpc_mensagem_pai_caixa_entrada" />
+          <EntitySet Name="v_mpl_mensagem_pai_nao_lida" EntityType="Self.v_mpl_mensagem_pai_nao_lida" />
+          <EntitySet Name="v_mpp_mensagem_pedente_aprovacao_pai" EntityType="Self.v_mpp_mensagem_pedente_aprovacao_pai" />
+          <EntitySet Name="v_nlp_notificacao_nao_lida_pendente" EntityType="Self.v_nlp_notificacao_nao_lida_pendente" />
+          <EntitySet Name="v_nls_notificacao_nao_lida_setor" EntityType="Self.v_nls_notificacao_nao_lida_setor" />
+          <EntitySet Name="v_nnl_notificacao_nao_lida" EntityType="Self.v_nnl_notificacao_nao_lida" />
+          <EntitySet Name="v_npa_notificacao_pendente_aprovacao" EntityType="Self.v_npa_notificacao_pendente_aprovacao" />
+          <EntitySet Name="v_nps_notificacao_pendente_aprovacao_setor" EntityType="Self.v_nps_notificacao_pendente_aprovacao_setor" />
+          <EntitySet Name="v_qef_quantitativo_efetivo_mensagem_filha" EntityType="Self.v_qef_quantitativo_efetivo_mensagem_filha" />
+          <EntitySet Name="v_qfv_quantitativo_mensagem_filha_valida" EntityType="Self.v_qfv_quantitativo_mensagem_filha_valida" />
+          <EntitySet Name="v_qmd_quantitativo_mensagem_destinatario" EntityType="Self.v_qmd_quantitativo_mensagem_destinatario" />
+          <EntitySet Name="v_qmp_quantitativo_mensagem_nao_lida_pai" EntityType="Self.v_qmp_quantitativo_mensagem_nao_lida_pai" />
+          <EntitySet Name="v_qpa_quantitativo_pendente_aprovacao_pai" EntityType="Self.v_qpa_quantitativo_pendente_aprovacao_pai" />
+          <EntitySet Name="v_ush_usuario_autorizado_historico" EntityType="Self.v_ush_usuario_autorizado_historico" />
+          <AssociationSet Name="R_com_cas" Association="Self.R_com_cas">
+            <End Role="cas_controle_acesso" EntitySet="cas_controle_acesso" />
+            <End Role="com_controle_menu" EntitySet="com_controle_menu" />
+          </AssociationSet>
+          <AssociationSet Name="R_men_cnu" Association="Self.R_men_cnu">
+            <End Role="men_mensagem" EntitySet="men_mensagem" />
+            <End Role="cnu_controle_numeros" EntitySet="cnu_controle_numeros" />
+          </AssociationSet>
+          <AssociationSet Name="R_tnu_cnu" Association="Self.R_tnu_cnu">
+            <End Role="tnu_tipo_numeracao" EntitySet="tnu_tipo_numeracao" />
+            <End Role="cnu_controle_numeros" EntitySet="cnu_controle_numeros" />
+          </AssociationSet>
+          <AssociationSet Name="R_com_men" Association="Self.R_com_men">
+            <End Role="men_menu" EntitySet="men_menu" />
+            <End Role="com_controle_menu" EntitySet="com_controle_menu" />
+          </AssociationSet>
+          <AssociationSet Name="R_men_dme" Association="Self.R_men_dme">
+            <End Role="men_mensagem" EntitySet="men_mensagem" />
+            <End Role="dme_destinatario_mensagem" EntitySet="dme_destinatario_mensagem" />
+          </AssociationSet>
+          <AssociationSet Name="R_tde_dme" Association="Self.R_tde_dme">
+            <End Role="tde_tipo_destinatario" EntitySet="tde_tipo_destinatario" />
+            <End Role="dme_destinatario_mensagem" EntitySet="dme_destinatario_mensagem" />
+          </AssociationSet>
+          <AssociationSet Name="R_men_max" Association="Self.R_men_max">
+            <End Role="men_mensagem" EntitySet="men_mensagem" />
+            <End Role="max_mensagem_anexo" EntitySet="max_mensagem_anexo" />
+          </AssociationSet>
+          <AssociationSet Name="R_men_mde" Association="Self.R_men_mde">
+            <End Role="men_mensagem" EntitySet="men_mensagem" />
+            <End Role="mde_mensagem_detalhes" EntitySet="mde_mensagem_detalhes" />
+          </AssociationSet>
+          <AssociationSet Name="R_men_mea" Association="Self.R_men_mea">
+            <End Role="men_mensagem" EntitySet="men_mensagem" />
+            <End Role="mea_mensagem_aprovada" EntitySet="mea_mensagem_aprovada" />
+          </AssociationSet>
+          <AssociationSet Name="R_men_men_pai" Association="Self.R_men_men_pai">
+            <End Role="men_mensagem" EntitySet="men_mensagem" />
+            <End Role="men_mensagem1" EntitySet="men_mensagem" />
+          </AssociationSet>
+          <AssociationSet Name="R_men_men_refer" Association="Self.R_men_men_refer">
+            <End Role="men_mensagem" EntitySet="men_mensagem" />
+            <End Role="men_mensagem1" EntitySet="men_mensagem" />
+          </AssociationSet>
+          <AssociationSet Name="R_men_meq" Association="Self.R_men_meq">
+            <End Role="men_mensagem" EntitySet="men_mensagem" />
+            <End Role="meq_mensagem_arquivada" EntitySet="meq_mensagem_arquivada" />
+          </AssociationSet>
+          <AssociationSet Name="R_men_rem" Association="Self.R_men_rem">
+            <End Role="men_mensagem" EntitySet="men_mensagem" />
+            <End Role="rem_remetente" EntitySet="rem_remetente" />
+          </AssociationSet>
+          <AssociationSet Name="R_mra_men" Association="Self.R_mra_men">
+            <End Role="men_mensagem" EntitySet="men_mensagem" />
+            <End Role="mra_mensagem_rascunho" EntitySet="mra_mensagem_rascunho" />
+          </AssociationSet>
+          <AssociationSet Name="R_sme_men" Association="Self.R_sme_men">
+            <End Role="sme_status_mensagem" EntitySet="sme_status_mensagem" />
+            <End Role="men_mensagem" EntitySet="men_mensagem" />
+          </AssociationSet>
+          <AssociationSet Name="R_tme_men" Association="Self.R_tme_men">
+            <End Role="tme_tipo_mensagem" EntitySet="tme_tipo_mensagem" />
+            <End Role="men_mensagem" EntitySet="men_mensagem" />
+          </AssociationSet>
+          <AssociationSet Name="R_pem_men" Association="Self.R_pem_men">
+            <End Role="men_menu" EntitySet="men_menu" />
+            <End Role="pem_perfil_menu" EntitySet="pem_perfil_menu" />
+          </AssociationSet>
+          <AssociationSet Name="R_ume_men" Association="Self.R_ume_men">
+            <End Role="men_menu" EntitySet="men_menu" />
+            <End Role="ume_usuario_menu" EntitySet="ume_usuario_menu" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CiEletronicaStoreContainer" CdmEntityContainer="DbContextCiEletronica">
+          <EntitySetMapping Name="ase_aprovacao_setor">
+            <EntityTypeMapping TypeName="CiEletronica.ase_aprovacao_setor">
+              <MappingFragment StoreEntitySet="ase_aprovacao_setor">
+                <ScalarProperty Name="ase_id_ase" ColumnName="ase_id_ase" />
+                <ScalarProperty Name="ase_id_set" ColumnName="ase_id_set" />
+                <ScalarProperty Name="ase_dti_aprovacao" ColumnName="ase_dti_aprovacao" />
+                <ScalarProperty Name="ase_dtf_aprovacao" ColumnName="ase_dtf_aprovacao" />
+                <ScalarProperty Name="ase_dat_cadastro" ColumnName="ase_dat_cadastro" />
+                <ScalarProperty Name="ase_id_use_cadastro" ColumnName="ase_id_use_cadastro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ass_assinatura">
+            <EntityTypeMapping TypeName="CiEletronica.ass_assinatura">
+              <MappingFragment StoreEntitySet="ass_assinatura">
+                <ScalarProperty Name="ass_id_ass" ColumnName="ass_id_ass" />
+                <ScalarProperty Name="ass_des_assinatura" ColumnName="ass_des_assinatura" />
+                <ScalarProperty Name="ass_id_use" ColumnName="ass_id_use" />
+                <ScalarProperty Name="ass_flg_atualizado" ColumnName="ass_flg_atualizado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cas_controle_acesso">
+            <EntityTypeMapping TypeName="CiEletronica.cas_controle_acesso">
+              <MappingFragment StoreEntitySet="cas_controle_acesso">
+                <ScalarProperty Name="cas_id_cas" ColumnName="cas_id_cas" />
+                <ScalarProperty Name="cas_id_ip" ColumnName="cas_id_ip" />
+                <ScalarProperty Name="cas_nom_maquina" ColumnName="cas_nom_maquina" />
+                <ScalarProperty Name="cas_id_use" ColumnName="cas_id_use" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cnu_controle_numeros">
+            <EntityTypeMapping TypeName="CiEletronica.cnu_controle_numeros">
+              <MappingFragment StoreEntitySet="cnu_controle_numeros">
+                <ScalarProperty Name="cnu_id_cnu" ColumnName="cnu_id_cnu" />
+                <ScalarProperty Name="cnu_num_ci" ColumnName="cnu_num_ci" />
+                <ScalarProperty Name="cnu_num_controle" ColumnName="cnu_num_controle" />
+                <ScalarProperty Name="cnu_dat_cadastro" ColumnName="cnu_dat_cadastro" />
+                <ScalarProperty Name="cnu_id_tnu" ColumnName="cnu_id_tnu" />
+                <ScalarProperty Name="cnu_id_men" ColumnName="cnu_id_men" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="com_controle_menu">
+            <EntityTypeMapping TypeName="CiEletronica.com_controle_menu">
+              <MappingFragment StoreEntitySet="com_controle_menu">
+                <ScalarProperty Name="com_id_com" ColumnName="com_id_com" />
+                <ScalarProperty Name="com_id_cas" ColumnName="com_id_cas" />
+                <ScalarProperty Name="com_id_men" ColumnName="com_id_men" />
+                <ScalarProperty Name="com_dat_acesso" ColumnName="com_dat_acesso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dme_destinatario_mensagem">
+            <EntityTypeMapping TypeName="CiEletronica.dme_destinatario_mensagem">
+              <MappingFragment StoreEntitySet="dme_destinatario_mensagem">
+                <ScalarProperty Name="dme_id_dme" ColumnName="dme_id_dme" />
+                <ScalarProperty Name="dme_id_tde" ColumnName="dme_id_tde" />
+                <ScalarProperty Name="dme_id_men" ColumnName="dme_id_men" />
+                <ScalarProperty Name="dme_id_use" ColumnName="dme_id_use" />
+                <ScalarProperty Name="dme_dat_leitura" ColumnName="dme_dat_leitura" />
+                <ScalarProperty Name="dme_flg_leitura" ColumnName="dme_flg_leitura" />
+                <ScalarProperty Name="dme_flg_msg_automatica" ColumnName="dme_flg_msg_automatica" />
+                <ScalarProperty Name="dme_dat_cadastro" ColumnName="dme_dat_cadastro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="los_log_sistema">
+            <EntityTypeMapping TypeName="CiEletronica.los_log_sistema">
+              <MappingFragment StoreEntitySet="los_log_sistema">
+                <ScalarProperty Name="los_id_los" ColumnName="los_id_los" />
+                <ScalarProperty Name="los_num_nivel" ColumnName="los_num_nivel" />
+                <ScalarProperty Name="los_nom_categoria" ColumnName="los_nom_categoria" />
+                <ScalarProperty Name="los_log_time" ColumnName="los_log_time" />
+                <ScalarProperty Name="los_des_mensagem" ColumnName="los_des_mensagem" />
+                <ScalarProperty Name="los_id_usu" ColumnName="los_id_usu" />
+                <ScalarProperty Name="los_data_hora" ColumnName="los_data_hora" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="max_mensagem_anexo">
+            <EntityTypeMapping TypeName="CiEletronica.max_mensagem_anexo">
+              <MappingFragment StoreEntitySet="max_mensagem_anexo">
+                <ScalarProperty Name="max_id_max" ColumnName="max_id_max" />
+                <ScalarProperty Name="max_nom_arquivo" ColumnName="max_nom_arquivo" />
+                <ScalarProperty Name="max_num_tamanho" ColumnName="max_num_tamanho" />
+                <ScalarProperty Name="max_bin_arquivo" ColumnName="max_bin_arquivo" />
+                <ScalarProperty Name="max_nom_tipo" ColumnName="max_nom_tipo" />
+                <ScalarProperty Name="max_url_caminho" ColumnName="max_url_caminho" />
+                <ScalarProperty Name="max_dat_cadastro" ColumnName="max_dat_cadastro" />
+                <ScalarProperty Name="max_id_men" ColumnName="max_id_men" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mde_mensagem_detalhes">
+            <EntityTypeMapping TypeName="CiEletronica.mde_mensagem_detalhes">
+              <MappingFragment StoreEntitySet="mde_mensagem_detalhes">
+                <ScalarProperty Name="mde_id_mde" ColumnName="mde_id_mde" />
+                <ScalarProperty Name="mde_flg_importante" ColumnName="mde_flg_importante" />
+                <ScalarProperty Name="mde_id_men" ColumnName="mde_id_men" />
+                <ScalarProperty Name="mde_id_use" ColumnName="mde_id_use" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mea_mensagem_aprovada">
+            <EntityTypeMapping TypeName="CiEletronica.mea_mensagem_aprovada">
+              <MappingFragment StoreEntitySet="mea_mensagem_aprovada">
+                <ScalarProperty Name="mea_id_mea" ColumnName="mea_id_mea" />
+                <ScalarProperty Name="mea_id_men" ColumnName="mea_id_men" />
+                <ScalarProperty Name="mea_flg_mensagem_aprovada" ColumnName="mea_flg_mensagem_aprovada" />
+                <ScalarProperty Name="mea_flg_reavaliacao" ColumnName="mea_flg_reavaliacao" />
+                <ScalarProperty Name="mea_des_motivo" ColumnName="mea_des_motivo" />
+                <ScalarProperty Name="mea_dat_registro" ColumnName="mea_dat_registro" />
+                <ScalarProperty Name="mea_id_use" ColumnName="mea_id_use" />
+                <ScalarProperty Name="mea_id_use_secretaria" ColumnName="mea_id_use_secretaria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="men_mensagem">
+            <EntityTypeMapping TypeName="CiEletronica.men_mensagem">
+              <MappingFragment StoreEntitySet="men_mensagem">
+                <ScalarProperty Name="men_id_men" ColumnName="men_id_men" />
+                <ScalarProperty Name="men_num_autenticacao" ColumnName="men_num_autenticacao" />
+                <ScalarProperty Name="men_nom_titulo" ColumnName="men_nom_titulo" />
+                <ScalarProperty Name="men_des_mensagem" ColumnName="men_des_mensagem" />
+                <ScalarProperty Name="men_id_tme" ColumnName="men_id_tme" />
+                <ScalarProperty Name="men_dat_cadastro" ColumnName="men_dat_cadastro" />
+                <ScalarProperty Name="men_id_men_referencia" ColumnName="men_id_men_referencia" />
+                <ScalarProperty Name="men_id_men_pai" ColumnName="men_id_men_pai" />
+                <ScalarProperty Name="men_flg_aprovacao" ColumnName="men_flg_aprovacao" />
+                <ScalarProperty Name="men_id_sme" ColumnName="men_id_sme" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="men_menu">
+            <EntityTypeMapping TypeName="CiEletronica.men_menu">
+              <MappingFragment StoreEntitySet="men_menu">
+                <ScalarProperty Name="men_id_men" ColumnName="men_id_men" />
+                <ScalarProperty Name="men_nom_menu" ColumnName="men_nom_menu" />
+                <ScalarProperty Name="men_htm_icon" ColumnName="men_htm_icon" />
+                <ScalarProperty Name="men_nom_action" ColumnName="men_nom_action" />
+                <ScalarProperty Name="men_nom_controller" ColumnName="men_nom_controller" />
+                <ScalarProperty Name="men_flg_menu_guest" ColumnName="men_flg_menu_guest" />
+                <ScalarProperty Name="men_flg_menu_admin" ColumnName="men_flg_menu_admin" />
+                <ScalarProperty Name="men_flg_modulo" ColumnName="men_flg_modulo" />
+                <ScalarProperty Name="men_flg_ativo" ColumnName="men_flg_ativo" />
+                <ScalarProperty Name="men_id_men_pai" ColumnName="men_id_men_pai" />
+                <ScalarProperty Name="men_num_posicao" ColumnName="men_num_posicao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="meq_mensagem_arquivada">
+            <EntityTypeMapping TypeName="CiEletronica.meq_mensagem_arquivada">
+              <MappingFragment StoreEntitySet="meq_mensagem_arquivada">
+                <ScalarProperty Name="meq_id_meq" ColumnName="meq_id_meq" />
+                <ScalarProperty Name="meq_id_men" ColumnName="meq_id_men" />
+                <ScalarProperty Name="meq_id_use" ColumnName="meq_id_use" />
+                <ScalarProperty Name="meq_flg_arquivada" ColumnName="meq_flg_arquivada" />
+                <ScalarProperty Name="meq_des_motivo_geral" ColumnName="meq_des_motivo_geral" />
+                <ScalarProperty Name="meq_dat_cancelamento" ColumnName="meq_dat_cancelamento" />
+                <ScalarProperty Name="meq_dat_arquivamento" ColumnName="meq_dat_arquivamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mra_mensagem_rascunho">
+            <EntityTypeMapping TypeName="CiEletronica.mra_mensagem_rascunho">
+              <MappingFragment StoreEntitySet="mra_mensagem_rascunho">
+                <ScalarProperty Name="mra_id_mra" ColumnName="mra_id_mra" />
+                <ScalarProperty Name="mra_id_men" ColumnName="mra_id_men" />
+                <ScalarProperty Name="mra_ids_use_dest" ColumnName="mra_ids_use_dest" />
+                <ScalarProperty Name="mra_ids_use_dest_copia" ColumnName="mra_ids_use_dest_copia" />
+                <ScalarProperty Name="mra_ids_apensamentos" ColumnName="mra_ids_apensamentos" />
+                <ScalarProperty Name="mra_dat_rascunho" ColumnName="mra_dat_rascunho" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="par_parametro">
+            <EntityTypeMapping TypeName="CiEletronica.par_parametro">
+              <MappingFragment StoreEntitySet="par_parametro">
+                <ScalarProperty Name="par_nom_parametro" ColumnName="par_nom_parametro" />
+                <ScalarProperty Name="par_des_retorno" ColumnName="par_des_retorno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pem_perfil_menu">
+            <EntityTypeMapping TypeName="CiEletronica.pem_perfil_menu">
+              <MappingFragment StoreEntitySet="pem_perfil_menu">
+                <ScalarProperty Name="pem_id_pem" ColumnName="pem_id_pem" />
+                <ScalarProperty Name="pem_id_pus" ColumnName="pem_id_pus" />
+                <ScalarProperty Name="pem_id_men" ColumnName="pem_id_men" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rem_remetente">
+            <EntityTypeMapping TypeName="CiEletronica.rem_remetente">
+              <MappingFragment StoreEntitySet="rem_remetente">
+                <ScalarProperty Name="rem_id_rem" ColumnName="rem_id_rem" />
+                <ScalarProperty Name="rem_dat_cadastro" ColumnName="rem_dat_cadastro" />
+                <ScalarProperty Name="rem_id_men" ColumnName="rem_id_men" />
+                <ScalarProperty Name="rem_id_use" ColumnName="rem_id_use" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sme_status_mensagem">
+            <EntityTypeMapping TypeName="CiEletronica.sme_status_mensagem">
+              <MappingFragment StoreEntitySet="sme_status_mensagem">
+                <ScalarProperty Name="sme_id_sme" ColumnName="sme_id_sme" />
+                <ScalarProperty Name="sme_nom_status" ColumnName="sme_nom_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tde_tipo_destinatario">
+            <EntityTypeMapping TypeName="CiEletronica.tde_tipo_destinatario">
+              <MappingFragment StoreEntitySet="tde_tipo_destinatario">
+                <ScalarProperty Name="tde_id_tde" ColumnName="tde_id_tde" />
+                <ScalarProperty Name="tde_nom_tipo_destinatario" ColumnName="tde_nom_tipo_destinatario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tme_tipo_mensagem">
+            <EntityTypeMapping TypeName="CiEletronica.tme_tipo_mensagem">
+              <MappingFragment StoreEntitySet="tme_tipo_mensagem">
+                <ScalarProperty Name="tme_id_tme" ColumnName="tme_id_tme" />
+                <ScalarProperty Name="tme_nom_tipo" ColumnName="tme_nom_tipo" />
+                <ScalarProperty Name="tme_nom_tipo_curto" ColumnName="tme_nom_tipo_curto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tnu_tipo_numeracao">
+            <EntityTypeMapping TypeName="CiEletronica.tnu_tipo_numeracao">
+              <MappingFragment StoreEntitySet="tnu_tipo_numeracao">
+                <ScalarProperty Name="tnu_id_tnu" ColumnName="tnu_id_tnu" />
+                <ScalarProperty Name="tnu_nom_tipo" ColumnName="tnu_nom_tipo" />
+                <ScalarProperty Name="tnu_flg_ci" ColumnName="tnu_flg_ci" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="uac_usuario_acesso">
+            <EntityTypeMapping TypeName="CiEletronica.uac_usuario_acesso">
+              <MappingFragment StoreEntitySet="uac_usuario_acesso">
+                <ScalarProperty Name="uac_id_uac" ColumnName="uac_id_uac" />
+                <ScalarProperty Name="uac_id_usu" ColumnName="uac_id_usu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="uau_usuario_autorizado">
+            <EntityTypeMapping TypeName="CiEletronica.uau_usuario_autorizado">
+              <MappingFragment StoreEntitySet="uau_usuario_autorizado">
+                <ScalarProperty Name="uau_id_uau" ColumnName="uau_id_uau" />
+                <ScalarProperty Name="uau_id_pus" ColumnName="uau_id_pus" />
+                <ScalarProperty Name="uau_id_use" ColumnName="uau_id_use" />
+                <ScalarProperty Name="uau_id_set" ColumnName="uau_id_set" />
+                <ScalarProperty Name="uau_dti_autorizacao" ColumnName="uau_dti_autorizacao" />
+                <ScalarProperty Name="uau_dtf_autorizacao" ColumnName="uau_dtf_autorizacao" />
+                <ScalarProperty Name="uau_dat_cadastro" ColumnName="uau_dat_cadastro" />
+                <ScalarProperty Name="uau_id_use_cadastro" ColumnName="uau_id_use_cadastro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ume_usuario_menu">
+            <EntityTypeMapping TypeName="CiEletronica.ume_usuario_menu">
+              <MappingFragment StoreEntitySet="ume_usuario_menu">
+                <ScalarProperty Name="ume_id_ume" ColumnName="ume_id_ume" />
+                <ScalarProperty Name="ume_id_usu" ColumnName="ume_id_usu" />
+                <ScalarProperty Name="ume_id_men" ColumnName="ume_id_men" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ard_arvore_destinatario">
+            <EntityTypeMapping TypeName="CiEletronica.ard_arvore_destinatario">
+              <MappingFragment StoreEntitySet="ard_arvore_destinatario">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="root" ColumnName="root" />
+                <ScalarProperty Name="lft" ColumnName="lft" />
+                <ScalarProperty Name="rgt" ColumnName="rgt" />
+                <ScalarProperty Name="lvl" ColumnName="lvl" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="flg_gestor" ColumnName="flg_gestor" />
+                <ScalarProperty Name="icon" ColumnName="icon" />
+                <ScalarProperty Name="icon_type" ColumnName="icon_type" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="selected" ColumnName="selected" />
+                <ScalarProperty Name="disabled" ColumnName="disabled" />
+                <ScalarProperty Name="readonly" ColumnName="readonly" />
+                <ScalarProperty Name="visible" ColumnName="visible" />
+                <ScalarProperty Name="collapsed" ColumnName="collapsed" />
+                <ScalarProperty Name="movable_u" ColumnName="movable_u" />
+                <ScalarProperty Name="movable_d" ColumnName="movable_d" />
+                <ScalarProperty Name="movable_l" ColumnName="movable_l" />
+                <ScalarProperty Name="movable_r" ColumnName="movable_r" />
+                <ScalarProperty Name="removable" ColumnName="removable" />
+                <ScalarProperty Name="removable_all" ColumnName="removable_all" />
+                <ScalarProperty Name="id_setor" ColumnName="id_setor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_mah_mensagem_arquivada_historico">
+            <EntityTypeMapping TypeName="CiEletronica.v_mah_mensagem_arquivada_historico">
+              <MappingFragment StoreEntitySet="v_mah_mensagem_arquivada_historico">
+                <ScalarProperty Name="mah_id_men" ColumnName="mah_id_men" />
+                <ScalarProperty Name="mah_id_use" ColumnName="mah_id_use" />
+                <ScalarProperty Name="mah_id_meq" ColumnName="mah_id_meq" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_map_mensagem_pai_filha_aprovacao">
+            <EntityTypeMapping TypeName="CiEletronica.v_map_mensagem_pai_filha_aprovacao">
+              <MappingFragment StoreEntitySet="v_map_mensagem_pai_filha_aprovacao">
+                <ScalarProperty Name="map_id_use" ColumnName="map_id_use" />
+                <ScalarProperty Name="map_id_men_pai" ColumnName="map_id_men_pai" />
+                <ScalarProperty Name="map_id_men" ColumnName="map_id_men" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_mau_mensagem_arquivamento_usuario">
+            <EntityTypeMapping TypeName="CiEletronica.v_mau_mensagem_arquivamento_usuario">
+              <MappingFragment StoreEntitySet="v_mau_mensagem_arquivamento_usuario">
+                <ScalarProperty Name="qef_id_use" ColumnName="qef_id_use" />
+                <ScalarProperty Name="qef_id_men_pai" ColumnName="qef_id_men_pai" />
+                <ScalarProperty Name="qef_id_men" ColumnName="qef_id_men" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_mce_mensagem_caixa_entrada">
+            <EntityTypeMapping TypeName="CiEletronica.v_mce_mensagem_caixa_entrada">
+              <MappingFragment StoreEntitySet="v_mce_mensagem_caixa_entrada">
+                <ScalarProperty Name="mce_id_use" ColumnName="mce_id_use" />
+                <ScalarProperty Name="mce_id_set_gerenciador" ColumnName="mce_id_set_gerenciador" />
+                <ScalarProperty Name="mce_id_men_pai" ColumnName="mce_id_men_pai" />
+                <ScalarProperty Name="mce_id_men" ColumnName="mce_id_men" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_mfa_mensagem_pai_filha_arquivada">
+            <EntityTypeMapping TypeName="CiEletronica.v_mfa_mensagem_pai_filha_arquivada">
+              <MappingFragment StoreEntitySet="v_mfa_mensagem_pai_filha_arquivada">
+                <ScalarProperty Name="mfa_id_use" ColumnName="mfa_id_use" />
+                <ScalarProperty Name="mfa_id_set_gerenciador" ColumnName="mfa_id_set_gerenciador" />
+                <ScalarProperty Name="mfa_id_men_pai" ColumnName="mfa_id_men_pai" />
+                <ScalarProperty Name="mfa_id_men" ColumnName="mfa_id_men" />
+                <ScalarProperty Name="mfa_flg_pendente_aprovacao" ColumnName="mfa_flg_pendente_aprovacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_mfp_mensagem_pai_filha_pendencia">
+            <EntityTypeMapping TypeName="CiEletronica.v_mfp_mensagem_pai_filha_pendencia">
+              <MappingFragment StoreEntitySet="v_mfp_mensagem_pai_filha_pendencia">
+                <ScalarProperty Name="mfp_id_use" ColumnName="mfp_id_use" />
+                <ScalarProperty Name="mfp_id_set_gerenciador" ColumnName="mfp_id_set_gerenciador" />
+                <ScalarProperty Name="mfp_id_men_pai" ColumnName="mfp_id_men_pai" />
+                <ScalarProperty Name="mfp_id_men" ColumnName="mfp_id_men" />
+                <ScalarProperty Name="mfp_flg_pendente_aprovacao" ColumnName="mfp_flg_pendente_aprovacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_mfv_mensagem_pai_filha_valida">
+            <EntityTypeMapping TypeName="CiEletronica.v_mfv_mensagem_pai_filha_valida">
+              <MappingFragment StoreEntitySet="v_mfv_mensagem_pai_filha_valida">
+                <ScalarProperty Name="mfv_id_use" ColumnName="mfv_id_use" />
+                <ScalarProperty Name="mfv_id_men_pai" ColumnName="mfv_id_men_pai" />
+                <ScalarProperty Name="mfv_id_men" ColumnName="mfv_id_men" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_mnl_mensagem_nao_lida">
+            <EntityTypeMapping TypeName="CiEletronica.v_mnl_mensagem_nao_lida">
+              <MappingFragment StoreEntitySet="v_mnl_mensagem_nao_lida">
+                <ScalarProperty Name="mnl_id_use" ColumnName="mnl_id_use" />
+                <ScalarProperty Name="mnl_id_set_gerenciador" ColumnName="mnl_id_set_gerenciador" />
+                <ScalarProperty Name="mnl_id_men_pai" ColumnName="mnl_id_men_pai" />
+                <ScalarProperty Name="mnl_id_men" ColumnName="mnl_id_men" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_mns_mensagem_nao_lida_setor">
+            <EntityTypeMapping TypeName="CiEletronica.v_mns_mensagem_nao_lida_setor">
+              <MappingFragment StoreEntitySet="v_mns_mensagem_nao_lida_setor">
+                <ScalarProperty Name="mns_id_set_gerenciador" ColumnName="mns_id_set_gerenciador" />
+                <ScalarProperty Name="mns_id_men_pai" ColumnName="mns_id_men_pai" />
+                <ScalarProperty Name="mns_id_men" ColumnName="mns_id_men" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_mpa_mensagem_pendente_aprovacao">
+            <EntityTypeMapping TypeName="CiEletronica.v_mpa_mensagem_pendente_aprovacao">
+              <MappingFragment StoreEntitySet="v_mpa_mensagem_pendente_aprovacao">
+                <ScalarProperty Name="mpa_id_set_gerenciador" ColumnName="mpa_id_set_gerenciador" />
+                <ScalarProperty Name="mpa_id_men_pai" ColumnName="mpa_id_men_pai" />
+                <ScalarProperty Name="mpa_id_men" ColumnName="mpa_id_men" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_mpc_mensagem_pai_caixa_entrada">
+            <EntityTypeMapping TypeName="CiEletronica.v_mpc_mensagem_pai_caixa_entrada">
+              <MappingFragment StoreEntitySet="v_mpc_mensagem_pai_caixa_entrada">
+                <ScalarProperty Name="mpc_id_use" ColumnName="mpc_id_use" />
+                <ScalarProperty Name="mpc_id_set_gerenciador" ColumnName="mpc_id_set_gerenciador" />
+                <ScalarProperty Name="mpc_id_men_pai" ColumnName="mpc_id_men_pai" />
+                <ScalarProperty Name="mpc_id_men_ultima" ColumnName="mpc_id_men_ultima" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_mpl_mensagem_pai_nao_lida">
+            <EntityTypeMapping TypeName="CiEletronica.v_mpl_mensagem_pai_nao_lida">
+              <MappingFragment StoreEntitySet="v_mpl_mensagem_pai_nao_lida">
+                <ScalarProperty Name="mpl_id_use" ColumnName="mpl_id_use" />
+                <ScalarProperty Name="mpl_id_set_gerenciador" ColumnName="mpl_id_set_gerenciador" />
+                <ScalarProperty Name="mpl_id_men_pai" ColumnName="mpl_id_men_pai" />
+                <ScalarProperty Name="mpl_id_men_ultima" ColumnName="mpl_id_men_ultima" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_mpp_mensagem_pedente_aprovacao_pai">
+            <EntityTypeMapping TypeName="CiEletronica.v_mpp_mensagem_pedente_aprovacao_pai">
+              <MappingFragment StoreEntitySet="v_mpp_mensagem_pedente_aprovacao_pai">
+                <ScalarProperty Name="mpp_id_set_gerenciador" ColumnName="mpp_id_set_gerenciador" />
+                <ScalarProperty Name="mpp_id_men_pai" ColumnName="mpp_id_men_pai" />
+                <ScalarProperty Name="mpp_id_men_ultima" ColumnName="mpp_id_men_ultima" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_nlp_notificacao_nao_lida_pendente">
+            <EntityTypeMapping TypeName="CiEletronica.v_nlp_notificacao_nao_lida_pendente">
+              <MappingFragment StoreEntitySet="v_nlp_notificacao_nao_lida_pendente">
+                <ScalarProperty Name="nlp_id_use" ColumnName="nlp_id_use" />
+                <ScalarProperty Name="nlp_qtd_nao_lida_pendente" ColumnName="nlp_qtd_nao_lida_pendente" />
+                <ScalarProperty Name="nlp_flg_nao_lida_pendente" ColumnName="nlp_flg_nao_lida_pendente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_nls_notificacao_nao_lida_setor">
+            <EntityTypeMapping TypeName="CiEletronica.v_nls_notificacao_nao_lida_setor">
+              <MappingFragment StoreEntitySet="v_nls_notificacao_nao_lida_setor">
+                <ScalarProperty Name="nps_id_set_gerenciador" ColumnName="nps_id_set_gerenciador" />
+                <ScalarProperty Name="nps_qtd_pendente" ColumnName="nps_qtd_pendente" />
+                <ScalarProperty Name="nps_flg_pendente" ColumnName="nps_flg_pendente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_nnl_notificacao_nao_lida">
+            <EntityTypeMapping TypeName="CiEletronica.v_nnl_notificacao_nao_lida">
+              <MappingFragment StoreEntitySet="v_nnl_notificacao_nao_lida">
+                <ScalarProperty Name="nnl_id_use" ColumnName="nnl_id_use" />
+                <ScalarProperty Name="nnl_qtd_nao_lida" ColumnName="nnl_qtd_nao_lida" />
+                <ScalarProperty Name="nnl_flg_nao_lida" ColumnName="nnl_flg_nao_lida" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_npa_notificacao_pendente_aprovacao">
+            <EntityTypeMapping TypeName="CiEletronica.v_npa_notificacao_pendente_aprovacao">
+              <MappingFragment StoreEntitySet="v_npa_notificacao_pendente_aprovacao">
+                <ScalarProperty Name="npa_id_use" ColumnName="npa_id_use" />
+                <ScalarProperty Name="npa_id_set_gerenciador" ColumnName="npa_id_set_gerenciador" />
+                <ScalarProperty Name="npa_qtd_pendente" ColumnName="npa_qtd_pendente" />
+                <ScalarProperty Name="npa_flg_pendente" ColumnName="npa_flg_pendente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_nps_notificacao_pendente_aprovacao_setor">
+            <EntityTypeMapping TypeName="CiEletronica.v_nps_notificacao_pendente_aprovacao_setor">
+              <MappingFragment StoreEntitySet="v_nps_notificacao_pendente_aprovacao_setor">
+                <ScalarProperty Name="nps_id_set_gerenciador" ColumnName="nps_id_set_gerenciador" />
+                <ScalarProperty Name="nps_qtd_pendente" ColumnName="nps_qtd_pendente" />
+                <ScalarProperty Name="nps_flg_pendente" ColumnName="nps_flg_pendente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_qef_quantitativo_efetivo_mensagem_filha">
+            <EntityTypeMapping TypeName="CiEletronica.v_qef_quantitativo_efetivo_mensagem_filha">
+              <MappingFragment StoreEntitySet="v_qef_quantitativo_efetivo_mensagem_filha">
+                <ScalarProperty Name="qef_id_use" ColumnName="qef_id_use" />
+                <ScalarProperty Name="qef_id_men_pai" ColumnName="qef_id_men_pai" />
+                <ScalarProperty Name="qef_num_quantitativo" ColumnName="qef_num_quantitativo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_qfv_quantitativo_mensagem_filha_valida">
+            <EntityTypeMapping TypeName="CiEletronica.v_qfv_quantitativo_mensagem_filha_valida">
+              <MappingFragment StoreEntitySet="v_qfv_quantitativo_mensagem_filha_valida">
+                <ScalarProperty Name="qfv_id_use" ColumnName="qfv_id_use" />
+                <ScalarProperty Name="qfv_id_men_pai" ColumnName="qfv_id_men_pai" />
+                <ScalarProperty Name="qfv_qtd_filha" ColumnName="qfv_qtd_filha" />
+                <ScalarProperty Name="qfv_qtd_filha_externa" ColumnName="qfv_qtd_filha_externa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_qmd_quantitativo_mensagem_destinatario">
+            <EntityTypeMapping TypeName="CiEletronica.v_qmd_quantitativo_mensagem_destinatario">
+              <MappingFragment StoreEntitySet="v_qmd_quantitativo_mensagem_destinatario">
+                <ScalarProperty Name="qmd_id_men" ColumnName="qmd_id_men" />
+                <ScalarProperty Name="qmd_id_use" ColumnName="qmd_id_use" />
+                <ScalarProperty Name="qmd_num_quantitativo" ColumnName="qmd_num_quantitativo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_qmp_quantitativo_mensagem_nao_lida_pai">
+            <EntityTypeMapping TypeName="CiEletronica.v_qmp_quantitativo_mensagem_nao_lida_pai">
+              <MappingFragment StoreEntitySet="v_qmp_quantitativo_mensagem_nao_lida_pai">
+                <ScalarProperty Name="qmp_id_use" ColumnName="qmp_id_use" />
+                <ScalarProperty Name="qmp_id_set_gerenciador" ColumnName="qmp_id_set_gerenciador" />
+                <ScalarProperty Name="qmp_id_men_pai" ColumnName="qmp_id_men_pai" />
+                <ScalarProperty Name="qmp_qtd_mensagem" ColumnName="qmp_qtd_mensagem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_qpa_quantitativo_pendente_aprovacao_pai">
+            <EntityTypeMapping TypeName="CiEletronica.v_qpa_quantitativo_pendente_aprovacao_pai">
+              <MappingFragment StoreEntitySet="v_qpa_quantitativo_pendente_aprovacao_pai">
+                <ScalarProperty Name="qpa_id_set_gerenciador" ColumnName="qpa_id_set_gerenciador" />
+                <ScalarProperty Name="qpa_id_men_pai" ColumnName="qpa_id_men_pai" />
+                <ScalarProperty Name="qpa_qtd_pendente" ColumnName="qpa_qtd_pendente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_ush_usuario_autorizado_historico">
+            <EntityTypeMapping TypeName="CiEletronica.v_ush_usuario_autorizado_historico">
+              <MappingFragment StoreEntitySet="v_ush_usuario_autorizado_historico">
+                <ScalarProperty Name="ush_id_uau" ColumnName="ush_id_uau" />
+                <ScalarProperty Name="ush_id_pus" ColumnName="ush_id_pus" />
+                <ScalarProperty Name="ush_id_use" ColumnName="ush_id_use" />
+                <ScalarProperty Name="ush_id_set" ColumnName="ush_id_set" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

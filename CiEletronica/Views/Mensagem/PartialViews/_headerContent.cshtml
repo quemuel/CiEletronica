@@ -1,0 +1,14 @@
+﻿<div class="header-content">
+    <h2><i class="fa fa-comments-o"></i> Caixa de Entrada</h2>
+    <div class="breadcrumb-wrapper hidden-xs">
+        <span class="label">Estou aqui:</span>
+        <ol class="breadcrumb">
+            <li class="active">
+                @Html.Raw(ViewBag.icon)
+                <a href="@Url.Action("CaixaEntrada", "mensagem")">@ViewBag.moduleName</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>@ViewBag.pageName</li>
+        </ol>
+    </div>
+</div>

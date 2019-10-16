@@ -1,0 +1,84 @@
+﻿@model IEnumerable<CiEletronica.Models.men_mensagem>
+@*http://mvc6-grid.azurewebsites.net/Column/Encoding*@
+@{
+    var moduleName = "Ci Eletrônica";
+    var pageName = "Caixa de Entrada";
+    ViewBag.Title = moduleName + " | " + pageName;
+}
+
+@{
+    WebGrid grid = new WebGrid(
+        Model,
+        defaultSort: "men_id_men",
+        columnNames: new[] { "men_id_men", "men_nom_titulo", "men_dat_cadastro" },
+        rowsPerPage: 5
+        );
+}
+<section id="page-content">
+    @{Html.RenderPartial(
+            "PartialViews/_headerContent",
+            new ViewDataDictionary { { "moduleName", moduleName }, { "pageName", pageName }, { "icon", "<i class='fa fa-comments-o'></i>" } }
+        );
+    }
+    <div class="body-content animated fadeIn">
+        <div class="row">
+            <div class="col-sm-2">
+                @{Html.RenderPartial("PartialViews/_menuMensagem", new ViewDataDictionary {{"nomeMenu", ViewData["nomeMenu"]}});}
+            </div>
+            <div class="col-sm-10">
+                <div class="panel rounded shadow panel-teal ci-caixa-entrada-corpo">
+                    <div class="panel-heading">
+                        <div class="pull-left">
+                            <h3 class="panel-title">@pageName
+                                @*<?php if(!empty($notificacaoNaoLidaPendente) && $notificacaoNaoLidaPendente->nlp_flg_nao_lida_pendente) { ?>
+                                      (<?=$notificacaoNaoLidaPendente->nlp_qtd_nao_lida_pendente?>)
+                                <?php } ?>*@
+                            </h3>
+                        </div>
+                        @*<?= $this->render('partial-views/_pesquisar', ['mensagemSearch' => $mensagemSearch]) ?>*@
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="pagination pagination-small pagination-right">
+                        @grid.Pager(
+                            mode: WebGridPagerModes.All,
+                            numericLinksCount: 10,
+                            firstText: "<< Primeira",
+                            previousText: "< Anterior",
+                            nextText: "Próximo >",
+                            lastText: "Último >>"
+                        )
+                    </div> 
+                    <div id="pager">
+                        @grid.PageCount
+                    </div>
+                    <div id="pager">
+                        @grid.PageIndex
+                    </div>
+                    <div id="pager">
+                        @grid.PageFieldName
+                    </div>
+                    <div id="pager">
+                        @grid.GetPageUrl(grid.PageIndex)
+                    </div>
+                    @grid.GetHtml(
+                        displayHeader: false,
+                        footerStyle: "hide",
+                        fillEmptyRows: true,
+                        //defaultCellValue: "--",
+                        tableStyle: "table table-bordered",
+                        columns : grid.Columns(
+                            grid.Column(header : "Check", format : (item) => {
+                                var checkBox = "<div class='ckbox ckbox-theme'><input id='"+ item.men_id_men + "' class='checkbox-action' type='checkbox'><label for='" + item.men_id_men + "'></label></div>";
+                                return Html.Raw(checkBox);
+                            }),
+                            grid.Column("men_id_men", header : "ID"),
+                            grid.Column("men_nom_titulo", "Título"),
+                            grid.Column("men_dat_cadastro", "Data")
+                        )
+                    )
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.Partial("_footerAdmin")
+</section>
