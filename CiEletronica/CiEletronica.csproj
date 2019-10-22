@@ -5137,11 +5137,11 @@
     <Content Include="Views\Usuario\VisualizarUsuario.cshtml" />
     <Content Include="Views\Usuario\grid.cshtml" />
     <Content Include="Views\Usuario\ExcluirUsuario.cshtml" />
-    <Content Include="Views\Grupo\Create.cshtml" />
-    <Content Include="Views\Grupo\Delete.cshtml" />
-    <Content Include="Views\Grupo\Details.cshtml" />
-    <Content Include="Views\Grupo\Edit.cshtml" />
-    <Content Include="Views\Grupo\Index.cshtml" />
+    <Content Include="Views\Grupo\ListarGrupo.cshtml" />
+    <Content Include="Views\Grupo\CadastrarGrupo.cshtml" />
+    <Content Include="Views\Grupo\AtualizarGrupo.cshtml" />
+    <Content Include="Views\Grupo\ExcluirGrupo.cshtml" />
+    <Content Include="Views\Grupo\VisualizarGrupo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

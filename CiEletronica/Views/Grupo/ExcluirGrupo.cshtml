@@ -1,7 +1,7 @@
-﻿@model CiEletronica.Models.usu_usuario
+﻿@model CiEletronica.Models.gru_grupo
 @{
     var moduleName = "Ci Eletrônica";
-    var pageName = "Excluir Usuário";
+    var pageName = "Excluir Grupo";
     ViewBag.Title = moduleName + " | " + pageName;
 }
 <section id="page-content">
@@ -20,42 +20,18 @@
         </div>
     </div>
     <div class="body-content animated fadeIn">
-        <h3>Você tem certeza que quer excluir este usuário?</h3>
+        <h3>Você tem certeza que quer excluir este grupo?</h3>
         <div class="row">
             <div class="col-md-12">
                 <table class="table">
                     <tr>
                         <th class="text-right">
-                            @Html.DisplayNameFor(model => model.usu_nom_usuario):
+                            @Html.DisplayNameFor(model => model.gru_nom_grupo):
                         </th>
                         <td class="text-left">
-                            @Html.DisplayFor(model => model.usu_nom_usuario)
+                            @Html.DisplayFor(model => model.gru_nom_grupo)
                         </td>
-                    </tr>
-                    <tr>
-                        <th class="text-right">
-                            @Html.DisplayNameFor(model => model.usu_nom_login):
-                        </th>
-                        <td class="text-left">
-                            @Html.DisplayFor(model => model.usu_nom_login)
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="text-right">
-                            @Html.DisplayNameFor(model => model.set_setor.set_nom_setor):
-                        </th>
-                        <td class="text-left">
-                            @Html.DisplayFor(model => model.set_setor.set_nom_setor)
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="text-right">
-                            @Html.DisplayNameFor(model => model.gru_grupo.gru_nom_grupo):
-                        </th>
-                        <td class="text-left">
-                            @Html.DisplayFor(model => model.gru_grupo.gru_nom_grupo)
-                        </td>
-                    </tr>
+                    </tr>                    
                 </table>
                 @using (Html.BeginForm())
                 {
@@ -64,7 +40,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-12 btn-group">
-                                @Html.ActionLink("Voltar", "ListarUsuario", "", new { @class = "btn btn-default" })
+                                @Html.ActionLink("Voltar", "ListarGrupo", "", new { @class = "btn btn-default" })
                                 <input type="submit" value="Excluir" class="btn btn-danger" />
                             </div>
                         </div>

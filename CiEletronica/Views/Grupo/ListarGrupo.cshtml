@@ -1,0 +1,58 @@
+﻿@model IEnumerable<CiEletronica.Models.gru_grupo>
+@{
+    var moduleName = "Ci Eletrônica";
+    var pageName = "Listar Grupos";
+    ViewBag.Title = moduleName + " | " + pageName;
+    
+    WebGrid webGrid = new WebGrid(Model, canPage: true, rowsPerPage: 5, selectionFieldName: "selectedRow", ajaxUpdateContainerId: "gridContent");
+}
+
+<section id="page-content">
+    <div class="header-content">
+        <h2><i class="fa fa-list-alt"></i> @pageName</h2>
+        <div class="breadcrumb-wrapper hidden-xs">
+            <span class="label">Estou aqui:</span>
+            <ol class="breadcrumb"> 
+                <li class="active">
+                    <i class='fa fa-comments-o'></i>
+                    <a href="@Url.Action("CaixaEntrada", "Mensagem")">@moduleName</a>
+                    <i class="fa fa-angle-right"></i>
+                </li>
+                <li>@pageName</li>
+            </ol>
+        </div>
+    </div>
+    <div class="body-content animated fadeIn">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="table-responsive">
+                    @webGrid.GetHtml(
+                        tableStyle: "table table-hover table-striped table-bordered",
+                        htmlAttributes: new { @id = "WebGrid", @class = "Grid" },
+                        footerStyle: "hide",
+                        columns: webGrid.Columns(
+                            webGrid.Column("gru_nom_grupo", "Nome", style: "col-sm-8 col-md-9 col-lg-8"),
+                            webGrid.Column(columnName: "Opções", style: "col-sm-4 col-md-3 col-lg-4", format: 
+                                @<text>
+                                    <a class="btn btn-xs btn-success" href="@Url.Action("VisualizarGrupo", "Grupo", new { id = item.gru_id_gru })"><i class="fa fa-search-plus"></i></a>
+                                    <a class="btn btn-xs btn-primary" href="@Url.Action("AtualizarGrupo", "Grupo", new { id = item.gru_id_gru })"><i class="fa fa-edit"></i></a>
+                                    <a class="btn btn-xs btn-danger" href="@Url.Action("ExcluirGrupo", "Grupo", new { id = item.gru_id_gru })"><i class="fa fa-trash"></i></a>
+                                </text>
+                            )
+                        )
+                    )
+                    @webGrid.PagerList(
+                        mode: WebGridPagerModes.All, 
+                        paginationStyle: "pagination pagination-small pagination-right",
+                        numericLinksCount: 5,
+                        firstText: "Primeira",
+                        previousText: "Anterior",
+                        nextText: "Próximo",
+                        lastText: "Último"
+                    )
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.Partial("_footerAdmin")
+</section>
