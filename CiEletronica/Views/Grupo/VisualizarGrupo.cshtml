@@ -1,0 +1,42 @@
+﻿@model CiEletronica.Models.gru_grupo
+@{
+    var moduleName = "Ci Eletrônica";
+    var pageName = "Visualizar Grupo";
+    ViewBag.Title = moduleName + " | " + pageName;
+}
+<section id="page-content">
+    <div class="header-content">
+        <h2><i class="fa fa-eye"></i> @pageName</h2>
+        <div class="breadcrumb-wrapper hidden-xs">
+            <span class="label">Estou aqui:</span>
+            <ol class="breadcrumb">
+                <li class="active">
+                    <i class='fa fa-comments-o'></i>
+                    <a href="@Url.Action("CaixaEntrada", "Mensagem")">@moduleName</a>
+                    <i class="fa fa-angle-right"></i>
+                </li>
+                <li>@pageName</li>
+            </ol>
+        </div>
+    </div>
+    <div class="body-content animated fadeIn">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <tr>
+                        <th class="text-right col-md-6">
+                            @Html.DisplayNameFor(model => model.gru_nom_grupo):
+                        </th>
+                        <td class="text-left col-md-6">
+                            @Html.DisplayFor(model => model.gru_nom_grupo)
+                        </td>
+                    </tr>                    
+                </table>
+                <p>
+                    @Html.ActionLink("Atualizar", "AtualizarGrupo", new { id = Model.gru_id_gru }) | @Html.ActionLink("Voltar", "ListarGrupo")
+                </p>
+            </div>
+        </div>
+    </div>
+    @Html.Partial("_footerAdmin")
+</section>
