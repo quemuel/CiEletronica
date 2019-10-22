@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
@@ -14,6 +14,13 @@
           <Property Name="adi_nom_script_path" Type="varchar" MaxLength="50" />
           <Property Name="adi_nom_email" Type="varchar" MaxLength="100" />
           <Property Name="adi_nom_description" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="gru_grupo">
+          <Key>
+            <PropertyRef Name="gru_id_gru" />
+          </Key>
+          <Property Name="gru_id_gru" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gru_nom_grupo" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="ild_informacoes_ldap">
           <Key>
@@ -143,6 +150,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="R_usu_gru">
+          <End Role="gru_grupo" Type="Self.gru_grupo" Multiplicity="1" />
+          <End Role="usu_usuario" Type="Self.usu_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gru_grupo">
+              <PropertyRef Name="gru_id_gru" />
+            </Principal>
+            <Dependent Role="usu_usuario">
+              <PropertyRef Name="usu_id_gru" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="R_usu_ild">
           <End Role="usu_usuario" Type="Self.usu_usuario" Multiplicity="1" />
           <End Role="ild_informacoes_ldap" Type="Self.ild_informacoes_ldap" Multiplicity="*" />
@@ -152,6 +171,18 @@
             </Principal>
             <Dependent Role="ild_informacoes_ldap">
               <PropertyRef Name="ild_id_usu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_usu_set">
+          <End Role="set_setor" Type="Self.set_setor" Multiplicity="1" />
+          <End Role="usu_usuario" Type="Self.usu_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="set_setor">
+              <PropertyRef Name="set_id_set" />
+            </Principal>
+            <Dependent Role="usu_usuario">
+              <PropertyRef Name="usu_id_set" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -169,6 +200,7 @@
         </Association>
         <EntityContainer Name="AdUsuariosStoreContainer">
           <EntitySet Name="adi_ad_informacao" EntityType="Self.adi_ad_informacao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="gru_grupo" EntityType="Self.gru_grupo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ild_informacoes_ldap" EntityType="Self.ild_informacoes_ldap" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="pus_perfil_usuario" EntityType="Self.pus_perfil_usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="set_setor" EntityType="Self.set_setor" Schema="dbo" store:Type="Tables" />
@@ -190,9 +222,17 @@
             <End Role="set_setor" EntitySet="set_setor" />
             <End Role="use_usuario_setor" EntitySet="use_usuario_setor" />
           </AssociationSet>
+          <AssociationSet Name="R_usu_gru" Association="Self.R_usu_gru">
+            <End Role="gru_grupo" EntitySet="gru_grupo" />
+            <End Role="usu_usuario" EntitySet="usu_usuario" />
+          </AssociationSet>
           <AssociationSet Name="R_usu_ild" Association="Self.R_usu_ild">
             <End Role="usu_usuario" EntitySet="usu_usuario" />
             <End Role="ild_informacoes_ldap" EntitySet="ild_informacoes_ldap" />
+          </AssociationSet>
+          <AssociationSet Name="R_usu_set" Association="Self.R_usu_set">
+            <End Role="set_setor" EntitySet="set_setor" />
+            <End Role="usu_usuario" EntitySet="usu_usuario" />
           </AssociationSet>
           <AssociationSet Name="R_usu_use" Association="Self.R_usu_use">
             <End Role="usu_usuario" EntitySet="usu_usuario" />
@@ -213,6 +253,14 @@
           <Property Name="adi_nom_script_path" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="adi_nom_email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="adi_nom_description" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="gru_grupo">
+          <Key>
+            <PropertyRef Name="gru_id_gru" />
+          </Key>
+          <Property Name="gru_id_gru" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gru_nom_grupo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="usu_usuario" Relationship="Self.R_usu_gru" FromRole="gru_grupo" ToRole="usu_usuario" />
         </EntityType>
         <EntityType Name="ild_informacoes_ldap">
           <Key>
@@ -273,6 +321,7 @@
           <NavigationProperty Name="set_setor11" Relationship="Self.R_set_setor_pai" FromRole="set_setor" ToRole="set_setor1" />
           <NavigationProperty Name="set_setor3" Relationship="Self.R_set_setor_pai" FromRole="set_setor1" ToRole="set_setor" />
           <NavigationProperty Name="use_usuario_setor" Relationship="Self.R_set_use" FromRole="set_setor" ToRole="use_usuario_setor" />
+          <NavigationProperty Name="usu_usuario" Relationship="Self.R_usu_set" FromRole="set_setor" ToRole="usu_usuario" />
         </EntityType>
         <EntityType Name="use_usuario_setor">
           <Key>
@@ -303,9 +352,23 @@
           <Property Name="usu_dat_ultimo_acesso" Type="DateTime" Precision="3" />
           <Property Name="usu_dat_cadastro" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="usu_cod_agenda" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="gru_grupo" Relationship="Self.R_usu_gru" FromRole="usu_usuario" ToRole="gru_grupo" />
           <NavigationProperty Name="ild_informacoes_ldap" Relationship="Self.R_usu_ild" FromRole="usu_usuario" ToRole="ild_informacoes_ldap" />
+          <NavigationProperty Name="set_setor" Relationship="Self.R_usu_set" FromRole="usu_usuario" ToRole="set_setor" />
           <NavigationProperty Name="use_usuario_setor" Relationship="Self.R_usu_use" FromRole="usu_usuario" ToRole="use_usuario_setor" />
         </EntityType>
+        <Association Name="R_usu_gru">
+          <End Role="gru_grupo" Type="Self.gru_grupo" Multiplicity="1" />
+          <End Role="usu_usuario" Type="Self.usu_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gru_grupo">
+              <PropertyRef Name="gru_id_gru" />
+            </Principal>
+            <Dependent Role="usu_usuario">
+              <PropertyRef Name="usu_id_gru" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="R_usu_ild">
           <End Role="usu_usuario" Type="Self.usu_usuario" Multiplicity="1" />
           <End Role="ild_informacoes_ldap" Type="Self.ild_informacoes_ldap" Multiplicity="*" />
@@ -366,6 +429,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="R_usu_set">
+          <End Role="set_setor" Type="Self.set_setor" Multiplicity="1" />
+          <End Role="usu_usuario" Type="Self.usu_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="set_setor">
+              <PropertyRef Name="set_id_set" />
+            </Principal>
+            <Dependent Role="usu_usuario">
+              <PropertyRef Name="usu_id_set" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="R_usu_use">
           <End Role="usu_usuario" Type="Self.usu_usuario" Multiplicity="1" />
           <End Role="use_usuario_setor" Type="Self.use_usuario_setor" Multiplicity="*" />
@@ -380,11 +455,16 @@
         </Association>
         <EntityContainer Name="DbContextAdUsuarios" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="adi_ad_informacao" EntityType="Self.adi_ad_informacao" />
+          <EntitySet Name="gru_grupo" EntityType="Self.gru_grupo" />
           <EntitySet Name="ild_informacoes_ldap" EntityType="Self.ild_informacoes_ldap" />
           <EntitySet Name="pus_perfil_usuario" EntityType="Self.pus_perfil_usuario" />
           <EntitySet Name="set_setor" EntityType="Self.set_setor" />
           <EntitySet Name="use_usuario_setor" EntityType="Self.use_usuario_setor" />
           <EntitySet Name="usu_usuario" EntityType="Self.usu_usuario" />
+          <AssociationSet Name="R_usu_gru" Association="Self.R_usu_gru">
+            <End Role="gru_grupo" EntitySet="gru_grupo" />
+            <End Role="usu_usuario" EntitySet="usu_usuario" />
+          </AssociationSet>
           <AssociationSet Name="R_usu_ild" Association="Self.R_usu_ild">
             <End Role="usu_usuario" EntitySet="usu_usuario" />
             <End Role="ild_informacoes_ldap" EntitySet="ild_informacoes_ldap" />
@@ -405,6 +485,10 @@
             <End Role="set_setor" EntitySet="set_setor" />
             <End Role="use_usuario_setor" EntitySet="use_usuario_setor" />
           </AssociationSet>
+          <AssociationSet Name="R_usu_set" Association="Self.R_usu_set">
+            <End Role="set_setor" EntitySet="set_setor" />
+            <End Role="usu_usuario" EntitySet="usu_usuario" />
+          </AssociationSet>
           <AssociationSet Name="R_usu_use" Association="Self.R_usu_use">
             <End Role="usu_usuario" EntitySet="usu_usuario" />
             <End Role="use_usuario_setor" EntitySet="use_usuario_setor" />
@@ -424,6 +508,14 @@
                 <ScalarProperty Name="adi_nom_script_path" ColumnName="adi_nom_script_path" />
                 <ScalarProperty Name="adi_nom_email" ColumnName="adi_nom_email" />
                 <ScalarProperty Name="adi_nom_description" ColumnName="adi_nom_description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gru_grupo">
+            <EntityTypeMapping TypeName="AdUsuarios.gru_grupo">
+              <MappingFragment StoreEntitySet="gru_grupo">
+                <ScalarProperty Name="gru_id_gru" ColumnName="gru_id_gru" />
+                <ScalarProperty Name="gru_nom_grupo" ColumnName="gru_nom_grupo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

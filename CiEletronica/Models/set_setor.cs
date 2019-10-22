@@ -11,7 +11,8 @@ namespace CiEletronica.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class set_setor
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,10 +21,12 @@ namespace CiEletronica.Models
             this.set_setor1 = new HashSet<set_setor>();
             this.set_setor11 = new HashSet<set_setor>();
             this.use_usuario_setor = new HashSet<use_usuario_setor>();
+            this.usu_usuario = new HashSet<usu_usuario>();
         }
     
         public int set_id_set { get; set; }
         public string set_nom_sigla { get; set; }
+        [DisplayAttribute(Name = "Nome Setor")]
         public string set_nom_setor { get; set; }
         public int set_id_set_pai { get; set; }
         public int set_id_set_gerenciador { get; set; }
@@ -39,5 +42,7 @@ namespace CiEletronica.Models
         public virtual set_setor set_setor3 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<use_usuario_setor> use_usuario_setor { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<usu_usuario> usu_usuario { get; set; }
     }
 }

@@ -1,0 +1,77 @@
+﻿@model CiEletronica.Models.usu_usuario
+@{
+    var moduleName = "Ci Eletrônica";
+    var pageName = "Excluir Usuário";
+    ViewBag.Title = moduleName + " | " + pageName;
+}
+<section id="page-content">
+    <div class="header-content">
+        <h2><i class="fa fa-trash"></i> @pageName</h2>
+        <div class="breadcrumb-wrapper hidden-xs">
+            <span class="label">Estou aqui:</span>
+            <ol class="breadcrumb">
+                <li class="active">
+                    <i class='fa fa-comments-o'></i>
+                    <a href="@Url.Action("CaixaEntrada", "Mensagem")">@moduleName</a>
+                    <i class="fa fa-angle-right"></i>
+                </li>
+                <li>@pageName</li>
+            </ol>
+        </div>
+    </div>
+    <div class="body-content animated fadeIn">
+        <h3>Você tem certeza que quer excluir este cliente?</h3>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <tr>
+                        <th class="text-right">
+                            @Html.DisplayNameFor(model => model.usu_nom_usuario):
+                        </th>
+                        <td class="text-left">
+                            @Html.DisplayFor(model => model.usu_nom_usuario)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="text-right">
+                            @Html.DisplayNameFor(model => model.usu_nom_login):
+                        </th>
+                        <td class="text-left">
+                            @Html.DisplayFor(model => model.usu_nom_login)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="text-right">
+                            @Html.DisplayNameFor(model => model.set_setor.set_nom_setor):
+                        </th>
+                        <td class="text-left">
+                            @Html.DisplayFor(model => model.set_setor.set_nom_setor)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="text-right">
+                            @Html.DisplayNameFor(model => model.gru_grupo.gru_nom_grupo):
+                        </th>
+                        <td class="text-left">
+                            @Html.DisplayFor(model => model.gru_grupo.gru_nom_grupo)
+                        </td>
+                    </tr>
+                </table>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <br />
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12 btn-group">
+                                @Html.ActionLink("Voltar", "ListarUsuario", "", new { @class = "btn btn-default" })
+                                <input type="submit" value="Excluir" class="btn btn-danger" />
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    @Html.Partial("_footerAdmin")
+</section>
