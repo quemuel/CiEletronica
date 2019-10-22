@@ -1,0 +1,74 @@
+﻿@model CiEletronica.Models.usu_usuario
+@{
+    var moduleName = "Ci Eletrônica";
+    var pageName = "Cadastrar Usuário";
+    ViewBag.Title = moduleName + " | " + pageName;
+}
+<section id="page-content">
+    <div class="header-content">
+        <h2><i class="fa fa-plus"></i> @pageName</h2>
+        <div class="breadcrumb-wrapper hidden-xs">
+            <span class="label">Estou aqui:</span>
+            <ol class="breadcrumb">
+                <li class="active">
+                    <i class='fa fa-comments-o'></i>
+                    <a href="@Url.Action("CaixaEntrada", "Mensagem")">@moduleName</a>
+                    <i class="fa fa-angle-right"></i>
+                </li>
+                <li>@pageName</li>
+            </ol>
+        </div>
+    </div>
+    <div class="body-content animated fadeIn">
+        <div class="row">
+            <div class="col-md-12">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    @Html.LabelFor(model => model.usu_nom_usuario, string.Format("{0}:", Html.DisplayNameFor(model => model.usu_nom_usuario)), htmlAttributes: new {@class = "control-label"})
+                                    @Html.EditorFor(model => model.usu_nom_usuario, new {htmlAttributes = new {@class = "form-control"}})
+                                    @Html.ValidationMessageFor(model => model.usu_nom_usuario, "", new {@class = "text-danger"})
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    @Html.LabelFor(model => model.usu_nom_login, string.Format("{0}:", Html.DisplayNameFor(model => model.usu_nom_login)), htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.usu_nom_login, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.usu_nom_login, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    @Html.LabelFor(model => model.usu_id_gru, string.Format("{0}:", Html.DisplayNameFor(model => model.usu_id_gru)), htmlAttributes: new { @class = "control-label" })
+                                    @Html.DropDownList("usu_id_gru", null, "Selecione...", htmlAttributes: new { @class = "form-control selectpicker", @data_live_search="true" })
+                                    @Html.ValidationMessageFor(model => model.usu_id_gru, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    @Html.LabelFor(model => model.usu_id_set, string.Format("{0}:", Html.DisplayNameFor(model => model.usu_id_set)), htmlAttributes: new { @class = "control-label" })
+                                    @Html.DropDownList("usu_id_set", null, "Selecione...", htmlAttributes: new { @class = "form-control selectpicker", @data_live_search = "true" })
+                                    @Html.ValidationMessageFor(model => model.usu_id_set, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-12 btn-group">
+                                    @Html.ActionLink("Voltar", "ListarUsuario", "", new { @class = "btn btn-default" })
+                                    <input type="submit" value="Cadastrar" class="btn btn-success" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    @Html.Partial("_footerAdmin")
+</section>

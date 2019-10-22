@@ -11,7 +11,10 @@ namespace CiEletronica.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.Security.Cryptography;
+    using System.Text;
+
     public partial class usu_usuario
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,19 +26,46 @@ namespace CiEletronica.Models
     
         public int usu_id_usu { get; set; }
         public string usu_uui_identificador { get; set; }
+        [DisplayAttribute(Name="Nome Usuario")]
         public string usu_nom_usuario { get; set; }
+        [DisplayAttribute(Name="Nome Login")]
         public string usu_nom_login { get; set; }
         public string usu_num_senha { get; set; }
         public bool usu_flg_ativo { get; set; }
+        [DisplayAttribute(Name="Grupo")]
         public int usu_id_gru { get; set; }
+        [DisplayAttribute(Name="Setor")]
         public int usu_id_set { get; set; }
         public Nullable<System.DateTime> usu_dat_ultimo_acesso { get; set; }
         public System.DateTime usu_dat_cadastro { get; set; }
         public string usu_cod_agenda { get; set; }
     
+        public virtual gru_grupo gru_grupo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ild_informacoes_ldap> ild_informacoes_ldap { get; set; }
+        public virtual set_setor set_setor { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<use_usuario_setor> use_usuario_setor { get; set; }
+
+        public static string MD5Hash(string text)
+        {
+            MD5 md5 = new MD5CryptoServiceProvider();
+
+            //compute hash from the bytes of text  
+            md5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(text));
+
+            //get hash result after compute it  
+            byte[] result = md5.Hash;
+
+            StringBuilder strBuilder = new StringBuilder();
+            for (int i = 0; i < result.Length; i++)
+            {
+                //change it into 2 hexadecimal digits  
+                //for each byte  
+                strBuilder.Append(result[i].ToString("x2"));
+            }
+
+            return strBuilder.ToString();
+        }
     }
 }

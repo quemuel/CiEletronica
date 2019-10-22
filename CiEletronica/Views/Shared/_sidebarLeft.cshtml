@@ -17,7 +17,21 @@
                 {<span class="selected"></span>}
             </a>
         </li>
-
+        @{bool isControllerUrlUsuario = Request.RawUrl.Contains("Usuario"); }
+        @{bool isViewListar = Request.RawUrl.Contains("Usuario/ListarUsuario"); }
+        @{bool isViewCadastrar = Request.RawUrl.Contains("Usuario/CadastrarUsuario"); }
+        <li class="submenu @(isControllerUrlUsuario ? "active" : "")">
+            <a href="javascript:void(0);">
+                <span class="icon"><i class="fa fa-user"></i></span> 
+                <span class="text">Usuário</span><span class="plus @(isViewListar || isViewCadastrar ? "open" : "")"></span>
+                @if (isControllerUrlUsuario)
+                {<span class="selected"></span>}
+            </a>
+            <ul style="@(isViewListar || isViewCadastrar ? "display: block" : "display: none")">
+                <li class="@(isViewListar ? "active" : "")"><a href="@Url.Action("ListarUsuario", "Usuario")"><span class="text">Listar</span></a></li>
+                <li class="@(isViewCadastrar ? "active" : "")"><a href="@Url.Action("CadastrarUsuario", "Usuario")"><span class="text">Cadastrar</span></a></li>
+            </ul>
+        </li>
         @{
             if (User.Identity.IsAuthenticated)
             {

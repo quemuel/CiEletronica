@@ -1,0 +1,62 @@
+﻿@model IEnumerable<CiEletronica.Models.UsuarioSetor>
+@{
+    var moduleName = "Ci Eletrônica";
+    var pageName = "Listar Usuários";
+    ViewBag.Title = moduleName + " | " + pageName;
+    
+    WebGrid webGrid = new WebGrid(Model.OrderByDescending(o=>o.usu_usuario.usu_dat_cadastro), canPage: true, rowsPerPage: 5, selectionFieldName: "selectedRow", ajaxUpdateContainerId: "gridContent");
+}
+
+<section id="page-content">
+    <div class="header-content">
+        <h2><i class="fa fa-list-alt"></i> @pageName</h2>
+        <div class="breadcrumb-wrapper hidden-xs">
+            <span class="label">Estou aqui:</span>
+            <ol class="breadcrumb">
+                <li class="active">
+                    <i class='fa fa-comments-o'></i>
+                    <a href="@Url.Action("CaixaEntrada", "Mensagem")">@moduleName</a>
+                    <i class="fa fa-angle-right"></i>
+                </li>
+                <li>@pageName</li>
+            </ol>
+        </div>
+    </div>
+    <div class="body-content animated fadeIn">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="table-responsive">
+                    @webGrid.GetHtml(
+                        tableStyle: "table table-hover table-striped table-bordered",
+                        htmlAttributes: new { @id = "WebGrid", @class = "Grid" },
+                        footerStyle: "hide",
+                        columns: webGrid.Columns(
+                            webGrid.Column("usu_usuario.usu_nom_usuario", "Nome"),
+                            webGrid.Column("usu_usuario.usu_nom_login", "Login"),
+                            webGrid.Column("usu_usuario.gru_grupo.gru_nom_grupo", "Grupo"),
+                            webGrid.Column("usu_usuario.set_setor.set_nom_sigla", "Setor"),
+                            webGrid.Column("usu_usuario.usu_dat_cadastro", "Cadastro"),
+                            webGrid.Column(columnName: "Opções", format: 
+                                @<text>
+                                    <a class="btn btn-xs btn-success" href="@Url.Action("VisualizarUsuario", "Usuario", new { id = item.usu_usuario.usu_id_usu })"><i class="fa fa-search-plus"></i></a>
+                                    <a class="btn btn-xs btn-primary" href="@Url.Action("AtualizarUsuario", "Usuario", new { id = item.usu_usuario.usu_id_usu })"><i class="fa fa-edit"></i></a>
+                                    <a class="btn btn-xs btn-danger" href="@Url.Action("ExcluirUsuario", "Usuario", new { id = item.usu_usuario.usu_id_usu })"><i class="fa fa-trash"></i></a>
+                                </text>
+                            )
+                        )
+                    )
+                    @webGrid.PagerList(
+                        mode: WebGridPagerModes.All, 
+                        paginationStyle: "pagination pagination-small pagination-right",
+                        numericLinksCount: 5,
+                        firstText: "Primeira",
+                        previousText: "Anterior",
+                        nextText: "Próximo",
+                        lastText: "Último"
+                    )
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.Partial("_footerAdmin")
+</section>

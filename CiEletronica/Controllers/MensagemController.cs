@@ -13,7 +13,7 @@ namespace CiEletronica.Controllers
         
         public ActionResult CaixaEntrada()
         {
-            ViewData["nomeMenu"] = men_mensagem.CAIXA_ENTRADA;
+            //ViewData["nomeMenu"] = men_mensagem.CAIXA_ENTRADA;
             return View(_dbContextCiEletronica.Set<men_mensagem>());
         }
     }
