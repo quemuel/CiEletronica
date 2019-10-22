@@ -1,0 +1,53 @@
+﻿@model CiEletronica.Models.gru_grupo
+@{
+    var moduleName = "Ci Eletrônica";
+    var pageName = "Cadastrar Grupo";
+    ViewBag.Title = moduleName + " | " + pageName;
+}
+<section id="page-content">
+    <div class="header-content">
+        <h2><i class="fa fa-plus"></i> @pageName</h2>
+        <div class="breadcrumb-wrapper hidden-xs">
+            <span class="label">Estou aqui:</span>
+            <ol class="breadcrumb">
+                <li class="active">
+                    <i class='fa fa-comments-o'></i>
+                    <a href="@Url.Action("CaixaEntrada", "Mensagem")">@moduleName</a>
+                    <i class="fa fa-angle-right"></i>
+                </li>
+                <li>@pageName</li>
+            </ol>
+        </div>
+    </div>
+    <div class="body-content animated fadeIn">
+        <div class="row">
+            <div class="col-md-12">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    @Html.LabelFor(model => model.gru_nom_grupo, string.Format("{0}:", Html.DisplayNameFor(model => model.gru_nom_grupo)), htmlAttributes: new {@class = "control-label"})
+                                    @Html.EditorFor(model => model.gru_nom_grupo, new {htmlAttributes = new {@class = "form-control"}})
+                                    @Html.ValidationMessageFor(model => model.gru_nom_grupo, "", new {@class = "text-danger"})
+                                </div>
+                            </div>  
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-12 btn-group">
+                                    @Html.ActionLink("Voltar", "ListarGrupo", "", new { @class = "btn btn-default" })
+                                    <input type="submit" value="Cadastrar" class="btn btn-success" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    @Html.Partial("_footerAdmin")
+</section>
