@@ -1,0 +1,97 @@
+﻿@using CiEletronica.Models
+@model CiEletronica.Models.MensagemPost
+@{
+    var moduleName = "Ci Eletrônica";
+    var pageName = "Caixa de Entrada";
+    ViewBag.Title = moduleName + " | " + pageName;
+}
+@Scripts.Render("~/bundles/ckeditor")
+<section id="page-content">
+    @{
+        Html.RenderPartial(
+            "PartialViews/_headerContent",
+            new ViewDataDictionary { { "moduleName", moduleName }, { "pageName", pageName }, { "icon", "<i class='fa fa-comments-o'></i>" } }
+        );
+    }
+    <div class="body-content animated fadeIn">
+        <div class="row">
+            <div class="col-sm-2">
+                @{Html.RenderPartial("PartialViews/_menuMensagem", new ViewDataDictionary { { "nomeMenu", ViewData["nomeMenu"] } });}
+            </div>
+            <div class="col-sm-10">
+                <div class="panel rounded shadow">
+                    @using (Html.BeginForm("NovaMensagem", "Mensagem", FormMethod.Post, new
+                    {
+                        enctype = "multipart/form-data",
+                        @class = "form-horizontal"
+                    }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="panel-sub-heading inner-all">
+                            <div class="pull-left">
+                                <ul class="list-inline no-margin">
+                                    <li>
+                                        <a href="@Url.Action("CaixaEntrada", "Mensagem")" class="btn btn-danger btn-sm"><i class="fa fa-arrow-left"></i> Voltar</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="pull-right">
+                                <a href="@Url.Action("CaixaEntrada", "Mensagem")" class="btn btn-default btn-sm"><i class="fa fa-close"></i> Cancelar</a>
+                                <button type="button" class="btn btn-primary btn-sm btn-submit-nova-ci" data-acao=""><i class="fa fa-file"></i> Salvar como Rascunho</button>
+                                <button type="submit" class="btn btn-success btn-sm btn-submit-nova-ci" data-acao=""><i class="fa fa-send"></i> Enviar CI</button>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="compose-mail">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        @Html.LabelFor(model => model.ids_Destinatarios, string.Format("{0}:", Html.DisplayNameFor(model => model.ids_Destinatarios)), htmlAttributes: new { @class = "control-label" })
+                                        @Html.DropDownList("ids_Destinatarios", null, "Selecione...", htmlAttributes: new { @class = "form-control selectpicker", @data_live_search = "true", @multiple = "multiple" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        @Html.LabelFor(model => model.titulo_mensagem, string.Format("{0}:", Html.DisplayNameFor(model => model.titulo_mensagem)), htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.titulo_mensagem, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.titulo_mensagem, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        @Html.LabelFor(model => model.descricao_mensagem, string.Format("{0}:", Html.DisplayNameFor(model => model.descricao_mensagem)), htmlAttributes: new { @class = "control-label" })
+                                        @Html.TextAreaFor(model => model.descricao_mensagem, new { @class = "ckeditor" })
+                                        @Html.ValidationMessageFor(model => model.descricao_mensagem, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        @Html.LabelFor(model => model.binario_anexo, string.Format("{0}:", Html.DisplayNameFor(model => model.binario_anexo)), htmlAttributes: new { @class = "control-label" })
+                                        @Html.TextBoxFor(model => model.binario_anexo, "", new { @type = "file", @multiple = "multiple", @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.binario_anexo, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="pull-left">
+                                <ul class="list-inline no-margin">
+                                    <li>
+                                        <a href="@Url.Action("CaixaEntrada", "Mensagem")" class="btn btn-danger btn-sm"><i class="fa fa-arrow-left"></i> Voltar</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="pull-right">
+                                <a href="<?= Yii::$app->getUrlManager()->createUrl('ci-eletronica/mensagem/caixa-entrada') ?>" class="btn btn-default btn-sm"><i class="fa fa-close"></i> Cancelar</a>
+                                <button type="button" class="btn btn-primary btn-sm btn-submit-nova-ci ci-salvar-rascunho-mensagem" data-acao="<?= \app\modules\ciEletronica\models\Mensagem::SALVAR_RASCUNHO ?>"><i class="fa fa-file"></i> Salvar como Rascunho</button>
+                                <button type="submit" class="btn btn-success btn-sm btn-submit-nova-ci" data-acao="<?= \app\modules\ciEletronica\models\Mensagem::ENVIAR_MENSAGEM ?>"><i class="fa fa-send"></i> Enviar CI</button>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        @Html.Partial("_footerAdmin")
+    </div>
+</section>

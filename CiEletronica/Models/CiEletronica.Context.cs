@@ -12,6 +12,8 @@ namespace CiEletronica.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class DbContextCiEletronica : DbContext
     {
@@ -27,29 +29,25 @@ namespace CiEletronica.Models
     
         public virtual DbSet<ase_aprovacao_setor> ase_aprovacao_setor { get; set; }
         public virtual DbSet<ass_assinatura> ass_assinatura { get; set; }
-        public virtual DbSet<cas_controle_acesso> cas_controle_acesso { get; set; }
         public virtual DbSet<cnu_controle_numeros> cnu_controle_numeros { get; set; }
-        public virtual DbSet<com_controle_menu> com_controle_menu { get; set; }
         public virtual DbSet<dme_destinatario_mensagem> dme_destinatario_mensagem { get; set; }
-        public virtual DbSet<los_log_sistema> los_log_sistema { get; set; }
         public virtual DbSet<max_mensagem_anexo> max_mensagem_anexo { get; set; }
         public virtual DbSet<mde_mensagem_detalhes> mde_mensagem_detalhes { get; set; }
         public virtual DbSet<mea_mensagem_aprovada> mea_mensagem_aprovada { get; set; }
         public virtual DbSet<men_mensagem> men_mensagem { get; set; }
-        public virtual DbSet<men_menu> men_menu { get; set; }
         public virtual DbSet<meq_mensagem_arquivada> meq_mensagem_arquivada { get; set; }
         public virtual DbSet<mra_mensagem_rascunho> mra_mensagem_rascunho { get; set; }
         public virtual DbSet<par_parametro> par_parametro { get; set; }
-        public virtual DbSet<pem_perfil_menu> pem_perfil_menu { get; set; }
+        public virtual DbSet<pse_permissoes_secretaria> pse_permissoes_secretaria { get; set; }
         public virtual DbSet<rem_remetente> rem_remetente { get; set; }
         public virtual DbSet<sme_status_mensagem> sme_status_mensagem { get; set; }
         public virtual DbSet<tde_tipo_destinatario> tde_tipo_destinatario { get; set; }
         public virtual DbSet<tme_tipo_mensagem> tme_tipo_mensagem { get; set; }
         public virtual DbSet<tnu_tipo_numeracao> tnu_tipo_numeracao { get; set; }
-        public virtual DbSet<uac_usuario_acesso> uac_usuario_acesso { get; set; }
         public virtual DbSet<uau_usuario_autorizado> uau_usuario_autorizado { get; set; }
-        public virtual DbSet<ume_usuario_menu> ume_usuario_menu { get; set; }
         public virtual DbSet<ard_arvore_destinatario> ard_arvore_destinatario { get; set; }
+        public virtual DbSet<v_ard_arvore_destinatario> v_ard_arvore_destinatario { get; set; }
+        public virtual DbSet<v_ard_arvore_destinatario_> v_ard_arvore_destinatario_ { get; set; }
         public virtual DbSet<v_mah_mensagem_arquivada_historico> v_mah_mensagem_arquivada_historico { get; set; }
         public virtual DbSet<v_map_mensagem_pai_filha_aprovacao> v_map_mensagem_pai_filha_aprovacao { get; set; }
         public virtual DbSet<v_mau_mensagem_arquivamento_usuario> v_mau_mensagem_arquivamento_usuario { get; set; }
@@ -74,5 +72,42 @@ namespace CiEletronica.Models
         public virtual DbSet<v_qmp_quantitativo_mensagem_nao_lida_pai> v_qmp_quantitativo_mensagem_nao_lida_pai { get; set; }
         public virtual DbSet<v_qpa_quantitativo_pendente_aprovacao_pai> v_qpa_quantitativo_pendente_aprovacao_pai { get; set; }
         public virtual DbSet<v_ush_usuario_autorizado_historico> v_ush_usuario_autorizado_historico { get; set; }
+    
+        [DbFunction("Entities", "Split")]
+        public virtual IQueryable<Split_Result> Split(string @string, string delimiter)
+        {
+            var stringParameter = @string != null ?
+                new ObjectParameter("String", @string) :
+                new ObjectParameter("String", typeof(string));
+    
+            var delimiterParameter = delimiter != null ?
+                new ObjectParameter("Delimiter", delimiter) :
+                new ObjectParameter("Delimiter", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Split_Result>("[Entities].[Split](@String, @Delimiter)", stringParameter, delimiterParameter);
+        }
+    
+        [DbFunction("Entities", "SplitString")]
+        public virtual IQueryable<SplitString_Result> SplitString(string @string, string delimiter)
+        {
+            var stringParameter = @string != null ?
+                new ObjectParameter("String", @string) :
+                new ObjectParameter("String", typeof(string));
+    
+            var delimiterParameter = delimiter != null ?
+                new ObjectParameter("Delimiter", delimiter) :
+                new ObjectParameter("Delimiter", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<SplitString_Result>("[Entities].[SplitString](@String, @Delimiter)", stringParameter, delimiterParameter);
+        }
+    
+        public virtual int pr_gerar_arvore_destinatario(Nullable<int> num_id_set)
+        {
+            var num_id_setParameter = num_id_set.HasValue ?
+                new ObjectParameter("num_id_set", num_id_set) :
+                new ObjectParameter("num_id_set", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("pr_gerar_arvore_destinatario", num_id_setParameter);
+        }
     }
 }

@@ -1,5 +1,5 @@
-﻿@model IEnumerable<CiEletronica.Models.men_mensagem>
-@*http://mvc6-grid.azurewebsites.net/Column/Encoding*@
+﻿@using CiEletronica.Models
+@model IEnumerable<CiEletronica.Models.MensagemRelacoes>
 @{
     var moduleName = "Ci Eletrônica";
     var pageName = "Caixa de Entrada";
@@ -9,13 +9,12 @@
 @{
     WebGrid grid = new WebGrid(
         Model,
-        defaultSort: "men_id_men",
-        columnNames: new[] { "men_id_men", "men_nom_titulo", "men_dat_cadastro" },
-        rowsPerPage: 5
-        );
+        rowsPerPage: 10
+    );
 }
 <section id="page-content">
-    @{Html.RenderPartial(
+    @{
+        Html.RenderPartial(
             "PartialViews/_headerContent",
             new ViewDataDictionary { { "moduleName", moduleName }, { "pageName", pageName }, { "icon", "<i class='fa fa-comments-o'></i>" } }
         );
@@ -23,13 +22,14 @@
     <div class="body-content animated fadeIn">
         <div class="row">
             <div class="col-sm-2">
-                @{Html.RenderPartial("PartialViews/_menuMensagem", new ViewDataDictionary {{"nomeMenu", ViewData["nomeMenu"]}});}
+                @{Html.RenderPartial("PartialViews/_menuMensagem", new ViewDataDictionary { { "nomeMenu", ViewData["nomeMenu"] } });}
             </div>
             <div class="col-sm-10">
-                <div class="panel rounded shadow panel-teal ci-caixa-entrada-corpo">
+                <div class="panel rounded shadow panel-teal">
                     <div class="panel-heading">
                         <div class="pull-left">
-                            <h3 class="panel-title">@pageName
+                            <h3 class="panel-title">
+                                @pageName
                                 @*<?php if(!empty($notificacaoNaoLidaPendente) && $notificacaoNaoLidaPendente->nlp_flg_nao_lida_pendente) { ?>
                                       (<?=$notificacaoNaoLidaPendente->nlp_qtd_nao_lida_pendente?>)
                                 <?php } ?>*@
@@ -38,47 +38,125 @@
                         @*<?= $this->render('partial-views/_pesquisar', ['mensagemSearch' => $mensagemSearch]) ?>*@
                         <div class="clearfix"></div>
                     </div>
-                    <div class="pagination pagination-small pagination-right">
-                        @grid.Pager(
-                            mode: WebGridPagerModes.All,
-                            numericLinksCount: 10,
-                            firstText: "<< Primeira",
-                            previousText: "< Anterior",
-                            nextText: "Próximo >",
-                            lastText: "Último >>"
-                        )
-                    </div> 
-                    <div id="pager">
-                        @grid.PageCount
+                    <div class="panel-sub-heading inner-all">
+                        <div class="pull-left">
+                            <ul class="list-inline no-margin">
+                                <li>
+                                    <div class="btn-group">
+                                        <div class='ckbox ckbox-theme'><input class='ckeckbox-todos ci-selecionar-todas' id='todos' type='checkbox' /> <label for='todos'> Todas</label></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default dropdown-filtro" data-toggle="dropdown">
+                                            <i class="fa fa-filter"></i> Filtro <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="caixa-entrada">Nenhum</a></li>
+                                            <li><a href="">Lidas</a></li>
+                                            <li><a href="">Não lidas</a></li>
+                                            <li><a href="">Pendentes</a></li>
+                                            <li><a href="">Importantes</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="btn-group">
+                                        <button class="btn btn-default tooltips opcao-arquivar" style="display: none" data-toggle="modal" data-target=".modal-confirmacao-arquivamento" type="button" data-container="body" title="Arquivar"><i class="fa fa-folder"></i> Arquivar</button>
+                                    </div>
+                                </li>
+                                <li class="hidden-xs opcao-mais" style="display: none">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default">Mais</button>
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                            <span class="caret"></span>
+                                            <span class="sr-only">Toggle Dropdown</span>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li class="opcao-marcar-lida" style="display: none"><a href="#"><i class="fa fa-folder-open-o"></i> Marcar como lida</a></li>
+                                            <li class="opcao-marcar-nao-lida" style="display: none"><a href="#"><i class="fa fa-folder-o"></i> Marcar como não lida</a></li>
+                                            <li class="divider"></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="pull-right">
+                            <ul class="list-inline no-margin">
+                                <li class="hidden-xs">
+                                    <span>
+                                        Total @grid.TotalRowCount CI(s) Eletrônica(s)
+                                    </span>
+                                </li>
+                                <li>
+                                    @grid.PagerList(
+                                        mode: WebGridPagerModes.All,
+                                        paginationStyle: "pagination pagination-small pagination-right",
+                                        numericLinksCount: 4,
+                                        firstText: "Primeira",
+                                        previousText: "<",
+                                        nextText: ">",
+                                        lastText: "Último"
+                                    )
+                                </li>
+                                <li class="hidden-xs">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                            <i class="fa fa-cog"></i> <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu pull-right" role="menu">
+                                            <li class="dropdown-header">Configurações</li>
+                                            <li><a href="ci-eletronica/configuracao/configuracao-basica">Assinatura</a></li>
+                                            <li><a href="#">Notificações</a></li>
+                                            <li><a href="#">Fazer tour</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"></div>
                     </div>
-                    <div id="pager">
-                        @grid.PageIndex
+                    <div class="panel-body no-padding">
+                        <div class="table-responsive">
+                            @grid.GetHtml(
+                                displayHeader: false,
+                                //rowStyle: "visualizar-mensagem-tr",
+                                footerStyle: "hide",
+                                fillEmptyRows: true,
+                                //defaultCellValue: "--",
+                                tableStyle: "table table-hover table-email",
+                                columns: grid.Columns(
+                                    //grid.Column(style: "hide", format: (item) =>
+                                    //{
+                                    //    return item.idMensagem;
+                                    //}),
+                                    grid.Column(style: "text-center", format: (item) =>
+                                    {
+                                        var checkBox = "<div class='ckbox ckbox-theme'><input id='" + item.idMensagem + "' class='checkbox-action' type='checkbox'><label for='" + item.idMensagem + "'></label></div>";
+                                        return Html.Raw(checkBox);
+                                    }),
+                                    grid.Column(format: (item) =>
+                                    {
+                                        var star = "<a class='star star-checked' data-toggle='tooltip' title='Marcar como importante' href='" + Url.Action("VisualizarUsuario", "Usuario", new { id = item.idMensagem }) + "'><i class='fa fa-star'></i></a>";
+                                        return Html.Raw(star);
+                                    }),
+                                    grid.Column(format: (item) =>
+                                    {
+                                        var numeroCi = String.Format("{0:#-####}", Convert.ToInt32(item.numeroCi));
+                                        return numeroCi;
+                                    }),
+                                    grid.Column(format: (item) =>
+                                    {
+                                        ViewData["mensagemRelacoes"] = item.Value;
+                                        return Html.Partial("_corpoMensagem");
+                                    })
+                                )
+                            )
+                        </div>
                     </div>
-                    <div id="pager">
-                        @grid.PageFieldName
-                    </div>
-                    <div id="pager">
-                        @grid.GetPageUrl(grid.PageIndex)
-                    </div>
-                    @grid.GetHtml(
-                        displayHeader: false,
-                        footerStyle: "hide",
-                        fillEmptyRows: true,
-                        //defaultCellValue: "--",
-                        tableStyle: "table table-bordered",
-                        columns : grid.Columns(
-                            grid.Column(header : "Check", format : (item) => {
-                                var checkBox = "<div class='ckbox ckbox-theme'><input id='"+ item.men_id_men + "' class='checkbox-action' type='checkbox'><label for='" + item.men_id_men + "'></label></div>";
-                                return Html.Raw(checkBox);
-                            }),
-                            grid.Column("men_id_men", header : "ID"),
-                            grid.Column("men_nom_titulo", "Título"),
-                            grid.Column("men_dat_cadastro", "Data")
-                        )
-                    )
                 </div>
             </div>
         </div>
+        @Html.Partial("_footerAdmin")
     </div>
-    @Html.Partial("_footerAdmin")
 </section>

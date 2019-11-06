@@ -14,17 +14,8 @@ namespace CiEletronica.Models
     
     public partial class tnu_tipo_numeracao
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tnu_tipo_numeracao()
-        {
-            this.cnu_controle_numeros = new HashSet<cnu_controle_numeros>();
-        }
-    
         public int tnu_id_tnu { get; set; }
         public string tnu_nom_tipo { get; set; }
         public bool tnu_flg_ci { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<cnu_controle_numeros> cnu_controle_numeros { get; set; }
     }
 }

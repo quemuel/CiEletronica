@@ -17,7 +17,6 @@ namespace CiEletronica.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public men_mensagem()
         {
-            this.cnu_controle_numeros = new HashSet<cnu_controle_numeros>();
             this.dme_destinatario_mensagem = new HashSet<dme_destinatario_mensagem>();
             this.max_mensagem_anexo = new HashSet<max_mensagem_anexo>();
             this.mde_mensagem_detalhes = new HashSet<mde_mensagem_detalhes>();
@@ -28,7 +27,7 @@ namespace CiEletronica.Models
             this.rem_remetente = new HashSet<rem_remetente>();
             this.mra_mensagem_rascunho = new HashSet<mra_mensagem_rascunho>();
         }
-
+    
 
         public int men_id_men { get; set; }
         public string men_num_autenticacao { get; set; }
@@ -46,8 +45,6 @@ namespace CiEletronica.Models
         public const string ENVIADAS = "enviadas"; 
         public const string MODELO = "modelo";
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<cnu_controle_numeros> cnu_controle_numeros { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<dme_destinatario_mensagem> dme_destinatario_mensagem { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

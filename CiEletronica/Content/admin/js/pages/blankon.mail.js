@@ -8,7 +8,7 @@ var BlankonMail = function () {
         init: function () {
             BlankonMail.checkAction();
             BlankonMail.starAction();
-            BlankonMail.readMail();
+            //BlankonMail.readMail();
             BlankonMail.bootstrapWYSIHTML5();
         },
 
@@ -43,11 +43,11 @@ var BlankonMail = function () {
         // =========================================================================
         // READ MAIL
         // =========================================================================
-        readMail: function () {
-            $('.table-email .media').click(function(){
-                location.href="mail-view.html";
-            });
-        },
+        //readMail: function () {
+        //    $('.table-email .media').click(function(){
+        //        location.href="mail-view.html";
+        //    });
+        //},
 
         // =========================================================================
         // BOOTSTRAP WYSIHTML5

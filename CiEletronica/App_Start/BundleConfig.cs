@@ -9,7 +9,12 @@ namespace CiEletronica
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                "~/Scripts/jquery-{version}.js"
+            ));
+
+            bundles.Add(new ScriptBundle("~/bundles/ckeditor").Include(
+                "~/Scripts/ckeditor/ckeditor.js"
+            ));
 
             bundles.Add(new StyleBundle("~/Content/favicons").Include(
                 "~/Content/global/img/ico/yii/apple-touch-icon-144x144-precomposed.png",

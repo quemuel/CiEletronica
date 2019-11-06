@@ -1,0 +1,37 @@
+﻿@using CiEletronica.Models
+@using System.Text.RegularExpressions
+@*@model CiEletronica.Models.MensagemRelacoes*@
+@{
+    var mensagemRelacoes = (MensagemRelacoes)ViewData["mensagemRelacoes"];
+}
+
+<div style="cursor: pointer;" onclick="window.location='@Url.Action("VisualizarMensagem", "Mensagem", new { id = mensagemRelacoes.idMensagem })'" class="media">
+    <a class="pull-left">
+        <img class="media-object" src="@Url.Content("/Content")/global/img/avatar/35/26.png" alt="Imagem do usuário">
+    </a>
+    <div class="media-body">
+        <h4 class="text-primary">
+            @mensagemRelacoes.setorSiglaRemetente
+            <small> &lt; @mensagemRelacoes.nomeUsuarioRemetente &gt; </small>
+            <span class="badge badge-warning badge-stroke">CI Circular</span>
+        </h4>
+        <p class="email-summary">
+            <span class="text-strong">@Html.Raw(mensagemRelacoes.titulo) </span> -
+            <small>
+                @{
+                    string corpoSemTags = Regex.Replace(mensagemRelacoes.corpoCi, "<(.|\\n)*?>", string.Empty);
+                    if (corpoSemTags.Length > 80)
+                    {
+                        corpoSemTags = corpoSemTags.Substring(0, 100);
+                    }
+                }
+                @Html.Raw(corpoSemTags)
+            </small>
+        </p>
+        <span class="media-meta" title="@mensagemRelacoes.dataCadastro.ToShortDateString() @mensagemRelacoes.dataCadastro.ToShortTimeString()">@UtilFunctions.GetPrettyDate(mensagemRelacoes.dataCadastro)</span>
+        @if (mensagemRelacoes.qtdAnexos > 0)
+        {
+            <span class="media-attach" title="@mensagemRelacoes.qtdAnexos anexo(s)"><i class="fa fa-paperclip"></i></span>
+        }
+    </div>
+</div>

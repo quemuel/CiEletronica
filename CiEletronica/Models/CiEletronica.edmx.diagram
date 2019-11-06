@@ -4,60 +4,52 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="cd8150e7d36649c99912d0f8bc2e4ac8" Name="Diagram1">
-        <EntityTypeShape EntityType="CiEletronica.ase_aprovacao_setor" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.ass_assinatura" Width="1.5" PointX="2.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.cas_controle_acesso" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.cnu_controle_numeros" Width="1.5" PointX="8.25" PointY="14.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.com_controle_menu" Width="1.5" PointX="13" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.dme_destinatario_mensagem" Width="1.5" PointX="8.25" PointY="10.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.los_log_sistema" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.max_mensagem_anexo" Width="1.5" PointX="5.25" PointY="13.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.mde_mensagem_detalhes" Width="1.5" PointX="5.25" PointY="17" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.mea_mensagem_aprovada" Width="1.5" PointX="5.25" PointY="19.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.men_mensagem" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.men_menu" Width="1.5" PointX="10.75" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.meq_mensagem_arquivada" Width="1.5" PointX="5.25" PointY="23.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.mra_mensagem_rascunho" Width="1.5" PointX="5.25" PointY="26.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.par_parametro" Width="1.5" PointX="2.75" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.pem_perfil_menu" Width="1.5" PointX="13" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.rem_remetente" Width="1.5" PointX="5.25" PointY="29.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.sme_status_mensagem" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.tde_tipo_destinatario" Width="1.5" PointX="6" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.tme_tipo_mensagem" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.tnu_tipo_numeracao" Width="1.5" PointX="6" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.uac_usuario_acesso" Width="1.5" PointX="4.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.uau_usuario_autorizado" Width="1.5" PointX="6.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.ume_usuario_menu" Width="1.5" PointX="13" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.ard_arvore_destinatario" Width="1.5" PointX="10.75" PointY="11.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.v_mah_mensagem_arquivada_historico" Width="1.5" PointX="2.75" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.v_map_mensagem_pai_filha_aprovacao" Width="1.5" PointX="12.75" PointY="11.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.v_mau_mensagem_arquivamento_usuario" Width="1.5" PointX="12.75" PointY="14.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.v_mce_mensagem_caixa_entrada" Width="1.5" PointX="14.75" PointY="11.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.v_mfa_mensagem_pai_filha_arquivada" Width="1.5" PointX="14.75" PointY="14.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.v_mfp_mensagem_pai_filha_pendencia" Width="1.5" PointX="15.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.v_mfv_mensagem_pai_filha_valida" Width="1.5" PointX="15.75" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.v_mnl_mensagem_nao_lida" Width="1.5" PointX="15.75" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.v_mns_mensagem_nao_lida_setor" Width="1.5" PointX="7.75" PointY="17.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.v_mpa_mensagem_pendente_aprovacao" Width="1.5" PointX="16.75" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.v_mpc_mensagem_pai_caixa_entrada" Width="1.5" PointX="9.75" PointY="17.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.v_mpl_mensagem_pai_nao_lida" Width="1.5" PointX="11.75" PointY="17.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.v_mpp_mensagem_pedente_aprovacao_pai" Width="1.5" PointX="16.75" PointY="13.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.v_nlp_notificacao_nao_lida_pendente" Width="1.5" PointX="13.75" PointY="17.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.v_nls_notificacao_nao_lida_setor" Width="1.5" PointX="16.75" PointY="16.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.v_nnl_notificacao_nao_lida" Width="1.5" PointX="17.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.v_npa_notificacao_pendente_aprovacao" Width="1.5" PointX="17.75" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.v_nps_notificacao_pendente_aprovacao_setor" Width="1.5" PointX="17.75" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.v_qef_quantitativo_efetivo_mensagem_filha" Width="1.5" PointX="0.75" PointY="19.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.v_qfv_quantitativo_mensagem_filha_valida" Width="1.5" PointX="18.75" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.v_qmd_quantitativo_mensagem_destinatario" Width="1.5" PointX="18.75" PointY="13.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.v_qmp_quantitativo_mensagem_nao_lida_pai" Width="1.5" PointX="18.75" PointY="16.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.v_qpa_quantitativo_pendente_aprovacao_pai" Width="1.5" PointX="15.75" PointY="19.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiEletronica.v_ush_usuario_autorizado_historico" Width="1.5" PointX="17.75" PointY="19.625" IsExpanded="true" />
-        <AssociationConnector Association="CiEletronica.R_com_cas" ManuallyRouted="false" />
-        <AssociationConnector Association="CiEletronica.R_men_cnu" ManuallyRouted="false" />
-        <AssociationConnector Association="CiEletronica.R_tnu_cnu" ManuallyRouted="false" />
-        <AssociationConnector Association="CiEletronica.R_com_men" ManuallyRouted="false" />
+      <Diagram DiagramId="e9ca13ba14a14af6b354434625c4a965" Name="Diagram1">
+        <EntityTypeShape EntityType="CiEletronica.ase_aprovacao_setor" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.ass_assinatura" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.cnu_controle_numeros" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.dme_destinatario_mensagem" Width="1.5" PointX="8.25" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.max_mensagem_anexo" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.mde_mensagem_detalhes" Width="1.5" PointX="5.25" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.mea_mensagem_aprovada" Width="1.5" PointX="5.25" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.men_mensagem" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.meq_mensagem_arquivada" Width="1.5" PointX="5.25" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.mra_mensagem_rascunho" Width="1.5" PointX="5.25" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.par_parametro" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.pse_permissoes_secretaria" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.rem_remetente" Width="1.5" PointX="5.25" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.sme_status_mensagem" Width="1.5" PointX="0.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.tde_tipo_destinatario" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.tme_tipo_mensagem" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.tnu_tipo_numeracao" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.uau_usuario_autorizado" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.ard_arvore_destinatario" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.v_ard_arvore_destinatario" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.v_ard_arvore_destinatario_" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.v_mah_mensagem_arquivada_historico" Width="1.5" PointX="12.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.v_map_mensagem_pai_filha_aprovacao" Width="1.5" PointX="12.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.v_mau_mensagem_arquivamento_usuario" Width="1.5" PointX="10.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.v_mce_mensagem_caixa_entrada" Width="1.5" PointX="12.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.v_mfa_mensagem_pai_filha_arquivada" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.v_mfp_mensagem_pai_filha_pendencia" Width="1.5" PointX="14.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.v_mfv_mensagem_pai_filha_valida" Width="1.5" PointX="14.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.v_mnl_mensagem_nao_lida" Width="1.5" PointX="14.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.v_mns_mensagem_nao_lida_setor" Width="1.5" PointX="14.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.v_mpa_mensagem_pendente_aprovacao" Width="1.5" PointX="7.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.v_mpc_mensagem_pai_caixa_entrada" Width="1.5" PointX="14.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.v_mpl_mensagem_pai_nao_lida" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.v_mpp_mensagem_pedente_aprovacao_pai" Width="1.5" PointX="0.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.v_nlp_notificacao_nao_lida_pendente" Width="1.5" PointX="16.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.v_nls_notificacao_nao_lida_setor" Width="1.5" PointX="16.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.v_nnl_notificacao_nao_lida" Width="1.5" PointX="16.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.v_npa_notificacao_pendente_aprovacao" Width="1.5" PointX="9.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.v_nps_notificacao_pendente_aprovacao_setor" Width="1.5" PointX="11.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.v_qef_quantitativo_efetivo_mensagem_filha" Width="1.5" PointX="16.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.v_qfv_quantitativo_mensagem_filha_valida" Width="1.5" PointX="16.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.v_qmd_quantitativo_mensagem_destinatario" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.v_qmp_quantitativo_mensagem_nao_lida_pai" Width="1.5" PointX="18.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.v_qpa_quantitativo_pendente_aprovacao_pai" Width="1.5" PointX="18.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiEletronica.v_ush_usuario_autorizado_historico" Width="1.5" PointX="18.75" PointY="9.75" IsExpanded="true" />
         <AssociationConnector Association="CiEletronica.R_men_dme" ManuallyRouted="false" />
         <AssociationConnector Association="CiEletronica.R_tde_dme" ManuallyRouted="false" />
         <AssociationConnector Association="CiEletronica.R_men_max" ManuallyRouted="false" />
@@ -70,8 +62,7 @@
         <AssociationConnector Association="CiEletronica.R_mra_men" ManuallyRouted="false" />
         <AssociationConnector Association="CiEletronica.R_sme_men" ManuallyRouted="false" />
         <AssociationConnector Association="CiEletronica.R_tme_men" ManuallyRouted="false" />
-        <AssociationConnector Association="CiEletronica.R_pem_men" ManuallyRouted="false" />
-        <AssociationConnector Association="CiEletronica.R_ume_men" ManuallyRouted="false" />
+        <AssociationConnector Association="CiEletronica.R_uau_pse" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,0 +1,93 @@
+﻿<?php use app\modules\ciEletronica\models\Mensagem; ?>
+
+<div class="panel-sub-heading inner-all">
+    <div class="pull-left">
+        <ul class="list-inline no-margin">
+            <?php if ($tipoMenu != Mensagem::APROVACAO) { ?>
+            <li>
+                <div class="btn-group">
+                    <?= \yii\helpers\Html::tag('div', "<input class='ckeckbox-todos ci-selecionar-todas' id='todos' type='checkbox' /> <label for='todos'> Todas</label>",[
+                    'class' => 'ckbox ckbox-theme'
+                    ])?>
+                </div>
+            </li>
+            <?php } ?>
+            <?php if (!in_array($tipoMenu, [Mensagem::RASCUNHO, Mensagem::ENVIADAS])) { ?>
+            <li>
+                <div class="btn-group ci-filtro">
+                    <button type="button" class="btn btn-default dropdown-filtro" data-toggle="dropdown">
+                        <i class="fa fa-filter"></i> Filtro <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="caixa-entrada">Nenhum</a></li>
+                        <?php if ($tipoMenu == Mensagem::ARQUIVADAS) { ?>
+                        <li <?= isset($_GET['filtro']) && !empty($_GET['filtro']) && $_GET['filtro'] == Mensagem::ENVIADAS ? "class='active'" : ""?>><a href="?filtro=<?= Mensagem::ENVIADAS ?>">Enviadas</a></li>
+                        <li <?= isset($_GET['filtro']) && !empty($_GET['filtro']) && $_GET['filtro'] == Mensagem::RECEBIDAS ? "class='active'" : ""?>><a href="?filtro=<?= Mensagem::RECEBIDAS ?>">Recebidas</a></li>
+                        <?php } else { ?>
+                        <li <?= isset($_GET['filtro']) && !empty($_GET['filtro']) && $_GET['filtro'] == Mensagem::LIDA ? "class='active'" : ""?>><a href="?filtro=<?= Mensagem::LIDA ?>">Lidas</a></li>
+                        <li <?= isset($_GET['filtro']) && !empty($_GET['filtro']) && $_GET['filtro'] == Mensagem::NAO_LIDA ? "class='active'" : ""?>><a href="?filtro=<?= Mensagem::NAO_LIDA ?>">Não lidas</a></li>
+                        <li <?= isset($_GET['filtro']) && !empty($_GET['filtro']) && $_GET['filtro'] == Mensagem::PENDENTES_APROVACAO ? "class='active'" : ""?>><a href="?filtro=<?= Mensagem::PENDENTES_APROVACAO ?>">Pendentes</a></li>
+                        <li <?= isset($_GET['filtro']) && !empty($_GET['filtro']) && $_GET['filtro'] == Mensagem::IMPORTANTE ? "class='active'" : ""?>><a href="?filtro=<?= Mensagem::IMPORTANTE ?>">Importantes</a></li>
+                        <?php } ?>
+                    </ul>
+                </div>
+            </li>
+            <?php } ?>
+            <li>
+                <div class="btn-group">
+                    <?php if ($tipoMenu == Mensagem::ARQUIVADAS) { ?>
+                    <button class="btn btn-default tooltips opcao-desarquivar" style="display: none" data-toggle="modal" data-target=".modal-confirmacao-desarquivamento" type="button" data-container="body" title="Arquivar"><i class="fa fa-folder"></i> Desarquivar</button>
+                    <?php } else if ($tipoMenu == Mensagem::RASCUNHO) { ?>
+                    <button id="btn-deletar-rascunho" class="btn btn-default tooltips opcao-rascunho" style="display: none" type="button" data-toggle="tooltip" data-container="body" title="Deletar Rascunho(s)"><i class="fa fa-trash-o"></i> Deletar</button>
+                    <?php } else { ?>
+                    <button class="btn btn-default tooltips opcao-arquivar" style="display: none" data-toggle="modal" data-target=".modal-confirmacao-arquivamento" type="button" data-container="body" title="Arquivar"><i class="fa fa-folder"></i> Arquivar</button>
+                    <?php } ?>
+                    <!--                    <button class="btn btn-default tooltips opcao-enviar-lixeira" style="display: none" type="button" data-toggle="tooltip" data-container="body" title="Enviar p/ Lixeira"><i class="fa fa-trash-o"></i></button>-->
+                </div>
+            </li>
+            <li class="hidden-xs opcao-mais" style="display: none">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default">Mais</button>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li class="opcao-marcar-lida" style="display: none"><a href="#"><i class="fa fa-folder-open-o"></i> Marcar como lida</a></li>
+                        <li class="opcao-marcar-nao-lida" style="display: none"><a href="#"><i class="fa fa-folder-o"></i> Marcar como não lida</a></li>
+                        <li class="divider"></li>
+                        <!--                        <li class="opcao-enviar-lixeira" style="display: none"><a href="#"><i class="fa fa-trash-o"></i> Enviar p/ Lixeira</a></li>-->
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="pull-right">
+        <ul class="list-inline no-margin">
+            <li class="hidden-xs"><span>{summary}</span></li>
+            <li>
+                {pager}
+            </li>
+            <li class="hidden-xs">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-cog"></i> <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu pull-right" role="menu">
+                        <li class="dropdown-header">Configurações</li>
+                        <!--                                            <li class="active"><a href="#">Assinatura</a></li>-->
+                        <li><a href="<?=Yii::$app->urlManager->createUrl('ci-eletronica/configuracao/configuracao-basica')?>">Assinatura</a></li>
+                        <li><a href="#">Notificações</a></li>
+                        <li><a href="#">Fazer tour</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="clearfix"></div>
+</div><!-- /.panel-sub-heading -->
+<div class="panel-body no-padding">
+    <div class="table-responsive">
+        {items}
+    </div>
+</div>

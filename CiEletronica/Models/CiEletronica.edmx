@@ -72,34 +72,17 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.ard_arvore_destinatario' does no
           <Property Name="ass_id_use" Type="int" Nullable="false" />
           <Property Name="ass_flg_atualizado" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityType Name="cas_controle_acesso">
-          <Key>
-            <PropertyRef Name="cas_id_cas" />
-          </Key>
-          <Property Name="cas_id_cas" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="cas_id_ip" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="cas_nom_maquina" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="cas_id_use" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="cnu_controle_numeros">
           <Key>
             <PropertyRef Name="cnu_id_cnu" />
           </Key>
           <Property Name="cnu_id_cnu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="cnu_num_ci" Type="int" />
+          <Property Name="cnu_num_ano_ci" Type="int" />
           <Property Name="cnu_num_controle" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="cnu_dat_cadastro" Type="datetime" Nullable="false" />
           <Property Name="cnu_id_tnu" Type="int" Nullable="false" />
           <Property Name="cnu_id_men" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="com_controle_menu">
-          <Key>
-            <PropertyRef Name="com_id_com" />
-          </Key>
-          <Property Name="com_id_com" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="com_id_cas" Type="int" Nullable="false" />
-          <Property Name="com_id_men" Type="int" Nullable="false" />
-          <Property Name="com_dat_acesso" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="dme_destinatario_mensagem">
           <Key>
@@ -113,18 +96,6 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.ard_arvore_destinatario' does no
           <Property Name="dme_flg_leitura" Type="bit" Nullable="false" />
           <Property Name="dme_flg_msg_automatica" Type="bit" Nullable="false" />
           <Property Name="dme_dat_cadastro" Type="datetime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="los_log_sistema">
-          <Key>
-            <PropertyRef Name="los_id_los" />
-          </Key>
-          <Property Name="los_id_los" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="los_num_nivel" Type="int" Nullable="false" />
-          <Property Name="los_nom_categoria" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="los_log_time" Type="float" Nullable="false" />
-          <Property Name="los_des_mensagem" Type="text" Nullable="false" />
-          <Property Name="los_id_usu" Type="int" Nullable="false" />
-          <Property Name="los_data_hora" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="max_mensagem_anexo">
           <Key>
@@ -176,22 +147,6 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.ard_arvore_destinatario' does no
           <Property Name="men_flg_aprovacao" Type="bit" Nullable="false" />
           <Property Name="men_id_sme" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="men_menu">
-          <Key>
-            <PropertyRef Name="men_id_men" />
-          </Key>
-          <Property Name="men_id_men" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="men_nom_menu" Type="varchar" MaxLength="300" Nullable="false" />
-          <Property Name="men_htm_icon" Type="varchar" MaxLength="100" />
-          <Property Name="men_nom_action" Type="varchar" MaxLength="300" />
-          <Property Name="men_nom_controller" Type="varchar" MaxLength="300" />
-          <Property Name="men_flg_menu_guest" Type="bit" Nullable="false" />
-          <Property Name="men_flg_menu_admin" Type="bit" Nullable="false" />
-          <Property Name="men_flg_modulo" Type="bit" Nullable="false" />
-          <Property Name="men_flg_ativo" Type="bit" Nullable="false" />
-          <Property Name="men_id_men_pai" Type="int" />
-          <Property Name="men_num_posicao" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="meq_mensagem_arquivada">
           <Key>
             <PropertyRef Name="meq_id_meq" />
@@ -222,13 +177,16 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.ard_arvore_destinatario' does no
           <Property Name="par_nom_parametro" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="par_des_retorno" Type="varchar(max)" />
         </EntityType>
-        <EntityType Name="pem_perfil_menu">
+        <EntityType Name="pse_permissoes_secretaria">
           <Key>
-            <PropertyRef Name="pem_id_pem" />
+            <PropertyRef Name="pse_id_pse" />
           </Key>
-          <Property Name="pem_id_pem" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="pem_id_pus" Type="int" Nullable="false" />
-          <Property Name="pem_id_men" Type="int" Nullable="false" />
+          <Property Name="pse_id_pse" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pse_id_uau" Type="int" Nullable="false" />
+          <Property Name="pse_flg_visualizar" Type="bit" Nullable="false" />
+          <Property Name="pse_flg_responder_encaminhar" Type="bit" Nullable="false" />
+          <Property Name="pse_flg_aprovar_reprovar" Type="bit" Nullable="false" />
+          <Property Name="pse_flg_criar_circular" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="rem_remetente">
           <Key>
@@ -269,13 +227,6 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.ard_arvore_destinatario' does no
           <Property Name="tnu_nom_tipo" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="tnu_flg_ci" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityType Name="uac_usuario_acesso">
-          <Key>
-            <PropertyRef Name="uac_id_uac" />
-          </Key>
-          <Property Name="uac_id_uac" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="uac_id_usu" Type="int" />
-        </EntityType>
         <EntityType Name="uau_usuario_autorizado">
           <Key>
             <PropertyRef Name="uau_id_uau" />
@@ -289,13 +240,108 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.ard_arvore_destinatario' does no
           <Property Name="uau_dat_cadastro" Type="datetime" Nullable="false" />
           <Property Name="uau_id_use_cadastro" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="ume_usuario_menu">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CI_ELETRONICA.dbo.v_ard_arvore_destinatario' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_ard_arvore_destinatario">
           <Key>
-            <PropertyRef Name="ume_id_ume" />
+            <PropertyRef Name="id" />
+            <PropertyRef Name="root" />
+            <PropertyRef Name="lft" />
+            <PropertyRef Name="rgt" />
+            <PropertyRef Name="lvl" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="icon" />
+            <PropertyRef Name="icon_type" />
+            <PropertyRef Name="active" />
+            <PropertyRef Name="selected" />
+            <PropertyRef Name="disabled" />
+            <PropertyRef Name="readonly" />
+            <PropertyRef Name="visible" />
+            <PropertyRef Name="collapsed" />
+            <PropertyRef Name="movable_u" />
+            <PropertyRef Name="movable_d" />
+            <PropertyRef Name="movable_l" />
+            <PropertyRef Name="movable_r" />
+            <PropertyRef Name="removable" />
+            <PropertyRef Name="removable_all" />
+            <PropertyRef Name="id_perfil" />
+            <PropertyRef Name="id_setor_gerenciador" />
           </Key>
-          <Property Name="ume_id_ume" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ume_id_usu" Type="int" Nullable="false" />
-          <Property Name="ume_id_men" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="root" Type="int" Nullable="false" />
+          <Property Name="lft" Type="int" Nullable="false" />
+          <Property Name="rgt" Type="int" Nullable="false" />
+          <Property Name="lvl" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="icon" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="icon_type" Type="int" Nullable="false" />
+          <Property Name="active" Type="int" Nullable="false" />
+          <Property Name="selected" Type="int" Nullable="false" />
+          <Property Name="disabled" Type="int" Nullable="false" />
+          <Property Name="readonly" Type="int" Nullable="false" />
+          <Property Name="visible" Type="int" Nullable="false" />
+          <Property Name="collapsed" Type="int" Nullable="false" />
+          <Property Name="movable_u" Type="int" Nullable="false" />
+          <Property Name="movable_d" Type="int" Nullable="false" />
+          <Property Name="movable_l" Type="int" Nullable="false" />
+          <Property Name="movable_r" Type="int" Nullable="false" />
+          <Property Name="removable" Type="int" Nullable="false" />
+          <Property Name="removable_all" Type="int" Nullable="false" />
+          <Property Name="id_perfil" Type="int" Nullable="false" />
+          <Property Name="id_setor_gerenciador" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CI_ELETRONICA.dbo.v_ard_arvore_destinatario_' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_ard_arvore_destinatario_">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="root" />
+            <PropertyRef Name="id_setor" />
+            <PropertyRef Name="id_sub_setor" />
+            <PropertyRef Name="id_sub_sub_setor" />
+            <PropertyRef Name="setor_order" />
+            <PropertyRef Name="lvl" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="icon" />
+            <PropertyRef Name="icon_type" />
+            <PropertyRef Name="active" />
+            <PropertyRef Name="selected" />
+            <PropertyRef Name="disabled" />
+            <PropertyRef Name="readonly" />
+            <PropertyRef Name="visible" />
+            <PropertyRef Name="collapsed" />
+            <PropertyRef Name="movable_u" />
+            <PropertyRef Name="movable_d" />
+            <PropertyRef Name="movable_l" />
+            <PropertyRef Name="movable_r" />
+            <PropertyRef Name="removable" />
+            <PropertyRef Name="removable_all" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="root" Type="int" Nullable="false" />
+          <Property Name="id_setor" Type="int" Nullable="false" />
+          <Property Name="id_sub_setor" Type="int" Nullable="false" />
+          <Property Name="id_sub_sub_setor" Type="int" Nullable="false" />
+          <Property Name="perfil_order" Type="numeric" Precision="2" Scale="1" />
+          <Property Name="setor_order" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="lft" Type="bigint" />
+          <Property Name="rgt" Type="bigint" />
+          <Property Name="lvl" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="icon" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="icon_type" Type="int" Nullable="false" />
+          <Property Name="active" Type="int" Nullable="false" />
+          <Property Name="selected" Type="int" Nullable="false" />
+          <Property Name="disabled" Type="int" Nullable="false" />
+          <Property Name="readonly" Type="int" Nullable="false" />
+          <Property Name="visible" Type="int" Nullable="false" />
+          <Property Name="collapsed" Type="int" Nullable="false" />
+          <Property Name="movable_u" Type="int" Nullable="false" />
+          <Property Name="movable_d" Type="int" Nullable="false" />
+          <Property Name="movable_l" Type="int" Nullable="false" />
+          <Property Name="movable_r" Type="int" Nullable="false" />
+          <Property Name="removable" Type="int" Nullable="false" />
+          <Property Name="removable_all" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'CI_ELETRONICA.dbo.v_mah_mensagem_arquivada_historico' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -580,42 +626,6 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.v_ush_usuario_autorizado_histori
           <Property Name="ush_id_use" Type="int" Nullable="false" />
           <Property Name="ush_id_set" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="R_com_cas">
-          <End Role="cas_controle_acesso" Type="Self.cas_controle_acesso" Multiplicity="1" />
-          <End Role="com_controle_menu" Type="Self.com_controle_menu" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="cas_controle_acesso">
-              <PropertyRef Name="cas_id_cas" />
-            </Principal>
-            <Dependent Role="com_controle_menu">
-              <PropertyRef Name="com_id_cas" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="R_com_men">
-          <End Role="men_menu" Type="Self.men_menu" Multiplicity="1" />
-          <End Role="com_controle_menu" Type="Self.com_controle_menu" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="men_menu">
-              <PropertyRef Name="men_id_men" />
-            </Principal>
-            <Dependent Role="com_controle_menu">
-              <PropertyRef Name="com_id_men" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="R_men_cnu">
-          <End Role="men_mensagem" Type="Self.men_mensagem" Multiplicity="1" />
-          <End Role="cnu_controle_numeros" Type="Self.cnu_controle_numeros" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="men_mensagem">
-              <PropertyRef Name="men_id_men" />
-            </Principal>
-            <Dependent Role="cnu_controle_numeros">
-              <PropertyRef Name="cnu_id_men" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="R_men_dme">
           <End Role="men_mensagem" Type="Self.men_mensagem" Multiplicity="1" />
           <End Role="dme_destinatario_mensagem" Type="Self.dme_destinatario_mensagem" Multiplicity="*" />
@@ -724,20 +734,6 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.v_ush_usuario_autorizado_histori
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="R_pem_men">
-          <End Role="men_menu" Type="Self.men_menu" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="pem_perfil_menu" Type="Self.pem_perfil_menu" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="men_menu">
-              <PropertyRef Name="men_id_men" />
-            </Principal>
-            <Dependent Role="pem_perfil_menu">
-              <PropertyRef Name="pem_id_men" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="R_sme_men">
           <End Role="sme_status_mensagem" Type="Self.sme_status_mensagem" Multiplicity="1" />
           <End Role="men_mensagem" Type="Self.men_mensagem" Multiplicity="*" />
@@ -774,57 +770,64 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.v_ush_usuario_autorizado_histori
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="R_tnu_cnu">
-          <End Role="tnu_tipo_numeracao" Type="Self.tnu_tipo_numeracao" Multiplicity="1" />
-          <End Role="cnu_controle_numeros" Type="Self.cnu_controle_numeros" Multiplicity="*" />
+        <Association Name="R_uau_pse">
+          <End Role="uau_usuario_autorizado" Type="Self.uau_usuario_autorizado" Multiplicity="1" />
+          <End Role="pse_permissoes_secretaria" Type="Self.pse_permissoes_secretaria" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tnu_tipo_numeracao">
-              <PropertyRef Name="tnu_id_tnu" />
+            <Principal Role="uau_usuario_autorizado">
+              <PropertyRef Name="uau_id_uau" />
             </Principal>
-            <Dependent Role="cnu_controle_numeros">
-              <PropertyRef Name="cnu_id_tnu" />
+            <Dependent Role="pse_permissoes_secretaria">
+              <PropertyRef Name="pse_id_uau" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="R_ume_men">
-          <End Role="men_menu" Type="Self.men_menu" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="ume_usuario_menu" Type="Self.ume_usuario_menu" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="men_menu">
-              <PropertyRef Name="men_id_men" />
-            </Principal>
-            <Dependent Role="ume_usuario_menu">
-              <PropertyRef Name="ume_id_men" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <Function Name="pr_gerar_arvore_destinatario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="num_id_set" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Split" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="String" Type="varchar" Mode="In" />
+          <Parameter Name="Delimiter" Type="char" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="nameIndex" Type="int" Nullable="false" />
+                <Property Name="items" Type="varchar" MaxLength="8000" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="SplitString" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="String" Type="nvarchar" Mode="In" />
+          <Parameter Name="Delimiter" Type="nchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Id" Type="bigint" />
+                <Property Name="Value" Type="nvarchar" MaxLength="4000" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <EntityContainer Name="CiEletronicaStoreContainer">
           <EntitySet Name="ase_aprovacao_setor" EntityType="Self.ase_aprovacao_setor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ass_assinatura" EntityType="Self.ass_assinatura" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="cas_controle_acesso" EntityType="Self.cas_controle_acesso" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="cnu_controle_numeros" EntityType="Self.cnu_controle_numeros" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="com_controle_menu" EntityType="Self.com_controle_menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="dme_destinatario_mensagem" EntityType="Self.dme_destinatario_mensagem" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="los_log_sistema" EntityType="Self.los_log_sistema" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="max_mensagem_anexo" EntityType="Self.max_mensagem_anexo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mde_mensagem_detalhes" EntityType="Self.mde_mensagem_detalhes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mea_mensagem_aprovada" EntityType="Self.mea_mensagem_aprovada" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="men_mensagem" EntityType="Self.men_mensagem" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="men_menu" EntityType="Self.men_menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="meq_mensagem_arquivada" EntityType="Self.meq_mensagem_arquivada" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mra_mensagem_rascunho" EntityType="Self.mra_mensagem_rascunho" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="par_parametro" EntityType="Self.par_parametro" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="pem_perfil_menu" EntityType="Self.pem_perfil_menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pse_permissoes_secretaria" EntityType="Self.pse_permissoes_secretaria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="rem_remetente" EntityType="Self.rem_remetente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sme_status_mensagem" EntityType="Self.sme_status_mensagem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tde_tipo_destinatario" EntityType="Self.tde_tipo_destinatario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tme_tipo_mensagem" EntityType="Self.tme_tipo_mensagem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tnu_tipo_numeracao" EntityType="Self.tnu_tipo_numeracao" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="uac_usuario_acesso" EntityType="Self.uac_usuario_acesso" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="uau_usuario_autorizado" EntityType="Self.uau_usuario_autorizado" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ume_usuario_menu" EntityType="Self.ume_usuario_menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ard_arvore_destinatario" EntityType="Self.ard_arvore_destinatario" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [ard_arvore_destinatario].[id] AS [id], 
@@ -850,6 +853,61 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.v_ush_usuario_autorizado_histori
     [ard_arvore_destinatario].[removable_all] AS [removable_all], 
     [ard_arvore_destinatario].[id_setor] AS [id_setor]
     FROM [dbo].[ard_arvore_destinatario] AS [ard_arvore_destinatario]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_ard_arvore_destinatario" EntityType="Self.v_ard_arvore_destinatario" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_ard_arvore_destinatario].[id] AS [id], 
+    [v_ard_arvore_destinatario].[root] AS [root], 
+    [v_ard_arvore_destinatario].[lft] AS [lft], 
+    [v_ard_arvore_destinatario].[rgt] AS [rgt], 
+    [v_ard_arvore_destinatario].[lvl] AS [lvl], 
+    [v_ard_arvore_destinatario].[name] AS [name], 
+    [v_ard_arvore_destinatario].[icon] AS [icon], 
+    [v_ard_arvore_destinatario].[icon_type] AS [icon_type], 
+    [v_ard_arvore_destinatario].[active] AS [active], 
+    [v_ard_arvore_destinatario].[selected] AS [selected], 
+    [v_ard_arvore_destinatario].[disabled] AS [disabled], 
+    [v_ard_arvore_destinatario].[readonly] AS [readonly], 
+    [v_ard_arvore_destinatario].[visible] AS [visible], 
+    [v_ard_arvore_destinatario].[collapsed] AS [collapsed], 
+    [v_ard_arvore_destinatario].[movable_u] AS [movable_u], 
+    [v_ard_arvore_destinatario].[movable_d] AS [movable_d], 
+    [v_ard_arvore_destinatario].[movable_l] AS [movable_l], 
+    [v_ard_arvore_destinatario].[movable_r] AS [movable_r], 
+    [v_ard_arvore_destinatario].[removable] AS [removable], 
+    [v_ard_arvore_destinatario].[removable_all] AS [removable_all], 
+    [v_ard_arvore_destinatario].[id_perfil] AS [id_perfil], 
+    [v_ard_arvore_destinatario].[id_setor_gerenciador] AS [id_setor_gerenciador]
+    FROM [dbo].[v_ard_arvore_destinatario] AS [v_ard_arvore_destinatario]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_ard_arvore_destinatario_" EntityType="Self.v_ard_arvore_destinatario_" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_ard_arvore_destinatario_].[id] AS [id], 
+    [v_ard_arvore_destinatario_].[root] AS [root], 
+    [v_ard_arvore_destinatario_].[id_setor] AS [id_setor], 
+    [v_ard_arvore_destinatario_].[id_sub_setor] AS [id_sub_setor], 
+    [v_ard_arvore_destinatario_].[id_sub_sub_setor] AS [id_sub_sub_setor], 
+    [v_ard_arvore_destinatario_].[perfil_order] AS [perfil_order], 
+    [v_ard_arvore_destinatario_].[setor_order] AS [setor_order], 
+    [v_ard_arvore_destinatario_].[lft] AS [lft], 
+    [v_ard_arvore_destinatario_].[rgt] AS [rgt], 
+    [v_ard_arvore_destinatario_].[lvl] AS [lvl], 
+    [v_ard_arvore_destinatario_].[name] AS [name], 
+    [v_ard_arvore_destinatario_].[icon] AS [icon], 
+    [v_ard_arvore_destinatario_].[icon_type] AS [icon_type], 
+    [v_ard_arvore_destinatario_].[active] AS [active], 
+    [v_ard_arvore_destinatario_].[selected] AS [selected], 
+    [v_ard_arvore_destinatario_].[disabled] AS [disabled], 
+    [v_ard_arvore_destinatario_].[readonly] AS [readonly], 
+    [v_ard_arvore_destinatario_].[visible] AS [visible], 
+    [v_ard_arvore_destinatario_].[collapsed] AS [collapsed], 
+    [v_ard_arvore_destinatario_].[movable_u] AS [movable_u], 
+    [v_ard_arvore_destinatario_].[movable_d] AS [movable_d], 
+    [v_ard_arvore_destinatario_].[movable_l] AS [movable_l], 
+    [v_ard_arvore_destinatario_].[movable_r] AS [movable_r], 
+    [v_ard_arvore_destinatario_].[removable] AS [removable], 
+    [v_ard_arvore_destinatario_].[removable_all] AS [removable_all]
+    FROM [dbo].[v_ard_arvore_destinatario_] AS [v_ard_arvore_destinatario_]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_mah_mensagem_arquivada_historico" EntityType="Self.v_mah_mensagem_arquivada_historico" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1031,18 +1089,6 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.v_ush_usuario_autorizado_histori
     [v_ush_usuario_autorizado_historico].[ush_id_set] AS [ush_id_set]
     FROM [dbo].[v_ush_usuario_autorizado_historico] AS [v_ush_usuario_autorizado_historico]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="R_com_cas" Association="Self.R_com_cas">
-            <End Role="cas_controle_acesso" EntitySet="cas_controle_acesso" />
-            <End Role="com_controle_menu" EntitySet="com_controle_menu" />
-          </AssociationSet>
-          <AssociationSet Name="R_com_men" Association="Self.R_com_men">
-            <End Role="men_menu" EntitySet="men_menu" />
-            <End Role="com_controle_menu" EntitySet="com_controle_menu" />
-          </AssociationSet>
-          <AssociationSet Name="R_men_cnu" Association="Self.R_men_cnu">
-            <End Role="men_mensagem" EntitySet="men_mensagem" />
-            <End Role="cnu_controle_numeros" EntitySet="cnu_controle_numeros" />
-          </AssociationSet>
           <AssociationSet Name="R_men_dme" Association="Self.R_men_dme">
             <End Role="men_mensagem" EntitySet="men_mensagem" />
             <End Role="dme_destinatario_mensagem" EntitySet="dme_destinatario_mensagem" />
@@ -1079,10 +1125,6 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.v_ush_usuario_autorizado_histori
             <End Role="men_mensagem" EntitySet="men_mensagem" />
             <End Role="mra_mensagem_rascunho" EntitySet="mra_mensagem_rascunho" />
           </AssociationSet>
-          <AssociationSet Name="R_pem_men" Association="Self.R_pem_men">
-            <End Role="men_menu" EntitySet="men_menu" />
-            <End Role="pem_perfil_menu" EntitySet="pem_perfil_menu" />
-          </AssociationSet>
           <AssociationSet Name="R_sme_men" Association="Self.R_sme_men">
             <End Role="sme_status_mensagem" EntitySet="sme_status_mensagem" />
             <End Role="men_mensagem" EntitySet="men_mensagem" />
@@ -1095,13 +1137,9 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.v_ush_usuario_autorizado_histori
             <End Role="tme_tipo_mensagem" EntitySet="tme_tipo_mensagem" />
             <End Role="men_mensagem" EntitySet="men_mensagem" />
           </AssociationSet>
-          <AssociationSet Name="R_tnu_cnu" Association="Self.R_tnu_cnu">
-            <End Role="tnu_tipo_numeracao" EntitySet="tnu_tipo_numeracao" />
-            <End Role="cnu_controle_numeros" EntitySet="cnu_controle_numeros" />
-          </AssociationSet>
-          <AssociationSet Name="R_ume_men" Association="Self.R_ume_men">
-            <End Role="men_menu" EntitySet="men_menu" />
-            <End Role="ume_usuario_menu" EntitySet="ume_usuario_menu" />
+          <AssociationSet Name="R_uau_pse" Association="Self.R_uau_pse">
+            <End Role="uau_usuario_autorizado" EntitySet="uau_usuario_autorizado" />
+            <End Role="pse_permissoes_secretaria" EntitySet="pse_permissoes_secretaria" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -1109,6 +1147,14 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.v_ush_usuario_autorizado_histori
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CiEletronica" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="Split_Result">
+          <Property Name="nameIndex" Type="Int32" Nullable="false" />
+          <Property Name="items" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+        </ComplexType>
+        <ComplexType Name="SplitString_Result">
+          <Property Name="Id" Type="Int64" />
+          <Property Name="Value" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+        </ComplexType>
         <EntityType Name="ase_aprovacao_setor">
           <Key>
             <PropertyRef Name="ase_id_ase" />
@@ -1129,39 +1175,17 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.v_ush_usuario_autorizado_histori
           <Property Name="ass_id_use" Type="Int32" Nullable="false" />
           <Property Name="ass_flg_atualizado" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityType Name="cas_controle_acesso">
-          <Key>
-            <PropertyRef Name="cas_id_cas" />
-          </Key>
-          <Property Name="cas_id_cas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="cas_id_ip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cas_nom_maquina" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cas_id_use" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="com_controle_menu" Relationship="Self.R_com_cas" FromRole="cas_controle_acesso" ToRole="com_controle_menu" />
-        </EntityType>
         <EntityType Name="cnu_controle_numeros">
           <Key>
             <PropertyRef Name="cnu_id_cnu" />
           </Key>
           <Property Name="cnu_id_cnu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="cnu_num_ci" Type="Int32" />
+          <Property Name="cnu_num_ano_ci" Type="Int32" />
           <Property Name="cnu_num_controle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="cnu_dat_cadastro" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="cnu_id_tnu" Type="Int32" Nullable="false" />
           <Property Name="cnu_id_men" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="men_mensagem" Relationship="Self.R_men_cnu" FromRole="cnu_controle_numeros" ToRole="men_mensagem" />
-          <NavigationProperty Name="tnu_tipo_numeracao" Relationship="Self.R_tnu_cnu" FromRole="cnu_controle_numeros" ToRole="tnu_tipo_numeracao" />
-        </EntityType>
-        <EntityType Name="com_controle_menu">
-          <Key>
-            <PropertyRef Name="com_id_com" />
-          </Key>
-          <Property Name="com_id_com" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="com_id_cas" Type="Int32" Nullable="false" />
-          <Property Name="com_id_men" Type="Int32" Nullable="false" />
-          <Property Name="com_dat_acesso" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="cas_controle_acesso" Relationship="Self.R_com_cas" FromRole="com_controle_menu" ToRole="cas_controle_acesso" />
-          <NavigationProperty Name="men_menu" Relationship="Self.R_com_men" FromRole="com_controle_menu" ToRole="men_menu" />
         </EntityType>
         <EntityType Name="dme_destinatario_mensagem">
           <Key>
@@ -1177,18 +1201,6 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.v_ush_usuario_autorizado_histori
           <Property Name="dme_dat_cadastro" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="men_mensagem" Relationship="Self.R_men_dme" FromRole="dme_destinatario_mensagem" ToRole="men_mensagem" />
           <NavigationProperty Name="tde_tipo_destinatario" Relationship="Self.R_tde_dme" FromRole="dme_destinatario_mensagem" ToRole="tde_tipo_destinatario" />
-        </EntityType>
-        <EntityType Name="los_log_sistema">
-          <Key>
-            <PropertyRef Name="los_id_los" />
-          </Key>
-          <Property Name="los_id_los" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="los_num_nivel" Type="Int32" Nullable="false" />
-          <Property Name="los_nom_categoria" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="los_log_time" Type="Double" Nullable="false" />
-          <Property Name="los_des_mensagem" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="los_id_usu" Type="Int32" Nullable="false" />
-          <Property Name="los_data_hora" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="max_mensagem_anexo">
           <Key>
@@ -1242,7 +1254,6 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.v_ush_usuario_autorizado_histori
           <Property Name="men_id_men_pai" Type="Int32" />
           <Property Name="men_flg_aprovacao" Type="Boolean" Nullable="false" />
           <Property Name="men_id_sme" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="cnu_controle_numeros" Relationship="Self.R_men_cnu" FromRole="men_mensagem" ToRole="cnu_controle_numeros" />
           <NavigationProperty Name="dme_destinatario_mensagem" Relationship="Self.R_men_dme" FromRole="men_mensagem" ToRole="dme_destinatario_mensagem" />
           <NavigationProperty Name="max_mensagem_anexo" Relationship="Self.R_men_max" FromRole="men_mensagem" ToRole="max_mensagem_anexo" />
           <NavigationProperty Name="mde_mensagem_detalhes" Relationship="Self.R_men_mde" FromRole="men_mensagem" ToRole="mde_mensagem_detalhes" />
@@ -1256,25 +1267,6 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.v_ush_usuario_autorizado_histori
           <NavigationProperty Name="mra_mensagem_rascunho" Relationship="Self.R_mra_men" FromRole="men_mensagem" ToRole="mra_mensagem_rascunho" />
           <NavigationProperty Name="sme_status_mensagem" Relationship="Self.R_sme_men" FromRole="men_mensagem" ToRole="sme_status_mensagem" />
           <NavigationProperty Name="tme_tipo_mensagem" Relationship="Self.R_tme_men" FromRole="men_mensagem" ToRole="tme_tipo_mensagem" />
-        </EntityType>
-        <EntityType Name="men_menu">
-          <Key>
-            <PropertyRef Name="men_id_men" />
-          </Key>
-          <Property Name="men_id_men" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="men_nom_menu" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="men_htm_icon" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="men_nom_action" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-          <Property Name="men_nom_controller" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-          <Property Name="men_flg_menu_guest" Type="Boolean" Nullable="false" />
-          <Property Name="men_flg_menu_admin" Type="Boolean" Nullable="false" />
-          <Property Name="men_flg_modulo" Type="Boolean" Nullable="false" />
-          <Property Name="men_flg_ativo" Type="Boolean" Nullable="false" />
-          <Property Name="men_id_men_pai" Type="Int32" />
-          <Property Name="men_num_posicao" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="com_controle_menu" Relationship="Self.R_com_men" FromRole="men_menu" ToRole="com_controle_menu" />
-          <NavigationProperty Name="pem_perfil_menu" Relationship="Self.R_pem_men" FromRole="men_menu" ToRole="pem_perfil_menu" />
-          <NavigationProperty Name="ume_usuario_menu" Relationship="Self.R_ume_men" FromRole="men_menu" ToRole="ume_usuario_menu" />
         </EntityType>
         <EntityType Name="meq_mensagem_arquivada">
           <Key>
@@ -1308,14 +1300,17 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.v_ush_usuario_autorizado_histori
           <Property Name="par_nom_parametro" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="par_des_retorno" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="pem_perfil_menu">
+        <EntityType Name="pse_permissoes_secretaria">
           <Key>
-            <PropertyRef Name="pem_id_pem" />
+            <PropertyRef Name="pse_id_pse" />
           </Key>
-          <Property Name="pem_id_pem" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="pem_id_pus" Type="Int32" Nullable="false" />
-          <Property Name="pem_id_men" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="men_menu" Relationship="Self.R_pem_men" FromRole="pem_perfil_menu" ToRole="men_menu" />
+          <Property Name="pse_id_pse" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pse_id_uau" Type="Int32" Nullable="false" />
+          <Property Name="pse_flg_visualizar" Type="Boolean" Nullable="false" />
+          <Property Name="pse_flg_responder_encaminhar" Type="Boolean" Nullable="false" />
+          <Property Name="pse_flg_aprovar_reprovar" Type="Boolean" Nullable="false" />
+          <Property Name="pse_flg_criar_circular" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="uau_usuario_autorizado" Relationship="Self.R_uau_pse" FromRole="pse_permissoes_secretaria" ToRole="uau_usuario_autorizado" />
         </EntityType>
         <EntityType Name="rem_remetente">
           <Key>
@@ -1359,14 +1354,6 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.v_ush_usuario_autorizado_histori
           <Property Name="tnu_id_tnu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="tnu_nom_tipo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="tnu_flg_ci" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="cnu_controle_numeros" Relationship="Self.R_tnu_cnu" FromRole="tnu_tipo_numeracao" ToRole="cnu_controle_numeros" />
-        </EntityType>
-        <EntityType Name="uac_usuario_acesso">
-          <Key>
-            <PropertyRef Name="uac_id_uac" />
-          </Key>
-          <Property Name="uac_id_uac" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="uac_id_usu" Type="Int32" />
         </EntityType>
         <EntityType Name="uau_usuario_autorizado">
           <Key>
@@ -1380,15 +1367,7 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.v_ush_usuario_autorizado_histori
           <Property Name="uau_dtf_autorizacao" Type="DateTime" Precision="3" />
           <Property Name="uau_dat_cadastro" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="uau_id_use_cadastro" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="ume_usuario_menu">
-          <Key>
-            <PropertyRef Name="ume_id_ume" />
-          </Key>
-          <Property Name="ume_id_ume" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ume_id_usu" Type="Int32" Nullable="false" />
-          <Property Name="ume_id_men" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="men_menu" Relationship="Self.R_ume_men" FromRole="ume_usuario_menu" ToRole="men_menu" />
+          <NavigationProperty Name="pse_permissoes_secretaria" Relationship="Self.R_uau_pse" FromRole="uau_usuario_autorizado" ToRole="pse_permissoes_secretaria" />
         </EntityType>
         <EntityType Name="ard_arvore_destinatario">
           <Key>
@@ -1434,6 +1413,105 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.v_ush_usuario_autorizado_histori
           <Property Name="removable" Type="Int16" Nullable="false" />
           <Property Name="removable_all" Type="Int16" Nullable="false" />
           <Property Name="id_setor" Type="Int32" />
+        </EntityType>
+        <EntityType Name="v_ard_arvore_destinatario">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="root" />
+            <PropertyRef Name="lft" />
+            <PropertyRef Name="rgt" />
+            <PropertyRef Name="lvl" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="icon" />
+            <PropertyRef Name="icon_type" />
+            <PropertyRef Name="active" />
+            <PropertyRef Name="selected" />
+            <PropertyRef Name="disabled" />
+            <PropertyRef Name="readonly" />
+            <PropertyRef Name="visible" />
+            <PropertyRef Name="collapsed" />
+            <PropertyRef Name="movable_u" />
+            <PropertyRef Name="movable_d" />
+            <PropertyRef Name="movable_l" />
+            <PropertyRef Name="movable_r" />
+            <PropertyRef Name="removable" />
+            <PropertyRef Name="removable_all" />
+            <PropertyRef Name="id_perfil" />
+            <PropertyRef Name="id_setor_gerenciador" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="root" Type="Int32" Nullable="false" />
+          <Property Name="lft" Type="Int32" Nullable="false" />
+          <Property Name="rgt" Type="Int32" Nullable="false" />
+          <Property Name="lvl" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="icon" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="icon_type" Type="Int32" Nullable="false" />
+          <Property Name="active" Type="Int32" Nullable="false" />
+          <Property Name="selected" Type="Int32" Nullable="false" />
+          <Property Name="disabled" Type="Int32" Nullable="false" />
+          <Property Name="readonly" Type="Int32" Nullable="false" />
+          <Property Name="visible" Type="Int32" Nullable="false" />
+          <Property Name="collapsed" Type="Int32" Nullable="false" />
+          <Property Name="movable_u" Type="Int32" Nullable="false" />
+          <Property Name="movable_d" Type="Int32" Nullable="false" />
+          <Property Name="movable_l" Type="Int32" Nullable="false" />
+          <Property Name="movable_r" Type="Int32" Nullable="false" />
+          <Property Name="removable" Type="Int32" Nullable="false" />
+          <Property Name="removable_all" Type="Int32" Nullable="false" />
+          <Property Name="id_perfil" Type="Int32" Nullable="false" />
+          <Property Name="id_setor_gerenciador" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_ard_arvore_destinatario_">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="root" />
+            <PropertyRef Name="id_setor" />
+            <PropertyRef Name="id_sub_setor" />
+            <PropertyRef Name="id_sub_sub_setor" />
+            <PropertyRef Name="setor_order" />
+            <PropertyRef Name="lvl" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="icon" />
+            <PropertyRef Name="icon_type" />
+            <PropertyRef Name="active" />
+            <PropertyRef Name="selected" />
+            <PropertyRef Name="disabled" />
+            <PropertyRef Name="readonly" />
+            <PropertyRef Name="visible" />
+            <PropertyRef Name="collapsed" />
+            <PropertyRef Name="movable_u" />
+            <PropertyRef Name="movable_d" />
+            <PropertyRef Name="movable_l" />
+            <PropertyRef Name="movable_r" />
+            <PropertyRef Name="removable" />
+            <PropertyRef Name="removable_all" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="root" Type="Int32" Nullable="false" />
+          <Property Name="id_setor" Type="Int32" Nullable="false" />
+          <Property Name="id_sub_setor" Type="Int32" Nullable="false" />
+          <Property Name="id_sub_sub_setor" Type="Int32" Nullable="false" />
+          <Property Name="perfil_order" Type="Decimal" Precision="2" Scale="1" />
+          <Property Name="setor_order" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lft" Type="Int64" />
+          <Property Name="rgt" Type="Int64" />
+          <Property Name="lvl" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="icon" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="icon_type" Type="Int32" Nullable="false" />
+          <Property Name="active" Type="Int32" Nullable="false" />
+          <Property Name="selected" Type="Int32" Nullable="false" />
+          <Property Name="disabled" Type="Int32" Nullable="false" />
+          <Property Name="readonly" Type="Int32" Nullable="false" />
+          <Property Name="visible" Type="Int32" Nullable="false" />
+          <Property Name="collapsed" Type="Int32" Nullable="false" />
+          <Property Name="movable_u" Type="Int32" Nullable="false" />
+          <Property Name="movable_d" Type="Int32" Nullable="false" />
+          <Property Name="movable_l" Type="Int32" Nullable="false" />
+          <Property Name="movable_r" Type="Int32" Nullable="false" />
+          <Property Name="removable" Type="Int32" Nullable="false" />
+          <Property Name="removable_all" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="v_mah_mensagem_arquivada_historico">
           <Key>
@@ -1664,54 +1742,6 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.v_ush_usuario_autorizado_histori
           <Property Name="ush_id_use" Type="Int32" Nullable="false" />
           <Property Name="ush_id_set" Type="Int32" Nullable="false" />
         </EntityType>
-        <Association Name="R_com_cas">
-          <End Role="cas_controle_acesso" Type="Self.cas_controle_acesso" Multiplicity="1" />
-          <End Role="com_controle_menu" Type="Self.com_controle_menu" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="cas_controle_acesso">
-              <PropertyRef Name="cas_id_cas" />
-            </Principal>
-            <Dependent Role="com_controle_menu">
-              <PropertyRef Name="com_id_cas" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="R_men_cnu">
-          <End Role="men_mensagem" Type="Self.men_mensagem" Multiplicity="1" />
-          <End Role="cnu_controle_numeros" Type="Self.cnu_controle_numeros" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="men_mensagem">
-              <PropertyRef Name="men_id_men" />
-            </Principal>
-            <Dependent Role="cnu_controle_numeros">
-              <PropertyRef Name="cnu_id_men" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="R_tnu_cnu">
-          <End Role="tnu_tipo_numeracao" Type="Self.tnu_tipo_numeracao" Multiplicity="1" />
-          <End Role="cnu_controle_numeros" Type="Self.cnu_controle_numeros" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tnu_tipo_numeracao">
-              <PropertyRef Name="tnu_id_tnu" />
-            </Principal>
-            <Dependent Role="cnu_controle_numeros">
-              <PropertyRef Name="cnu_id_tnu" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="R_com_men">
-          <End Role="men_menu" Type="Self.men_menu" Multiplicity="1" />
-          <End Role="com_controle_menu" Type="Self.com_controle_menu" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="men_menu">
-              <PropertyRef Name="men_id_men" />
-            </Principal>
-            <Dependent Role="com_controle_menu">
-              <PropertyRef Name="com_id_men" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="R_men_dme">
           <End Role="men_mensagem" Type="Self.men_mensagem" Multiplicity="1" />
           <End Role="dme_destinatario_mensagem" Type="Self.dme_destinatario_mensagem" Multiplicity="*" />
@@ -1856,60 +1886,40 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.v_ush_usuario_autorizado_histori
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="R_pem_men">
-          <End Role="men_menu" Type="Self.men_menu" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="pem_perfil_menu" Type="Self.pem_perfil_menu" Multiplicity="*" />
+        <Association Name="R_uau_pse">
+          <End Role="uau_usuario_autorizado" Type="Self.uau_usuario_autorizado" Multiplicity="1" />
+          <End Role="pse_permissoes_secretaria" Type="Self.pse_permissoes_secretaria" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="men_menu">
-              <PropertyRef Name="men_id_men" />
+            <Principal Role="uau_usuario_autorizado">
+              <PropertyRef Name="uau_id_uau" />
             </Principal>
-            <Dependent Role="pem_perfil_menu">
-              <PropertyRef Name="pem_id_men" />
+            <Dependent Role="pse_permissoes_secretaria">
+              <PropertyRef Name="pse_id_uau" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="R_ume_men">
-          <End Role="men_menu" Type="Self.men_menu" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="ume_usuario_menu" Type="Self.ume_usuario_menu" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="men_menu">
-              <PropertyRef Name="men_id_men" />
-            </Principal>
-            <Dependent Role="ume_usuario_menu">
-              <PropertyRef Name="ume_id_men" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="DbContextCiEletronica" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ase_aprovacao_setor" EntityType="Self.ase_aprovacao_setor" />
           <EntitySet Name="ass_assinatura" EntityType="Self.ass_assinatura" />
-          <EntitySet Name="cas_controle_acesso" EntityType="Self.cas_controle_acesso" />
           <EntitySet Name="cnu_controle_numeros" EntityType="Self.cnu_controle_numeros" />
-          <EntitySet Name="com_controle_menu" EntityType="Self.com_controle_menu" />
           <EntitySet Name="dme_destinatario_mensagem" EntityType="Self.dme_destinatario_mensagem" />
-          <EntitySet Name="los_log_sistema" EntityType="Self.los_log_sistema" />
           <EntitySet Name="max_mensagem_anexo" EntityType="Self.max_mensagem_anexo" />
           <EntitySet Name="mde_mensagem_detalhes" EntityType="Self.mde_mensagem_detalhes" />
           <EntitySet Name="mea_mensagem_aprovada" EntityType="Self.mea_mensagem_aprovada" />
           <EntitySet Name="men_mensagem" EntityType="Self.men_mensagem" />
-          <EntitySet Name="men_menu" EntityType="Self.men_menu" />
           <EntitySet Name="meq_mensagem_arquivada" EntityType="Self.meq_mensagem_arquivada" />
           <EntitySet Name="mra_mensagem_rascunho" EntityType="Self.mra_mensagem_rascunho" />
           <EntitySet Name="par_parametro" EntityType="Self.par_parametro" />
-          <EntitySet Name="pem_perfil_menu" EntityType="Self.pem_perfil_menu" />
+          <EntitySet Name="pse_permissoes_secretaria" EntityType="Self.pse_permissoes_secretaria" />
           <EntitySet Name="rem_remetente" EntityType="Self.rem_remetente" />
           <EntitySet Name="sme_status_mensagem" EntityType="Self.sme_status_mensagem" />
           <EntitySet Name="tde_tipo_destinatario" EntityType="Self.tde_tipo_destinatario" />
           <EntitySet Name="tme_tipo_mensagem" EntityType="Self.tme_tipo_mensagem" />
           <EntitySet Name="tnu_tipo_numeracao" EntityType="Self.tnu_tipo_numeracao" />
-          <EntitySet Name="uac_usuario_acesso" EntityType="Self.uac_usuario_acesso" />
           <EntitySet Name="uau_usuario_autorizado" EntityType="Self.uau_usuario_autorizado" />
-          <EntitySet Name="ume_usuario_menu" EntityType="Self.ume_usuario_menu" />
           <EntitySet Name="ard_arvore_destinatario" EntityType="Self.ard_arvore_destinatario" />
+          <EntitySet Name="v_ard_arvore_destinatario" EntityType="Self.v_ard_arvore_destinatario" />
+          <EntitySet Name="v_ard_arvore_destinatario_" EntityType="Self.v_ard_arvore_destinatario_" />
           <EntitySet Name="v_mah_mensagem_arquivada_historico" EntityType="Self.v_mah_mensagem_arquivada_historico" />
           <EntitySet Name="v_map_mensagem_pai_filha_aprovacao" EntityType="Self.v_map_mensagem_pai_filha_aprovacao" />
           <EntitySet Name="v_mau_mensagem_arquivamento_usuario" EntityType="Self.v_mau_mensagem_arquivamento_usuario" />
@@ -1934,22 +1944,6 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.v_ush_usuario_autorizado_histori
           <EntitySet Name="v_qmp_quantitativo_mensagem_nao_lida_pai" EntityType="Self.v_qmp_quantitativo_mensagem_nao_lida_pai" />
           <EntitySet Name="v_qpa_quantitativo_pendente_aprovacao_pai" EntityType="Self.v_qpa_quantitativo_pendente_aprovacao_pai" />
           <EntitySet Name="v_ush_usuario_autorizado_historico" EntityType="Self.v_ush_usuario_autorizado_historico" />
-          <AssociationSet Name="R_com_cas" Association="Self.R_com_cas">
-            <End Role="cas_controle_acesso" EntitySet="cas_controle_acesso" />
-            <End Role="com_controle_menu" EntitySet="com_controle_menu" />
-          </AssociationSet>
-          <AssociationSet Name="R_men_cnu" Association="Self.R_men_cnu">
-            <End Role="men_mensagem" EntitySet="men_mensagem" />
-            <End Role="cnu_controle_numeros" EntitySet="cnu_controle_numeros" />
-          </AssociationSet>
-          <AssociationSet Name="R_tnu_cnu" Association="Self.R_tnu_cnu">
-            <End Role="tnu_tipo_numeracao" EntitySet="tnu_tipo_numeracao" />
-            <End Role="cnu_controle_numeros" EntitySet="cnu_controle_numeros" />
-          </AssociationSet>
-          <AssociationSet Name="R_com_men" Association="Self.R_com_men">
-            <End Role="men_menu" EntitySet="men_menu" />
-            <End Role="com_controle_menu" EntitySet="com_controle_menu" />
-          </AssociationSet>
           <AssociationSet Name="R_men_dme" Association="Self.R_men_dme">
             <End Role="men_mensagem" EntitySet="men_mensagem" />
             <End Role="dme_destinatario_mensagem" EntitySet="dme_destinatario_mensagem" />
@@ -1998,21 +1992,28 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.v_ush_usuario_autorizado_histori
             <End Role="tme_tipo_mensagem" EntitySet="tme_tipo_mensagem" />
             <End Role="men_mensagem" EntitySet="men_mensagem" />
           </AssociationSet>
-          <AssociationSet Name="R_pem_men" Association="Self.R_pem_men">
-            <End Role="men_menu" EntitySet="men_menu" />
-            <End Role="pem_perfil_menu" EntitySet="pem_perfil_menu" />
+          <AssociationSet Name="R_uau_pse" Association="Self.R_uau_pse">
+            <End Role="uau_usuario_autorizado" EntitySet="uau_usuario_autorizado" />
+            <End Role="pse_permissoes_secretaria" EntitySet="pse_permissoes_secretaria" />
           </AssociationSet>
-          <AssociationSet Name="R_ume_men" Association="Self.R_ume_men">
-            <End Role="men_menu" EntitySet="men_menu" />
-            <End Role="ume_usuario_menu" EntitySet="ume_usuario_menu" />
-          </AssociationSet>
+          <FunctionImport Name="Split" IsComposable="true" ReturnType="Collection(CiEletronica.Split_Result)">
+            <Parameter Name="String" Mode="In" Type="String" />
+            <Parameter Name="Delimiter" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SplitString" IsComposable="true" ReturnType="Collection(CiEletronica.SplitString_Result)">
+            <Parameter Name="String" Mode="In" Type="String" />
+            <Parameter Name="Delimiter" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="pr_gerar_arvore_destinatario">
+            <Parameter Name="num_id_set" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CiEletronicaStoreContainer" CdmEntityContainer="DbContextCiEletronica">
+        <EntityContainerMapping StorageEntityContainer="CiEletronicaStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="ase_aprovacao_setor">
             <EntityTypeMapping TypeName="CiEletronica.ase_aprovacao_setor">
               <MappingFragment StoreEntitySet="ase_aprovacao_setor">
@@ -2035,35 +2036,16 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.v_ush_usuario_autorizado_histori
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="cas_controle_acesso">
-            <EntityTypeMapping TypeName="CiEletronica.cas_controle_acesso">
-              <MappingFragment StoreEntitySet="cas_controle_acesso">
-                <ScalarProperty Name="cas_id_cas" ColumnName="cas_id_cas" />
-                <ScalarProperty Name="cas_id_ip" ColumnName="cas_id_ip" />
-                <ScalarProperty Name="cas_nom_maquina" ColumnName="cas_nom_maquina" />
-                <ScalarProperty Name="cas_id_use" ColumnName="cas_id_use" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="cnu_controle_numeros">
             <EntityTypeMapping TypeName="CiEletronica.cnu_controle_numeros">
               <MappingFragment StoreEntitySet="cnu_controle_numeros">
                 <ScalarProperty Name="cnu_id_cnu" ColumnName="cnu_id_cnu" />
                 <ScalarProperty Name="cnu_num_ci" ColumnName="cnu_num_ci" />
+                <ScalarProperty Name="cnu_num_ano_ci" ColumnName="cnu_num_ano_ci" />
                 <ScalarProperty Name="cnu_num_controle" ColumnName="cnu_num_controle" />
                 <ScalarProperty Name="cnu_dat_cadastro" ColumnName="cnu_dat_cadastro" />
                 <ScalarProperty Name="cnu_id_tnu" ColumnName="cnu_id_tnu" />
                 <ScalarProperty Name="cnu_id_men" ColumnName="cnu_id_men" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="com_controle_menu">
-            <EntityTypeMapping TypeName="CiEletronica.com_controle_menu">
-              <MappingFragment StoreEntitySet="com_controle_menu">
-                <ScalarProperty Name="com_id_com" ColumnName="com_id_com" />
-                <ScalarProperty Name="com_id_cas" ColumnName="com_id_cas" />
-                <ScalarProperty Name="com_id_men" ColumnName="com_id_men" />
-                <ScalarProperty Name="com_dat_acesso" ColumnName="com_dat_acesso" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2078,19 +2060,6 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.v_ush_usuario_autorizado_histori
                 <ScalarProperty Name="dme_flg_leitura" ColumnName="dme_flg_leitura" />
                 <ScalarProperty Name="dme_flg_msg_automatica" ColumnName="dme_flg_msg_automatica" />
                 <ScalarProperty Name="dme_dat_cadastro" ColumnName="dme_dat_cadastro" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="los_log_sistema">
-            <EntityTypeMapping TypeName="CiEletronica.los_log_sistema">
-              <MappingFragment StoreEntitySet="los_log_sistema">
-                <ScalarProperty Name="los_id_los" ColumnName="los_id_los" />
-                <ScalarProperty Name="los_num_nivel" ColumnName="los_num_nivel" />
-                <ScalarProperty Name="los_nom_categoria" ColumnName="los_nom_categoria" />
-                <ScalarProperty Name="los_log_time" ColumnName="los_log_time" />
-                <ScalarProperty Name="los_des_mensagem" ColumnName="los_des_mensagem" />
-                <ScalarProperty Name="los_id_usu" ColumnName="los_id_usu" />
-                <ScalarProperty Name="los_data_hora" ColumnName="los_data_hora" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2148,23 +2117,6 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.v_ush_usuario_autorizado_histori
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="men_menu">
-            <EntityTypeMapping TypeName="CiEletronica.men_menu">
-              <MappingFragment StoreEntitySet="men_menu">
-                <ScalarProperty Name="men_id_men" ColumnName="men_id_men" />
-                <ScalarProperty Name="men_nom_menu" ColumnName="men_nom_menu" />
-                <ScalarProperty Name="men_htm_icon" ColumnName="men_htm_icon" />
-                <ScalarProperty Name="men_nom_action" ColumnName="men_nom_action" />
-                <ScalarProperty Name="men_nom_controller" ColumnName="men_nom_controller" />
-                <ScalarProperty Name="men_flg_menu_guest" ColumnName="men_flg_menu_guest" />
-                <ScalarProperty Name="men_flg_menu_admin" ColumnName="men_flg_menu_admin" />
-                <ScalarProperty Name="men_flg_modulo" ColumnName="men_flg_modulo" />
-                <ScalarProperty Name="men_flg_ativo" ColumnName="men_flg_ativo" />
-                <ScalarProperty Name="men_id_men_pai" ColumnName="men_id_men_pai" />
-                <ScalarProperty Name="men_num_posicao" ColumnName="men_num_posicao" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="meq_mensagem_arquivada">
             <EntityTypeMapping TypeName="CiEletronica.meq_mensagem_arquivada">
               <MappingFragment StoreEntitySet="meq_mensagem_arquivada">
@@ -2198,12 +2150,15 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.v_ush_usuario_autorizado_histori
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="pem_perfil_menu">
-            <EntityTypeMapping TypeName="CiEletronica.pem_perfil_menu">
-              <MappingFragment StoreEntitySet="pem_perfil_menu">
-                <ScalarProperty Name="pem_id_pem" ColumnName="pem_id_pem" />
-                <ScalarProperty Name="pem_id_pus" ColumnName="pem_id_pus" />
-                <ScalarProperty Name="pem_id_men" ColumnName="pem_id_men" />
+          <EntitySetMapping Name="pse_permissoes_secretaria">
+            <EntityTypeMapping TypeName="CiEletronica.pse_permissoes_secretaria">
+              <MappingFragment StoreEntitySet="pse_permissoes_secretaria">
+                <ScalarProperty Name="pse_id_pse" ColumnName="pse_id_pse" />
+                <ScalarProperty Name="pse_id_uau" ColumnName="pse_id_uau" />
+                <ScalarProperty Name="pse_flg_visualizar" ColumnName="pse_flg_visualizar" />
+                <ScalarProperty Name="pse_flg_responder_encaminhar" ColumnName="pse_flg_responder_encaminhar" />
+                <ScalarProperty Name="pse_flg_aprovar_reprovar" ColumnName="pse_flg_aprovar_reprovar" />
+                <ScalarProperty Name="pse_flg_criar_circular" ColumnName="pse_flg_criar_circular" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2251,14 +2206,6 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.v_ush_usuario_autorizado_histori
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="uac_usuario_acesso">
-            <EntityTypeMapping TypeName="CiEletronica.uac_usuario_acesso">
-              <MappingFragment StoreEntitySet="uac_usuario_acesso">
-                <ScalarProperty Name="uac_id_uac" ColumnName="uac_id_uac" />
-                <ScalarProperty Name="uac_id_usu" ColumnName="uac_id_usu" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="uau_usuario_autorizado">
             <EntityTypeMapping TypeName="CiEletronica.uau_usuario_autorizado">
               <MappingFragment StoreEntitySet="uau_usuario_autorizado">
@@ -2270,15 +2217,6 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.v_ush_usuario_autorizado_histori
                 <ScalarProperty Name="uau_dtf_autorizacao" ColumnName="uau_dtf_autorizacao" />
                 <ScalarProperty Name="uau_dat_cadastro" ColumnName="uau_dat_cadastro" />
                 <ScalarProperty Name="uau_id_use_cadastro" ColumnName="uau_id_use_cadastro" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ume_usuario_menu">
-            <EntityTypeMapping TypeName="CiEletronica.ume_usuario_menu">
-              <MappingFragment StoreEntitySet="ume_usuario_menu">
-                <ScalarProperty Name="ume_id_ume" ColumnName="ume_id_ume" />
-                <ScalarProperty Name="ume_id_usu" ColumnName="ume_id_usu" />
-                <ScalarProperty Name="ume_id_men" ColumnName="ume_id_men" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2307,6 +2245,65 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.v_ush_usuario_autorizado_histori
                 <ScalarProperty Name="removable" ColumnName="removable" />
                 <ScalarProperty Name="removable_all" ColumnName="removable_all" />
                 <ScalarProperty Name="id_setor" ColumnName="id_setor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_ard_arvore_destinatario">
+            <EntityTypeMapping TypeName="CiEletronica.v_ard_arvore_destinatario">
+              <MappingFragment StoreEntitySet="v_ard_arvore_destinatario">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="root" ColumnName="root" />
+                <ScalarProperty Name="lft" ColumnName="lft" />
+                <ScalarProperty Name="rgt" ColumnName="rgt" />
+                <ScalarProperty Name="lvl" ColumnName="lvl" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="icon" ColumnName="icon" />
+                <ScalarProperty Name="icon_type" ColumnName="icon_type" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="selected" ColumnName="selected" />
+                <ScalarProperty Name="disabled" ColumnName="disabled" />
+                <ScalarProperty Name="readonly" ColumnName="readonly" />
+                <ScalarProperty Name="visible" ColumnName="visible" />
+                <ScalarProperty Name="collapsed" ColumnName="collapsed" />
+                <ScalarProperty Name="movable_u" ColumnName="movable_u" />
+                <ScalarProperty Name="movable_d" ColumnName="movable_d" />
+                <ScalarProperty Name="movable_l" ColumnName="movable_l" />
+                <ScalarProperty Name="movable_r" ColumnName="movable_r" />
+                <ScalarProperty Name="removable" ColumnName="removable" />
+                <ScalarProperty Name="removable_all" ColumnName="removable_all" />
+                <ScalarProperty Name="id_perfil" ColumnName="id_perfil" />
+                <ScalarProperty Name="id_setor_gerenciador" ColumnName="id_setor_gerenciador" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_ard_arvore_destinatario_">
+            <EntityTypeMapping TypeName="CiEletronica.v_ard_arvore_destinatario_">
+              <MappingFragment StoreEntitySet="v_ard_arvore_destinatario_">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="root" ColumnName="root" />
+                <ScalarProperty Name="id_setor" ColumnName="id_setor" />
+                <ScalarProperty Name="id_sub_setor" ColumnName="id_sub_setor" />
+                <ScalarProperty Name="id_sub_sub_setor" ColumnName="id_sub_sub_setor" />
+                <ScalarProperty Name="perfil_order" ColumnName="perfil_order" />
+                <ScalarProperty Name="setor_order" ColumnName="setor_order" />
+                <ScalarProperty Name="lft" ColumnName="lft" />
+                <ScalarProperty Name="rgt" ColumnName="rgt" />
+                <ScalarProperty Name="lvl" ColumnName="lvl" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="icon" ColumnName="icon" />
+                <ScalarProperty Name="icon_type" ColumnName="icon_type" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="selected" ColumnName="selected" />
+                <ScalarProperty Name="disabled" ColumnName="disabled" />
+                <ScalarProperty Name="readonly" ColumnName="readonly" />
+                <ScalarProperty Name="visible" ColumnName="visible" />
+                <ScalarProperty Name="collapsed" ColumnName="collapsed" />
+                <ScalarProperty Name="movable_u" ColumnName="movable_u" />
+                <ScalarProperty Name="movable_d" ColumnName="movable_d" />
+                <ScalarProperty Name="movable_l" ColumnName="movable_l" />
+                <ScalarProperty Name="movable_r" ColumnName="movable_r" />
+                <ScalarProperty Name="removable" ColumnName="removable" />
+                <ScalarProperty Name="removable_all" ColumnName="removable_all" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2538,6 +2535,23 @@ warning 6002: The table/view 'CI_ELETRONICA.dbo.v_ush_usuario_autorizado_histori
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionName="CiEletronica.Store.Split" FunctionImportName="Split">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CiEletronica.Split_Result">
+                <ScalarProperty Name="nameIndex" ColumnName="nameIndex" />
+                <ScalarProperty Name="items" ColumnName="items" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="CiEletronica.Store.SplitString" FunctionImportName="SplitString">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CiEletronica.SplitString_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pr_gerar_arvore_destinatario" FunctionName="CiEletronica.Store.pr_gerar_arvore_destinatario" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

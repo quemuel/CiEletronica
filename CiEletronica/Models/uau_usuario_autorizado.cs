@@ -14,6 +14,12 @@ namespace CiEletronica.Models
     
     public partial class uau_usuario_autorizado
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public uau_usuario_autorizado()
+        {
+            this.pse_permissoes_secretaria = new HashSet<pse_permissoes_secretaria>();
+        }
+    
         public int uau_id_uau { get; set; }
         public int uau_id_pus { get; set; }
         public int uau_id_use { get; set; }
@@ -22,5 +28,8 @@ namespace CiEletronica.Models
         public Nullable<System.DateTime> uau_dtf_autorizacao { get; set; }
         public System.DateTime uau_dat_cadastro { get; set; }
         public int uau_id_use_cadastro { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<pse_permissoes_secretaria> pse_permissoes_secretaria { get; set; }
     }
 }

@@ -1,0 +1,162 @@
+﻿@using CiEletronica.Models
+@model IEnumerable<CiEletronica.Models.MensagemRelacoes>
+@{
+    var moduleName = "Ci Eletrônica";
+    var pageName = "Visualizar";
+    ViewBag.Title = moduleName + " | " + pageName;
+}
+<section id="page-content">
+    @{
+        Html.RenderPartial(
+            "PartialViews/_headerContent",
+            new ViewDataDictionary { { "moduleName", moduleName }, { "pageName", pageName }, { "icon", "<i class='fa fa-eye'></i>" } }
+        );
+        MensagemRelacoes mensagemRelacoesCiPai = Model.Last();
+    }
+    <div class="body-content animated fadeIn">
+        <div class="row">
+            <div class="col-sm-2">
+                @{Html.RenderPartial("PartialViews/_menuMensagem", new ViewDataDictionary { { "nomeMenu", ViewData["nomeMenu"] } });}
+            </div>
+            <div class="col-sm-10">
+                <div class="panel mail-wrapper rounded shadow">
+                    <div class="panel-heading">
+                        <div class="pull-left">
+                            <h3 class="panel-title"><bar>@String.Format("{0:#-####}", Convert.ToInt32(mensagemRelacoesCiPai.numeroCi))</bar> Assunto: <span class="text-simple">@mensagemRelacoesCiPai.titulo</span></h3>
+                        </div>
+                        <div class="pull-right">
+                            <a class="btn btn-info btn-sm" target="_blank" href="@Url.Action("imprimirMensagem", "imprimir", new { id = mensagemRelacoesCiPai.idMensagem })"><i class="fa fa-print"></i> Imprimir</a>
+                            <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target=".modal-confirmacao-arquivamento"><i class="fa fa-folder"></i> Arquivar</button>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="panel-top-heading">
+                        @foreach (var mensagemRelacoesCi in Model)
+                        {
+                            string openCollapse = "";
+                            if (Model.LastOrDefault().Equals(mensagemRelacoesCi))
+                            {
+                                openCollapse = "in";
+                            }
+                            <div id="panel-@mensagemRelacoesCi.idMensagem" class="panel panel-default">
+                                <div data-toggle="collapse" href="#collapse2-@mensagemRelacoesCi.idMensagem" class="panel-heading panel-collapse" style="cursor: pointer">
+                                    <div class="panel-title view-email">
+                                        <div class="row">
+                                            <div class="col-md-8 col-sm-8 col-xs-7">
+                                                <img class="img-circle" src="@Url.Content("/Content")/global/img/avatar/35/26.png" alt="Imagem do usuário">
+                                                <div class="panel-sub-text-heading">
+                                                    <b>@mensagemRelacoesCi.setorSiglaRemetente</b>
+                                                    <span> < @mensagemRelacoesCi.nomeUsuarioRemetente > </span>
+                                                    <br />
+                                                    <span class="text-small">
+                                                        Para:
+                                                        @{
+                                                            string nomesUsuariosDestinatarioString = mensagemRelacoesCi.NomesUsuariosDestinatario.Aggregate((i, j) => (i.IndexOf(" ") == -1 ? i : i.Substring(0, i.IndexOf(" "))) + "," + (j.IndexOf(" ") == -1 ? j : j.Substring(0, j.IndexOf(" "))));
+                                                            if (nomesUsuariosDestinatarioString.Length > 70)
+                                                            {
+                                                                nomesUsuariosDestinatarioString = nomesUsuariosDestinatarioString.Substring(0, 70);
+                                                            }
+                                                            @nomesUsuariosDestinatarioString
+                                                        }
+                                                    </span>
+                                                    <div class="dropdown">
+                                                        <a class="btn btn-default btn-stroke btn-xs btn-no-border dropdown-toggle" data-toggle="dropdown"><i class="fa fa-sort-down"></i></a>
+                                                        <div class="animated dropdown-menu dropdown-menu-left" style="cursor: text">
+                                                            <div class="dropdown-body" style="width: 500px;">
+                                                                <div class="media-list">
+                                                                    <div class="media">
+                                                                        <table class="table">
+                                                                            @if (mensagemRelacoesCi.numeroCi != String.Empty)
+                                                                            {
+                                                                                <tr>
+                                                                                    <td width="25%" class="text-right no-border">
+                                                                                        Nº CI Eletrônica:
+                                                                                    </td>
+                                                                                    <td width="75%" class="text-left text-dropdown-default no-border">
+                                                                                        &nbsp;@String.Format("{0:#-####}", Convert.ToInt32(mensagemRelacoesCiPai.numeroCi))
+                                                                                    </td>
+                                                                                </tr>
+                                                                            }
+                                                                            <tr>
+                                                                                <td width="25%" class="text-right">
+                                                                                    Setor:
+                                                                                </td>
+                                                                                <td width="75%" class="text-left">
+                                                                                    <strong>&nbsp;@mensagemRelacoesCi.setorSiglaRemetente</strong>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td width="25%" class="text-right">
+                                                                                    De:
+                                                                                </td>
+                                                                                <td width="75%" class="text-left text-dropdown-default">
+                                                                                    &nbsp;@mensagemRelacoesCi.nomeUsuarioRemetente
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td width="25%" class="text-right">
+                                                                                    Para:
+                                                                                </td>
+                                                                                <td width="75%" class="text-left text-dropdown-default">
+                                                                                    &nbsp;@mensagemRelacoesCi.NomesUsuariosDestinatario.Aggregate((i, j) => i + ", " + j)
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td width="25%" class="text-right">
+                                                                                    Data:
+                                                                                </td>
+                                                                                <td width="75%" class="text-left text-dropdown-default">
+                                                                                    &nbsp;@mensagemRelacoesCi.dataCadastro.ToString()
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="collapse2-@mensagemRelacoesCi.idMensagem" class="panel-collapse collapse @openCollapse">
+                                    <div class="panel-body">
+                                        <div class="view-mail">
+                                            @Html.Raw(mensagemRelacoesCi.corpoCi)
+                                        </div>
+                                        @{int qtdAnexo = mensagemRelacoesCi.Anexos.Count;}
+                                        @if(qtdAnexo > 0) {
+                                            <div class="attachment-mail">
+                                                <p>
+                                                    <span><i class="fa fa-paperclip"></i> @(qtdAnexo > 1 ? qtdAnexo.ToString() + " Anexos" : "Anexo")</span>
+                                                </p>
+                                                <ul>
+                                                    @foreach(var anexo in mensagemRelacoesCi.Anexos)
+                                                    {
+                                                        <li>
+                                                            <a class="atch-thumb" title="@anexo.max_nom_arquivo">
+                                                                <i class="fa-3x fa fa-file-o"></i>
+                                                            </a><br>
+                                                            <a class="atch-thumb name" title="">@anexo.max_nom_arquivo</a> <small style="font-size: 75%;">(@UtilFunctions.GetPrettyBytes((long)anexo.max_num_tamanho))</small>
+                                                            <div class="links">
+                                                                <a target="_blank" href="@Url.Action("VisualizarAnexo", "MensagemAnexo", new { id = @anexo.max_id_max })">Visualizar</a> -
+                                                                <a href="@Url.Action("BaixarAnexo", "MensagemAnexo", new { id = @anexo.max_id_max })">Baixar</a>
+                                                            </div>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="formulario-resposta-@mensagemRelacoesCi.idMensagem" style="display: none" class="formulario-resposta"></div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        @Html.Partial("_footerAdmin")
+    </div>
+</section>
